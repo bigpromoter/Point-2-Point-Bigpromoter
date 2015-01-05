@@ -1,5 +1,5 @@
 <?php
-class ControlAdmin {
+class p2p_bp_ControlAdmin {
     
     function __construct() {
         $this->colorSpace = '&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -53,7 +53,7 @@ class ControlAdmin {
     
 		require_once( '../../../../../../wp-blog-header.php' );
         
-        $model = new ModelAdmin();
+        $model = new p2p_bp_ModelAdmin();
 
 		$check = $this->checkCarInfo($_POST);
 
@@ -68,7 +68,7 @@ class ControlAdmin {
     
 		require_once( '../../../../../../wp-blog-header.php' );
 
-		$model = new ModelAdmin();
+		$model = new p2p_bp_ModelAdmin();
 		
 		$check = $this->checkCarInfo($_POST);
 		
@@ -83,7 +83,7 @@ class ControlAdmin {
 		
 		require_once( '../../../../../../wp-blog-header.php' );
 		
-        $model = new ModelAdmin();
+        $model = new p2p_bp_ModelAdmin();
 		
 		if ($delete) {
 			$model->deleteCar($model->fleet['table'], $model->fleet['prefix'], $_POST['id']);
@@ -112,7 +112,7 @@ class ControlAdmin {
     
 		require_once( '../../../../../../wp-blog-header.php' );
         
-        $model = new ModelAdmin();
+        $model = new p2p_bp_ModelAdmin();
 
 		$check = $this->checkServiceInfo($_POST);
 
@@ -127,7 +127,7 @@ class ControlAdmin {
     
 		require_once( '../../../../../../wp-blog-header.php' );
 
-		$model = new ModelAdmin();
+		$model = new p2p_bp_ModelAdmin();
 		
 		$check = $this->checkServiceInfo($_POST);
 		
@@ -141,7 +141,7 @@ class ControlAdmin {
 		
 		require_once( '../../../../../../wp-blog-header.php' );
 		
-        $model = new ModelAdmin();
+        $model = new p2p_bp_ModelAdmin();
 		
 		if ($delete) {
 			$model->deleteService($model->service['table'], $model->service['prefix'], $_POST['id']);

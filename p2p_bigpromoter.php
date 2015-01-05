@@ -72,7 +72,7 @@ add_action ('admin_enqueue_scripts', 'bp_scripts');
 if (is_admin()) {
 	/* Call Admin Functions and Screens */
 	include_once (dirname(__FILE__)."/admin/admin.php");
-    $admin = new Admin();
+    $admin = new p2p_bp_Admin();
     
 //System
 //Activate and Deactivate Plugin
@@ -81,7 +81,7 @@ if (is_admin()) {
 } else {
 	/* Call User Functions and Screens */
 	include_once (dirname(__FILE__)."/user/user.php");
-    $user = new User();
+    $user = new p2p_bp_User();
 }
 
 

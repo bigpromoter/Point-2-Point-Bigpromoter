@@ -1,5 +1,5 @@
 <?php
-class Admin {
+class p2p_bp_Admin {
 	function __construct() {
 		// Add the admin options page
 		add_action('admin_menu', array($this,'addPage'));

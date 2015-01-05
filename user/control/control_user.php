@@ -10,7 +10,7 @@
     use PayPal\Api\FundingInstrument;
     use PayPal\Api\Transaction;
 
-class ControlUser {
+class p2p_bp_ControlUser {
 
     const DIST_KM = 1000;
     const DIST_MILE = 1609.344;

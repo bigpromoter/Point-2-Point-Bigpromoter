@@ -1,5 +1,5 @@
 <?php
-class ModelAdmin {
+class p2p_bp_ModelAdmin {
 
     public $reservation = array();
     public $fleet = array();

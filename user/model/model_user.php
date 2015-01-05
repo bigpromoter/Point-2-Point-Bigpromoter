@@ -1,5 +1,5 @@
 <?php
-class ModelUser {
+class p2p_bp_ModelUser {
     function getCars($order = '') {
     	global $wpdb;
         //require_once( '../../../../../wp-blog-header.php' );

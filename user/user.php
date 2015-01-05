@@ -1,5 +1,5 @@
 <?php
-class User {
+class p2p_bp_User {
     function __construct() {
         //add the [bigpromoter_map] shortcode support
         $this->createShortcode('bigpromoter_map','showMap');
@@ -12,7 +12,7 @@ class User {
     //Declare Shortcodes
     function createShortcode($name, $function) {
         $this->includePage('control','control_user');
-        $control = new ControlUser();
+        $control = new p2p_bp_ControlUser();
 
         add_shortcode($name, array($control,$function));     
     }
