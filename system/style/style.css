@@ -1,0 +1,345 @@
+/**********************************************
+ *
+ * Style Sheet
+ *
+ **********************************************/
+
+.alert {
+    margin: 5px 0!important;
+}
+
+ 
+/*
+ *
+ * Sizes
+ *
+ */
+.w100   {width: 100px!important;}
+.w90    {width: 90px!important;}
+.w80    {width: 80px!important;}
+.w70    {width: 70px!important;}
+.w60    {width: 60px!important;}
+.w50    {width: 50px!important;}
+.w40    {width: 40px!important;}
+.w30    {width: 30px!important;}
+.w20    {width: 20px!important;}
+.w10    {width: 10px!important;}
+
+.w100p  {width: 100%!important;}
+.w90p   {width: 90%!important;}
+.w80p   {width: 80%!important;}
+.w70p   {width: 70%!important;}
+.w60p   {width: 60%!important;}
+.w50p   {width: 50%!important;}
+.w48p   {width: 48%!important;}
+.w40p   {width: 40%!important;}
+.w30p   {width: 30%!important;}
+.w20p   {width: 20%!important;}
+.w10p   {width: 10%!important;}
+
+.h20    {min-height: 20px!important;}
+.h30    {min-height: 30px!important;}
+.h40    {min-height: 40px!important;}
+
+/*
+ *
+ * Position
+ *
+ */
+
+.pos0   {position:relative; top:0px;}
+.pos10   {position:relative; top:10px;}
+.pos40   {position:relative; top:40px;}
+.pos1   {position:relative; top:1px;}
+.pos1l  {position:relative; left:1px;}
+
+
+.left   {float:left;clear: none;}
+.right  {float:right;}
+
+.pTop10   {padding-top: 10px;}
+.p0       {padding: 0px!important;}
+
+/*
+ *
+ * Font
+ *
+ */
+
+
+.fverdana {font-family: verdana, arial, sans-serif;}
+
+.f10px   {font-size: 10px;}
+.f12px   {font-size: 12px;}
+
+.fcenter {text-align: center;}
+.fright {text-align: right;}
+.fleft {text-align: left;}
+
+/*
+ *
+ * Colors
+ *
+ */
+
+.colorTitle     {background-color: #CECECE; color: #000;}
+.colorSubTitle  {background-color: #ECECEC; color: #000;}
+
+.error  {color:#F00;}
+.error_form {border: 1px solid red!important;}
+.warning{color:#FF0;}
+.pass   {color:#0F0;}
+
+.bgGray {background-color: #CCC; color: #FFF;}
+.bgGray:hover {background-color: #AAA; color: #FFF!important;}
+.bgRed {background-color: #d9534f; color: #FFF;}
+.bgRed:hover {background-color: #f28e8b; color: #FFF!important;}
+.bgWhite {background-color: #FFF;}
+/*
+ *
+ * Others
+ *
+ */
+
+.space  {width: 100%; height: 10px; float: left;}
+.space5 {width: 100%; height: 5px; float: left;}
+
+.cursorDefault:hover {cursor: default!important;}
+input:disabled {
+    border: 1px solid #ccc;
+    color: #555;
+}
+input[type="submit"] {color: #000; }
+
+
+
+/*
+ *
+ * Show Price
+ *
+ */
+.carBox {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.carBoxW {min-height: 165px;}
+
+.bookNowArrow {
+    color: #999;
+    position: relative;
+    left: 10px;
+}
+
+/*
+ *
+ * Manage Car - Table
+ *
+ */
+.carTable {}
+.carTop {
+    background-color: #428bca;
+    color: #FFF;
+}
+.carBottom {
+    background-color: #4d9ee4;
+    color: #FFF;
+}
+.colId {
+    width: 5%!important;
+    text-align: center;
+    float: left;
+}
+.colAction {
+    width: 7%!important;
+    text-align: center;
+    float: left;
+}
+.colActive {
+    width: 7%!important;
+    text-align: center;
+    float: left;
+}
+.colBody {
+    width: 20%!important;
+    float: left;
+}
+.colMin {
+    width: 8%!important;
+    float: left;
+}
+.colLess ,
+.colMore {
+    width: 9%!important;
+    float: left;
+}
+.colPassenger,
+.colLuggage,
+.colColor {
+    width: 7%!important;
+    float: left;
+}
+.colImage {
+    width: 13%!important;
+    float: left;
+}
+
+.colId, .colAction, .colActive, .colBody, .colService,
+.colLess, .colMore, .colPassenger, .colLuggage,
+.colImage, .colColor, .colMin {
+    padding: 5px 0;
+}
+
+.colUploadButton {display: none!important; float: left;}
+.descLess {display: none;}
+
+.rowOdd {background: #FFF;}
+.rowEven {background: #d9ebfa;}
+
+.thumbCar {max-width: 150px; max-height: 150px; text-align: center;}
+
+/*
+ *
+ * Manage Service - Table
+ *
+ */
+ .serviceTop  {
+    background-color: #428bca;
+    color: #FFF;
+}
+.serviceBottom {
+    background-color: #4d9ee4;
+    color: #FFF;
+}
+ .serviceTable {
+    float: left;
+    width: 100%;
+ }
+ .colIdS {
+    width: 40px;
+    text-align: center;
+    float: left;
+ }
+ .colActionS {
+    width: 70px;
+    float: left;
+ }
+ .colServiceS {
+    min-width: 235px;
+    float: left;
+    padding-top: 5px;
+ }
+ 
+ .colIdS, .colActionS, colServiceS {
+    padding: 5px 0;
+ }
+ 
+/*
+*
+*   Classes Calendar
+*
+*/
+.purple {background-color: #a4bdfc!important}
+.ligthgreen {background-color: #7ae7bf!important}
+.pink {background-color: #dbadff!important}
+.ligthred {background-color: #ff887c!important}
+.yellow {background-color: #fbd75b!important}
+.orange {background-color: #ffb878!important}
+.cyan {background-color: #46d6db!important}
+.gray {background-color: #e1e1e1!important}
+.blue {background-color: #5484ed!important}
+.green {background-color: #51b749!important}
+.red {background-color: #dc2127!important}
+.colorbox {width: 26px; height: 26px;}
+
+
+/*
+*
+*   Classes Admin Tabs
+*
+*/
+.nav-tab {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.nav-tab:hover {
+    color: #428bca;
+    background: #fff!important;
+    text-decoration: none;
+}
+
+.nav-tab-active {
+    background: #0074a2!important;
+}
+
+.nav-tab-active:hover {
+    color: #0074a2;
+    background: #fff!important;
+    border-bottom: 1px solid transparent;
+}
+
+h2.nav-tab-wrapper, h3.nav-tab-wrapper {
+    border-bottom: 1px solid #428bca;
+}
+
+.wp-color-result:after {line-height: 20px;}
+
+/*
+*
+*   Classes Admin Manage Reservation
+*
+*/
+.marginBottom {margin-bottom: 5px;}
+.marginTop {margin-top: 5px;}
+.marginLeft    {margin-left: 5px;}
+.buttonDelete {padding: 13px 18px 0 0;}
+.divDelete {
+    border-radius: 4px 4px 0 0;
+    border: solid 1px #E0A2A0!important;
+    border-bottom: none;
+}
+.buttonDone {position: relative;top: -3px;right: 3px;}
+.divDone {
+    float: none;
+    margin-bottom: 10px;
+    background-color: #5cb85c;
+    color: #FFF;
+}
+.divUndone {
+    float: none;
+    margin-bottom: 10px;
+    background-color: #f0ad4e;
+    color: #FFF;
+}
+
+
+/*
+*
+*   Classes User Reservation
+*
+*/
+#p2p_reservation {
+    max-width: 940px;
+    margin: auto;
+}
+
+#p_time_h, #p_time_m, #r_p_time_m, #r_p_time_h {width: 10%;}
+.time {width:100%}
+.adjust-date-picker {
+    font-size: 18px;
+    margin-top: -24px;
+    z-index: 2;
+}

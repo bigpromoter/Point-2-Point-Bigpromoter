@@ -1,0 +1,208 @@
+/**********************************************
+ *
+ * Responsive Style Sheet
+ *
+ **********************************************/
+
+/*
+ *
+ * Manage Car - Table
+ *
+ */
+ @media screen and (max-width: 490px){
+    .carTop {display:none;}
+    .colAction {
+        width: 25%!important;
+        text-align: center;
+        float: left;
+    }
+    .colActive {
+        width: 8%!important;
+        text-align: center;
+        float: left;
+    }
+    .colBody,
+    .colService {
+        width: 67%!important;
+        float: left;
+    }
+    .colLess ,
+    .colMore ,
+    .colMin {
+        width: 30%!important;
+        float: left;
+    }
+    .colPassenger,
+    .colLuggage,
+    .colColor {
+        width: 33%!important;
+        float: left;
+    }
+
+    .colImage {
+        width: 100%!important;
+        float: right;
+    }
+    .colUploadButton {
+        width: 100%;
+        padding:10px;
+        display: block!important;
+    }
+    .junNum {
+        width: 100%!important;
+        float: left;        
+    }
+
+    .colId, .colAction, .colActive, .colBody, .colService,
+    .colLess, .colMore, .colPassenger, .colLuggage,
+    .colImage, .colColor {
+        padding: 5px 5px;
+        text-align: center;
+    }    
+    
+    .uploadBig {display: none!important;}
+    .descLess {
+        display: block;
+        text-align: center;
+    }
+
+    .thumbCar {max-width: 100%; max-height: 100%;}
+    
+    .dropdown-color {right: 0px; left: initial}
+    
+    .w50p {width:100%!important;}
+    
+    .margin-bottom-5 {margin-bottom: 5px;}
+    .fleet-price-small-font {padding-left: 15px;}
+    #p_time_h, #p_time_m, #r_p_time_m, #r_p_time_h {width: 20%;}
+ }
+ 
+ @media (min-width: 491px) and (max-width: 568px){
+    .carTop {display:none;}
+    .colAction {
+        width: 18%!important;
+        text-align: center;
+        float: left;
+    }
+    .colActive {
+        width: 5%!important;
+        text-align: center;
+        float: left;
+    }
+    .colBody,
+    .colService {
+        width: 77%!important;
+        float: left;
+    }
+    .colLess ,
+    .colMore ,
+    .colMin {
+        width: 30%!important;
+        float: left;
+    }
+    .colPassenger,
+    .colLuggage,
+    .colColor {
+        width: 30%!important;
+        float: left;
+    }
+    .colImage {
+        width: 100%!important;
+        float: right;
+    }
+    .colUploadButton {
+        width: 100%;
+        padding:10px;
+        display: block!important;
+    }
+    .junNum {
+        width: 100%!important;
+        float: left;        
+    }
+
+    .colId, .colAction, .colActive, .colBody, .colService,
+    .colLess, .colMore, .colPassenger, .colLuggage,
+    .colImage, .colColor {
+        padding: 5px 5px;
+        text-align: center;
+    }    
+    
+    .uploadBig {display: none!important;}
+    .descLess {
+        display: block;
+        text-align: center;
+    }
+
+    .thumbCar {max-width: 100%; max-height: 100%;}
+ }
+@media (min-width: 569px) and (max-width: 1120px){
+    .carTop {display:none;}
+    .colAction {
+        width: 15%!important;
+        text-align: center;
+        float: left;
+    }
+    .colActive {
+        width: 2%!important;
+        text-align: center;
+        float: left;
+    }
+    .colBody,
+    .colService {
+        width: 83%!important;
+        float: left;
+    }
+    .colLess,
+    .colMore,
+    .colMin {
+        width: 30%!important;
+        float: left;
+    }
+    
+    .colPassenger,
+    .colLuggage,
+    .colColor {
+        width: 30%!important;
+        float: left;
+    }
+    .colImage {
+        width: 30%!important;
+        float: right;
+        position: relative;
+        top: -100px;
+    }
+    .colUploadButton {
+        width: 100%;
+        padding:10px;
+        display: block!important;
+    }
+    .junNum {
+        width: 70%!important;
+        float: left;
+        margin: 20px 0;
+    }
+
+    .colId, .colAction, .colActive, .colBody, .colService,
+    .colLess, .colMore, .colPassenger, .colLuggage,
+    .colImage, .colColor {
+        padding: 5px 5px;
+        text-align: center;
+    }    
+    
+    .uploadBig {display: none!important;}
+    .descLess {
+        display: block;
+        text-align: center;
+    }
+
+    .thumbCar {max-width: 100%; max-height: 100%;}
+ }
+ 
+ @media screen and (max-width: 782px){
+    .calendarTable {width:auto!important}
+     #p_time_h, #p_time_m, #r_p_time_m, #r_p_time_h {width: 20%!important;}
+ }
+
+ @media screen and (max-width: 950px){ 
+    #p_time_h, #p_time_m, #r_p_time_m, #r_p_time_h {width: 15%;}
+ }
