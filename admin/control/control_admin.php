@@ -262,6 +262,7 @@ CODE;
     
     function reverseDate($date) {
         $d = explode('-',$date);
+        if (count($d) < 3) return false;
         $newD = $d[1].'/'.$d[2].'/'.$d[0];
         return $newD;
     }
@@ -269,6 +270,7 @@ CODE;
         
     function dbDate($date) {
         $d = explode('/',$date);
+        if (count($d) < 3) return false;
         $newD = $d[2].'-'.$d[0].'-'.$d[1];
         return $newD;
     }
