@@ -2,8 +2,9 @@
     //Include Core files from WP
     include_once ('../../include.php');
     require_once( '../../../../../../wp-blog-header.php' );
-
-    if ($_POST['del'] == 1) {
+    
+    $del = ((isset($_POST['del'])) && ($_POST['del'] == 1))?true:false;
+    if ($del === true) {
         $delete = $control->deleteService(true);
         if ($delete) {
 ?>

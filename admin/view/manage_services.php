@@ -4,7 +4,10 @@ $results = $model->getResults($model->service['table'], 'ORDER BY '.$model->serv
 ?>
 	<div class="wrap">
 		<h2>Point to Point - Big Promoter</h2>
-        <?php $control->checkUpdate($_GET['settings-updated']); ?>
+        <?php
+            $uptaded = (isset($_GET['settings-updated']))?$_GET['settings-updated']:NULL;
+            $control->checkUpdate($uptaded);
+        ?>
         <div class="panel panel-primary">
             <div class="panel-heading">
                     <h3 class="panel-title">Manage Service</h3>

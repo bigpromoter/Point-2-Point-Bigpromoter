@@ -59,13 +59,16 @@ $results = $model->getResults($model->reservation['table'],$comp);
                     </script>                    
                     <div style="width:100%; height: 5px;"></div>
                     <?php
-                        $checked_all = ($_POST['is_provided'] == 2)?'checked':'';
-                        $checked_provided = ($_POST['is_provided'] == 1)?'checked':'';
-                        $checked_not_provided = ($_POST['is_provided'] == 0)?'checked':'';
+                        $checked_all = ((isset($_POST['is_provided'])) && ($_POST['is_provided'] == 2))?'checked':'';
+                        $checked_provided = ((isset($_POST['is_provided'])) && ($_POST['is_provided'] == 1))?'checked':'';
+                        $checked_not_provided = ((isset($_POST['is_provided'])) && ($_POST['is_provided'] == 0))?'checked':'';
                         
-                        $active_all = ($_POST['is_provided'] == 2)?'active':'';
-                        $active_provided = ($_POST['is_provided'] == 1)?'active':'';
-                        $active_not_provided = ($_POST['is_provided'] == 0)?'active':'';
+                        $active_all = ((isset($_POST['is_provided'])) && ($_POST['is_provided'] == 2))?'active':'';
+                        $active_provided = ((isset($_POST['is_provided'])) && ($_POST['is_provided'] == 1))?'active':'';
+                        $active_not_provided = ((isset($_POST['is_provided'])) && ($_POST['is_provided'] == 0))?'active':'';
+                        
+                        $checked_all = (!isset($_POST['is_provided']))?'checked':$checked_all;
+                        $active_all = (!isset($_POST['is_provided']))?'active':$active_all;
                     ?>
                     <div class="btn-group" data-toggle="buttons">
                         <label id="no" class="btn btn-primary <?php echo $active_all; ?>">
