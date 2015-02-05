@@ -30,4 +30,6 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * Date: 02/04/2015
 * Adjusted $output without use (admin page)
 * Removed index not defined (reservation page)
-* Changed how get info from Google Maps Api
+* Improved how get info from Google Maps Api
+* Changed Calendar Script to use WP Time Zone
+* Removed conflict with Bootstrap
