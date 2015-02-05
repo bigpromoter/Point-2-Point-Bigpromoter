@@ -17,7 +17,7 @@ class GoogleCalendar {
 		$this->client = new Google_Client();
 		$this->client->setApplicationName("Appointments");
 		$this->client->setUseObjects(true);
-		$key = file_get_contents(plugins_url('p2p_bigpromoter/') . '/system/calendar/google/key/'.get_option('p2p_calendar_keyfilename').'.p12');
+		$key = file_get_contents(plugins_url('p2p_bigpromoter/') . 'system/calendar/google/key/'.get_option('p2p_calendar_keyfilename').'.p12');
 		$this->client->setAssertionCredentials(new Google_AssertionCredentials(
 			get_option('p2p_calendar_serviceemail'),
 			array('https://www.googleapis.com/auth/calendar'),
@@ -53,8 +53,8 @@ class GoogleCalendar {
             $app->phone = 'Test';
             $app->address = 'Local Test';
             $app->city = 'City Teste';
-            $app->start = date('Y-m-d H:i:s', time() + $tdif);
-            $app->end = date('Y-m-d H:i:s', time() + 1800 + $tdif);
+            $app->start = date('Y-m-d H:i:s', time() + (get_option('gmt_offset') * 60 * 60));
+            $app->end = date('Y-m-d H:i:s', time() + 1800 + (get_option('gmt_offset') * 60 * 60));
             
             $app->color = 1;
             $app->note = 'THIS IS A TEST!';
@@ -110,10 +110,10 @@ class GoogleCalendar {
 			$tdif = current_time('timestamp') - time();
 
 		$start = new Google_EventDateTime();
-		$start->setDateTime( date( "Y-m-d\TH:i:s\Z", strtotime($app->start)  - (get_option('gmt_offset') * 60 * 60)));
+		$start->setDateTime( date( "Y-m-d\TH:i:s\Z", strtotime($app->start) ));
 
 		$end = new Google_EventDateTime();
-		$end->setDateTime( date( "Y-m-d\TH:i:s\Z", strtotime($app->end) - (get_option('gmt_offset') * 60 * 60)));
+		$end->setDateTime( date( "Y-m-d\TH:i:s\Z", strtotime($app->end) ));
 
 		// An email is always required
 		$email = $app->email;
