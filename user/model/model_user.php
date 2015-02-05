@@ -22,8 +22,7 @@ class p2p_bp_ModelUser {
         //require_once( 'wp-blog-header.php' );
         
         $q = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}p2p_bp_service ORDER BY p2p_bp_service_name ASC",OBJECT);
-        
-        if ($q[0] != NULL) return $q;
+        if (count($q) > 0) return $q;
         return 0;        
     }
     

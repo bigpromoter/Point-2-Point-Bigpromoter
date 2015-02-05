@@ -133,7 +133,7 @@ class p2p_bp_ControlUser {
     
     //Get Valid Car on DB    
     function availableCar($distance_travel) {
-        $model = new ModelUser();
+        $model = new p2p_bp_ModelUser();
         
         $car = $model->getCars('ORDER BY p2p_bp_cars_name');
         
@@ -147,7 +147,7 @@ class p2p_bp_ControlUser {
         $kms = self::DIST_KM; $miles = self::DIST_MILE;
         
         $index = 0;
-        $totalCar = count($car)+1;
+        $totalCar = count($car);
         for ($i=0;$i<$totalCar;$i++) {
             $less_than = $car[$i]->p2p_bp_cars_value_lower;
             $more_than = $car[$i]->p2p_bp_cars_value_higher;
@@ -170,7 +170,7 @@ class p2p_bp_ControlUser {
     }
     
     function getTravelPrice($start, $end, $carId) {
-        $model = new ModelUser();
+        $model = new p2p_bp_ModelUser();
         $car = $model->getCar($carId);
 
         //Get Option
@@ -292,7 +292,7 @@ class p2p_bp_ControlUser {
         
         for ($i=$start;$i<=$end;$i++) {
             $zero='';
-            ($i == $_POST[$namecol])?$selected = 'selected':$selected = '';
+            (isset($_POST[$namecol]) && ($i == $_POST[$namecol]))?$selected = 'selected':$selected = '';
             (strlen($i) < 2 && $use_zero)?$zero='0':$zero='';
             $output .= '	<option value="'.$i.'"  '.$selected.'>'.$zero.$i.'</option>';
         }
@@ -305,7 +305,7 @@ class p2p_bp_ControlUser {
     }
     
     function selectService($value, $error) {
-        $model = new ModelUser();
+        $model = new p2p_bp_ModelUser();
         $services = $model->getServices();
         
         ($error == 1)?$class_error = 'error_form':$class_error='';
@@ -332,6 +332,7 @@ class p2p_bp_ControlUser {
             $output .= '</div> ';
         } else {
             $output .= 'There is no Service Option';
+            $output .= '<input type="hidden" name="servicetype" VALUE="">';
         }
         
         $output .=$this->endDiv();
@@ -662,7 +663,7 @@ class p2p_bp_ControlUser {
 
     function doReservation($info, $chooseCar, $price) {
         if (get_option('p2p_calendar_enabled')) { require dirname(__FILE__).'/../../system/calendar/calendar.php'; }
-        $model = new ModelUser();
+        $model = new p2p_bp_ModelUser();
         //Check missfilled fields
         $fields =  array(
                         array('first_name','str',2),
@@ -750,7 +751,7 @@ class p2p_bp_ControlUser {
         if (get_option('p2p_color') == 1) {
             $output .= '<style type="text/css">'.PHP_EOL;
             $output .= get_option('p2p_custom_css').PHP_EOL;
-            if (get_option('p2p_color') == 1) {/*
+            if (get_option('p2p_color') == 1) {
                 //Change Label
                 $output .= '.input-group-addon {'.PHP_EOL;
                 $output .= '    color: '.get_option('p2p_label_color').';'.PHP_EOL;
@@ -777,7 +778,7 @@ class p2p_bp_ControlUser {
                     $output .= '    border: '.get_option('p2p_button_border_color').';'.PHP_EOL;
                 else
                     $output .= '    border: 0px;';
-                $output .= '}'.PHP_EOL;*/
+                $output .= '}'.PHP_EOL;
             }    
         $output .= '</style>'.PHP_EOL;
         $custom_css = get_option('p2p_custom_css');

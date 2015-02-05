@@ -20,6 +20,20 @@
     } else {
         if (!empty($_POST)) {
             $er = $control->doReservation($_POST, $chooseCar, $price);
+            $er['phone'] = null; //Doens't check Phone number
+        } else {
+            $er = array('first_name' => null,
+                        'last_name' => null,
+                        'phone' => null,
+                        'email' => null,
+                        'npassenger' => null,
+                        'nluggage' => null,
+                        'servicetype' => null,
+                        'p_date' => null,
+                        'r_p_date' => null
+                        );
+                        
+            
         }
 ?>     
             <form method="post" action="#" id="checkout">
@@ -45,8 +59,8 @@
                         <span id="tx_vehicletype_lugg">Max Luggage: <?php echo $chooseCar->p2p_bp_cars_luggage; ?></span><BR>
                     </div>
                     <div class='space'></div>
-<?                          
-                    echo $control->selectService($_POST['servicetype'],$er['servicetype']);
+<?
+                    echo $control->selectService((isset($_POST['servicetype'])?$_POST['servicetype']:null),$er['servicetype']);
                     echo $control->endDiv();
                 ?>
                 </div>
@@ -62,7 +76,7 @@
                         echo $control->startDiv().$control->createInput('Apt/Suite','p_apt','','th-large').$control->endDiv();
                         echo $control->startDiv().$control->createText('City','p_city',$start['city'].'/'.$start['state_short']).$control->endDiv();
                         echo $control->startDiv().$control->createText('Zip Code','p_zip',$start['zip']).$control->endDiv();
-                        echo $control->startDiv().$control->createInput('Date','p_date',$_POST['p_date'],'calendar',$er['p_date'],'has-feedback').$control->endDiv();
+                        echo $control->startDiv().$control->createInput('Date','p_date',(isset($_POST['p_date'])?$_POST['p_date']:null),'calendar',$er['p_date'],'has-feedback').$control->endDiv();
                         echo $control->startDiv().$control->createLabel('Time',$control->createDropDown ('p_time_h', 0, 23, true).'<span class="left">:</span>'.$control->createDropDown ('p_time_m', 0, 59, true),'time').$control->endDiv();
                         echo $control->endDiv();
                         echo $control->startDiv(50,'right');
@@ -79,7 +93,10 @@
                     ?>
                 </div>
                 <div class="space"></div>
-                <?php ($_POST['r'] == 1)?$checked1='checked':$checked2='checked';?>
+                <?php
+                    $checked1 = $checked2 = null;
+                    (isset($_POST['r']) && ($_POST['r'] == 1))?$checked1='checked':$checked2='checked';
+                ?>
                 <div class="w100p h40 left"><strong>Round Trip </strong>[ <input type="radio" id="r1" name="r" value="1" <?php echo $checked1; ?>> Yes | <input type="radio" id="r2" name="r" value="0" <?php echo $checked2; ?>> No ]</div>
                 <script>
                 
@@ -135,7 +152,7 @@
                         echo $control->startDiv().$control->createText('Apt/Suite','r_p_apt','').$control->endDiv();
                         echo $control->startDiv().$control->createText('City','r_p_city',$end['city'].'/'.$end['state_short']).$control->endDiv();
                         echo $control->startDiv().$control->createText('Zip Code','r_p_zip',$end['zip']).$control->endDiv();
-                        echo $control->startDiv().$control->createInput('Date','r_p_date',$_POST['r_p_date'],'calendar',$er['r_p_date'],'has-feedback').$control->endDiv();
+                        echo $control->startDiv().$control->createInput('Date','r_p_date',(isset($_POST['r_p_date'])?$_POST['r_p_date']:null),'calendar',$er['r_p_date'],'has-feedback').$control->endDiv();
                         echo $control->startDiv().$control->createLabel('Time',$control->createDropDown ('r_p_time_h', 0, 23, true).'<span class="left">:</span>'.$control->createDropDown ('r_p_time_m', 0, 59, true),'time').$control->endDiv();
                         echo $control->endDiv();
                         echo $control->startDiv(50,'right');
