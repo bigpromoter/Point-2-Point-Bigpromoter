@@ -28,6 +28,7 @@ class p2p_bp_ModelUser {
     
     function changeDate($date) {
         $d = explode('/',$date);
+        if (count($d) < 3) return false;
         $newD = $d[2].'-'.$d[0].'-'.$d[1];
         return $newD;
     }
@@ -49,7 +50,7 @@ class p2p_bp_ModelUser {
                 
         $q = $wpdb->get_results($sql);
         
-        if (count($q[0]) > 0) return true;
+        if (count($q) > 0) return true;
         else return false;
     }
     
