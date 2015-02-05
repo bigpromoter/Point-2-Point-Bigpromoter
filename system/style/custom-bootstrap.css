@@ -2148,7 +2148,7 @@ select[multiple].p2p_bp_input-group-sm > .p2p_bp_input-group-p2p_bp_btn > .p2p_b
 .p2p_bp_input-group-addon,
 .p2p_bp_input-group-p2p_bp_btn,
 .p2p_bp_input-group .p2p_bp_form-control {
-  display: table-cell;
+  display: table-cell!important;
 }
 .p2p_bp_input-group-addon:not(:first-child):not(:last-child),
 .p2p_bp_input-group-p2p_bp_btn:not(:first-child):not(:last-child),
