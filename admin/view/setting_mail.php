@@ -4,11 +4,11 @@
     $control->checkUpdate($uptaded);
 ?>
 <form method="post" action="options.php">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-                <h3 class="panel-title">E-mail Settings</h3>
+    <div class="p2p_bp_panel p2p_bp_panel-primary">
+        <div class="p2p_bp_panel-heading">
+                <h3 class="p2p_bp_panel-title">E-mail Settings</h3>
         </div>
-        <div class="panel-body">
+        <div class="p2p_bp_panel-body">
             <table class="form-table">
             <?php settings_fields( 'p2p_bigpromoter_email' ); ?>
             <?php do_settings_sections( 'p2p_bigpromoter_email' ); ?>
@@ -35,11 +35,11 @@
             </table>
         </div>
     </div>
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-                <h3 class="panel-title">E-mail Receiver</h3>
+    <div class="p2p_bp_panel p2p_bp_panel-primary">
+        <div class="p2p_bp_panel-heading">
+                <h3 class="p2p_bp_panel-title">E-mail Receiver</h3>
         </div>
-        <div class="panel-body">            
+        <div class="p2p_bp_panel-body">            
             <table class="form-table">
                 <tr valign="top">
                         <td scope="row">E-mail 1</td>

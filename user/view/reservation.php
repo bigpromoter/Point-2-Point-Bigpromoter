@@ -31,9 +31,7 @@
                         'servicetype' => null,
                         'p_date' => null,
                         'r_p_date' => null
-                        );
-                        
-            
+                        );   
         }
 ?>     
             <form method="post" action="#" id="checkout">
@@ -54,7 +52,7 @@
                     <div class="w100p left">Vehicle</div>
                     <div class="w50p left"><img class="thumbCar" src="<?php echo $chooseCar->p2p_bp_cars_pic; ?>"/></div>
                     <div class="w50p right">
-                        <span id="tx_vehicletype"><h2><?php echo $chooseCar->p2p_bp_cars_name; ?></h2></span><input type="hidden" name="vehicletype" value="<?php echo $chooseCar->p2p_bp_cars_name; ?>" /><BR>
+                        <span id="tx_vehicletype" class="boxTitle"><?php echo $chooseCar->p2p_bp_cars_name; ?></span><input type="hidden" name="vehicletype" value="<?php echo $chooseCar->p2p_bp_cars_name; ?>" /><BR>
                         <span id="tx_vehicletype_pass">Max Passengers: <?php echo $chooseCar->p2p_bp_cars_passenger; ?></span><BR>
                         <span id="tx_vehicletype_lugg">Max Luggage: <?php echo $chooseCar->p2p_bp_cars_luggage; ?></span><BR>
                     </div>
@@ -74,23 +72,27 @@
                     <?php
                         echo $control->startDiv().$control->createText('Address','p_address',$start['number'].' '.$start['street']).$control->endDiv();
                         echo $control->startDiv().$control->createInput('Apt/Suite','p_apt','','th-large').$control->endDiv();
-                        echo $control->startDiv().$control->createText('City','p_city',$start['city'].'/'.$start['state_short']).$control->endDiv();
+                        echo $control->startDiv().$control->createText('City','show_p_city',$start['city'].'/'.$start['state_short']).$control->endDiv();
                         echo $control->startDiv().$control->createText('Zip Code','p_zip',$start['zip']).$control->endDiv();
                         echo $control->startDiv().$control->createInput('Date','p_date',(isset($_POST['p_date'])?$_POST['p_date']:null),'calendar',$er['p_date'],'has-feedback').$control->endDiv();
                         echo $control->startDiv().$control->createLabel('Time',$control->createDropDown ('p_time_h', 0, 23, true).'<span class="left">:</span>'.$control->createDropDown ('p_time_m', 0, 59, true),'time').$control->endDiv();
                         echo $control->endDiv();
                         echo $control->startDiv(50,'right');
                     ?>
+                    <input type="hidden" name="p_city" value="<?php echo $start['city']; ?>" />
+                    <input type="hidden" name="p_state" value="<?php echo $start['state_short']; ?>" />
                     <div class="w100p h30 fcenter pTop10 colorSubTitle right"><strong>Drop-off Information</strong></div>		    
                     <div class="space"></div>
                     <?php
                         echo $control->startDiv().$control->createText('Address','d_address',$end['number'].' '.$end['street']).$control->endDiv();
                         echo $control->startDiv().$control->createInput('Apt/Suite','d_apt','','th-large').$control->endDiv();
-                        echo $control->startDiv().$control->createText('City','d_city',$end['city'].'/'.$end['state_short']).$control->endDiv();
+                        echo $control->startDiv().$control->createText('City','show_d_city',$end['city'].'/'.$end['state_short']).$control->endDiv();
                         echo $control->startDiv().$control->createText('Zip Code','d_zip',$end['zip']).$control->endDiv();
                         echo $control->endDiv();
                         echo $control->startDiv().$control->createInput('Special Instructions','p_instructions','','info-sign').$control->endDiv();
                     ?>
+                    <input type="hidden" name="d_city" value="<?php echo $end['city']; ?>" />
+                    <input type="hidden" name="d_state" value="<?php echo $end['state_short']; ?>" />
                 </div>
                 <div class="space"></div>
                 <?php
@@ -128,8 +130,8 @@
                     });
                     
                     jQuery(document).ready(function () {
-                        jQuery("#p_date").after('<span class="glyphicon glyphicon-expand form-control-feedback adjust-date-picker" id="go_p_date"></span>');
-                        jQuery("#r_p_date").after('<span class="glyphicon glyphicon-expand form-control-feedback adjust-date-picker" id="go_r_p_date"></span>');
+                        jQuery("#p_date").after('<span class="p2p_bp_glyphicon p2p_bp_glyphicon-expand p2p_bp_form-control-feedback adjust-date-picker pull-right" id="go_p_date"></span>');
+                        jQuery("#r_p_date").after('<span class="p2p_bp_glyphicon p2p_bp_glyphicon-expand p2p_bp_form-control-feedback adjust-date-picker pull-right" id="go_r_p_date"></span>');
                         jQuery("#go_p_date").click(function () {
                             jQuery("#p_date").focus();
                         });
@@ -191,7 +193,7 @@
                 <div class="w100p left">
                 <?php
                     echo $control->startDiv();
-                    echo $control->selectCartType($_POST['cardtype']);
+                    echo $control->selectCartType(isset($_POST['cardtype'])?$_POST['cardtype']:null);
                     echo $control->startDiv().$control->createInput('Credit Card','card_num','','credit-card',0).$control->endDiv();
                     echo $control->startDiv().$control->createInput('CVV','card_cvv','','credit-card',0).$control->endDiv();
                     echo $control->startDiv().$control->createInput('Month','card_month','','calendar',0).$control->endDiv();
@@ -205,7 +207,7 @@
 ?>
                 <div class="clear"></div>		
                 <div class="w100p">
-                    <input type="submit" value="submit" class="btn btn-primary pull-left"/>
+                    <input type="submit" value="submit" class="p2p_bp_btn p2p_bp_btn-primary pull-left"/>
                     <p class="bg-info" class="pull-left" style="margin-left: 100px; padding: 11px 20px; margin-bottom: 15px; width: 300px; text-align: center; border-radius: 5px;">Estimated Price: <span id="final_price"><?php echo get_option('select_currency').$price; ?></span></p>
                 </div>
             </form>

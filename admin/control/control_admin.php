@@ -21,9 +21,9 @@ class p2p_bp_ControlAdmin {
     //Check if Setting was Updated
     function checkUpdate($result) {
         if ($result == true) {
-            echo '<div id="divUpdate" class="alert alert-success">Success: Settings Updated!</div>';
+            echo '<div id="divUpdate" class="alert p2p_bp_alert-success">Success: Settings Updated!</div>';
         } else if ($result == false && isset($result)) {
-            echo '<div id="divUpdate" class="alert alert-danger">Failed: Settings NOT Updated!</div>';
+            echo '<div id="divUpdate" class="alert p2p_bp_alert-danger">Failed: Settings NOT Updated!</div>';
         }
     }
     
@@ -328,14 +328,14 @@ CODE;
         
         $output = '';
         $output .= '<input type="hidden" id="'.$id.'" value="'.$color[0].'" />'.PHP_EOL;
-        $output .= '<div class="btn-group">'.PHP_EOL;
-        $output .= '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">'.PHP_EOL;
+        $output .= '<div class="p2p_bp_btn-group">'.PHP_EOL;
+        $output .= '<button type="button" class="p2p_bp_btn p2p_bp_btn-default dropdown-toggle" data-toggle="dropdown">'.PHP_EOL;
         $output .= '    <span id="'.$change.'" class="'.$color[1].' colorbox">'.$this->colorSpace.'</span> <span class="caret"></span>'.PHP_EOL;
         $output .= '</button>'.PHP_EOL;
         $output .= '<ul class="dropdown-menu dropdown-color" role="menu" style="padding:10px;">'.PHP_EOL;
         for ($i = 1; $i <= 11; $i++) {
             $colorfor = $this->getColor($i);
-            $output .= '    <li style="display: inline-block;"><button type="button" name="'.$colorfor[1].'" class="'.$trigger.' '.$colorfor[1].' btn btn-default colorbox" id="'.$i.'"></button></li>'.PHP_EOL;
+            $output .= '    <li style="display: inline-block;"><button type="button" name="'.$colorfor[1].'" class="'.$trigger.' '.$colorfor[1].' p2p_bp_btn p2p_bp_btn-default colorbox" id="'.$i.'"></button></li>'.PHP_EOL;
         }
         $output .=' </ul>'.PHP_EOL;
         $output .= '</div>'.PHP_EOL;
@@ -353,14 +353,14 @@ CODE;
     function createSelectNum($id, $change, $trigger, $value) {
         $output = '';
         $output .= '<input type="hidden" id="'.$id.'" value="'.$value.'" />'.PHP_EOL;
-        $output .= '<div class="btn-group">'.PHP_EOL;
-        $output .= '<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">'.PHP_EOL;
+        $output .= '<div class="p2p_bp_btn-group">'.PHP_EOL;
+        $output .= '<button type="button" class="p2p_bp_btn p2p_bp_btn-default dropdown-toggle" data-toggle="dropdown">'.PHP_EOL;
         $output .= '    <span id="'.$change.'">'.$value.'</span> <span class="caret"></span>'.PHP_EOL;
         $output .= '</button>'.PHP_EOL;
         $output .= '<ul class="dropdown-menu" role="menu" style="padding:10px;">'.PHP_EOL;
         for ($i = 1; $i <= 20; $i++) {
             (strlen($i) < 2)?$zero='0':$zero='';
-            $output .= '    <li style="display: inline-block;"><button type="button" class="'.$trigger.' btn btn-default" id="'.$i.'">'.$zero.$i.'</button></li>'.PHP_EOL;
+            $output .= '    <li style="display: inline-block;"><button type="button" class="'.$trigger.' p2p_bp_btn p2p_bp_btn-default" id="'.$i.'">'.$zero.$i.'</button></li>'.PHP_EOL;
         }
         $output .=' </ul>'.PHP_EOL;
         $output .= '</div>'.PHP_EOL;
@@ -465,7 +465,7 @@ CODE;
         $output .=  "<option value='%{$value[0]}%'>{$value[1]}</option>".PHP_EOL;
     }
     $output .= '</select>'.PHP_EOL;
-    $output .= '<div id="'.$button.'" class="w100p btn btn-std bgGray">Insert</div>'.PHP_EOL;
+    $output .= '<div id="'.$button.'" class="w90p p2p_bp_btn p2p_bp_btn-std bgGray">Insert</div>'.PHP_EOL;
     $output .= '<script>'.PHP_EOL;
     $output .= 'jQuery("#'.$button.'").click(function () {'.PHP_EOL;
     $output .= '    var position = jQuery("#'.$field.'").getCursorPosition()'.PHP_EOL;
@@ -499,8 +499,8 @@ CODE;
         $tabs = array('Basic','Calendar','Color','Mail','Map','Payment','BigPromoter');
         
         $output = '';
-        $output .= '<ul class="nav nav-tabs nav-justified" role="tablist">';
-        //$output .= '<i class="glyphicon glyphicon-cog"></i> ';
+        $output .= '<ul class="p2p_bp_nav p2p_bp_nav-tabs p2p_bp_nav-justified" role="tablist">';
+        //$output .= '<i class="p2p_bp_glyphicon p2p_bp_glyphicon-cog"></i> ';
         
         foreach ($tabs as $tab) {
             $classactive = (strtolower($tab) == strtolower($active))?'active':'';

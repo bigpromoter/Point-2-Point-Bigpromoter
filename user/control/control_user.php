@@ -239,18 +239,18 @@ class p2p_bp_ControlUser {
     function createInput($textcol, $namecol, $valuecol, $icon, $error = 0, $class = '') {
 	
         (isset($_POST[$namecol]))?$valuecol = $_POST[$namecol]:$valuecol='';
-        ($error == 1)?$class_error = 'error_form':$class_error='';
+        $class_error = ($error == 1)?'error_form':'';
     
         $output = '';
         $output .= '	<div class="w100p right">';
-        $output .= '		<div class="input-group margin-bottom-sm w100p '.$class.'">';
-        $output .= '			<span class="input-group-addon '.$class_error.' glyphicon glyphicon-'.$icon.' pos1l"></span>';
+        $output .= '		<div class="p2p_bp_input-group margin-bottom-sm w100p '.$class.'">';
+        $output .= '			<span class="p2p_bp_input-group-addon '.$class_error.' p2p_bp_glyphicon p2p_bp_glyphicon-'.$icon.' pos1l"></span>';
         
         if (get_option('placeholder')) {
-            $output .= '			<input class="form-control pos1 '.$class_error.'" type="text" name="'.$namecol.'" id="'.$namecol.'" value="'.$valuecol.'" placeholder="'.$textcol.'" class="w100p">';
+            $output .= '			<input class="p2p_bp_form-control pos1 '.$class_error.'" type="text" name="'.$namecol.'" id="'.$namecol.'" value="'.$valuecol.'" placeholder="'.$textcol.'" class="w100p">';
         } else {
-            $output .= '			<span class="input-group-addon pos1 pos1l'.$class_error.'">'.$textcol.'</span>';        
-            $output .= '			<input class="form-control pos1 '.$class_error.'" type="text" name="'.$namecol.'" id="'.$namecol.'" value="'.$valuecol.'" class="w100p">';        
+            $output .= '			<span class="p2p_bp_input-group-addon pos1 pos1l '.$class_error.'">'.$textcol.'</span>';        
+            $output .= '			<input class="p2p_bp_form-control pos1 '.$class_error.'" type="text" name="'.$namecol.'" id="'.$namecol.'" value="'.$valuecol.'" class="w100p">';        
         }
         
         
@@ -270,22 +270,23 @@ class p2p_bp_ControlUser {
     }
 
     function createSelect($textcol, $namecol, $start, $end, $use_zero, $icon = false, $error = false) {
+        $class_error = ($error == 1)?'error_form':'';
         $output = '';
         $output .= '	<span class="left">'.$textcol.':</span>';
         $output .= '	<span class="left">';
-        $output .= $this->createDropDown($namecol, $start, $end, $use_zero, $icon);
+        $output .= $this->createDropDown($namecol, $start, $end, $use_zero, $icon, $class_error);
         $output .= '	</span>';
             
         return $output;
     }
     
-   function createDropDown ($namecol, $start, $end, $use_zero = false, $icon = false) {
+   function createDropDown ($namecol, $start, $end, $use_zero = false, $icon = false, $class_error = false) {
         $output = '';
         
         if ($icon != false) {
-            $output .= '<div class="input-group margin-bottom-sm">';
-            $output .= '<span class="input-group-addon fa fa-'.$icon.' pos1l"></span>';
-            $output .= '<select class="form-control pos1 left" name="'.$namecol.'" id="'.$namecol.'">';
+            $output .= '<div class="p2p_bp_input-group margin-bottom-sm">';
+            $output .= '<span class="p2p_bp_input-group-addon fa fa-'.$icon.' pos1l '.$class_error.'"></span>';
+            $output .= '<select class="p2p_bp_form-control pos1 left" name="'.$namecol.'" id="'.$namecol.'">';
         } else {
             $output .= '<select class="left" name="'.$namecol.'" id="'.$namecol.'">';
         }
@@ -314,10 +315,10 @@ class p2p_bp_ControlUser {
         
         if ($services != 0) {
             $output .= '<span class="left">Type of Service: </span>';
-            $output .= '<div class="input-group margin-bottom-sm w100p">';
-            $output .= '<span class="input-group-addon fa fa-list pos1l"></span>';
+            $output .= '<div class="p2p_bp_input-group margin-bottom-sm w100p">';
+            $output .= '<span class="p2p_bp_input-group-addon fa fa-list pos1l '.$class_error.'"></span>';
             $output .= '<span class="left">';
-            $output .= '<select class="form-control pos1 '.$class_error.' left" id="servicetype" name="servicetype">';
+            $output .= '<select class="p2p_bp_form-control pos1 '.$class_error.' left" id="servicetype" name="servicetype">';
             $output .= '<option value="0" selected="selected">----- Select a Service -----</option>';
             foreach ($services as $service) {
                 ($value == $service->p2p_bp_service_name)?$selected='selected':$selected='';
@@ -358,9 +359,12 @@ class p2p_bp_ControlUser {
     function validationDate($date, $empty = 0) {
         if (strlen($date) == 0 && $empty) return 1;
         else {
-            if (strlen($date) == 0 && $empty == 0) return 0;
+            if (strlen($date) == 0 && $empty == 0)
+                if ((isset($_POST['r']) && $_POST['r'] == 0))
+                    return 0;
             else {
                 $d = explode('/',$date);
+                if (count($d) != 3) return 1;
                 if (!checkdate($d[0], $d[1], $d[2])) return 1;
             }
         }
@@ -403,16 +407,16 @@ class p2p_bp_ControlUser {
         $output = '';
         $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_header.html');
         $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template.html');       
-        $fields = array('first_name','last_name','phone','email','npassenger','nluggage','vehicletype','servicetype','p_address','p_apt','p_city','p_state','p_zip','p_date_m','p_date_d','p_date_y','p_time_h','p_time_m','p_instructions','d_address','d_apt','d_city','d_state','d_zip');        
+        $fields = array('first_name','last_name','phone','email','npassenger','nluggage','vehicletype','servicetype','p_address','p_apt','p_city','p_state','p_zip','p_date','p_time_h','p_time_m','p_instructions','d_address','d_apt','d_city','d_state','d_zip');        
         foreach ($fields as $field) {
-            $output = str_replace("%{$field}%", $info[$field], $output);
+            if (isset($info[$field])) $output = str_replace("%{$field}%", $info[$field], $output);
         }
         
         if ($info['r'] == 1) {
-            $fields = array('r_p_date_m','r_p_date_d','r_p_date_y','r_p_time_h','r_p_time_m','r_p_instructions');
+            $fields = array('r_p_date','r_p_time_h','r_p_time_m','r_p_instructions');
             $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_round_trip.html');
             foreach ($fields as $field) {
-                $output = str_replace("%{$field}%", $info[$field], $output);
+                if (isset($info[$field])) $output = str_replace("%{$field}%", $info[$field], $output);
             }
         }
         $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_footer.html');
@@ -518,21 +522,21 @@ class p2p_bp_ControlUser {
         $output[4] = 'BrainTree'; //Company
         if ($result->success) {
             $output[0] = true;
-            $output[1] .= "<div class='alert alert-success'>";
+            $output[1] .= "<div class='alert p2p_bp_alert-success'>";
             $output[1] .= "We got your Payment on BrainTree! [Transaction code: ". $result->transaction->id."]";
             $output[1] .= "Amount Paid: ".get_option('select_currency')."{$value}".$desc;
             $output[1] .= "</div>";
             $output[2] = $value;
             $output[3] = $result->transaction->id;
         } else if ($result->transaction) {
-            $output[1] .= "<div class='alert alert-danger'>";
+            $output[1] .= "<div class='alert p2p_bp_alert-danger'>";
             $output[1] .= "<BR>Error processing transaction:";
             $output[1] .= "<BR>  message: " . $result->message;
             $output[1] .= "<BR>  code: " . $result->transaction->processorResponseCode;
             $output[1] .= "<BR>  text: " . $result->transaction->processorResponseText;
             $output[1] .= "</div>";
         } else {
-            $output[1] .= "<div class='alert alert-danger'>";
+            $output[1] .= "<div class='alert p2p_bp_alert-danger'>";
             $output[1] .= "Validation errors on your Payment: <BR>";            
             foreach (($result->errors->deepAll()) as $error) {
                 $output[1] .= "- " . $error->message . "<br/>";
@@ -617,7 +621,7 @@ class p2p_bp_ControlUser {
         try {
             $result = $payment->create($apiContext);
             $output[0] = true;
-            $output[1] .= "<div class='alert alert-success'>";
+            $output[1] .= "<div class='alert p2p_bp_alert-success'>";
             $output[1] .= "We got your Payment on PayPal! [Transaction code: ". $result->id."]<BR>";
             $output[1] .= "Amount Paid: ".get_option('select_currency')."{$value}".$desc;
             $output[1] .= "</div>";
@@ -625,7 +629,7 @@ class p2p_bp_ControlUser {
             $output[3] = $result->id;
         } catch (PayPal\Exception\PPConnectionException $ex) {
             $error = explode('"',$ex->getData());
-            $output[1] .= "<div class='alert alert-danger'>";
+            $output[1] .= "<div class='alert p2p_bp_alert-danger'>";
             $output[1] .= "Validation errors on your Payment: <BR>";
             $output[1] .= "Error:".$error[9]."<BR>";
             $output[1] .= "Message:".$error[13]."<BR>";
@@ -643,10 +647,10 @@ class p2p_bp_ControlUser {
         $cardType = array('visa','mastercard','amex','discover');
         $output = $this->startDiv();
         
-        $output .= '<div class="input-group margin-bottom-sm w100p">';
-        $output .= '<span class="input-group-addon fa fa-list pos1l"></span>';
+        $output .= '<div class="p2p_bp_input-group margin-bottom-sm w100p">';
+        $output .= '<span class="p2p_bp_input-group-addon fa fa-list pos1l"></span>';
         $output .= '<span class="left">';
-        $output .= '<select class="form-control pos1l left" id="cardtype" name="cardtype">';
+        $output .= '<select class="p2p_bp_form-control pos1l left" id="cardtype" name="cardtype">';
         $output .= '<option value="0" selected="selected">[Choose your Card]</option>';
         foreach ($cardType as $card) {
             ($value == $card)?$selected='selected':$selected='';
@@ -675,15 +679,14 @@ class p2p_bp_ControlUser {
                         array('r_p_date','date',0),
                         array('servicetype','service')
                     );
-
         $check = $this->checkErros($info, $fields);
         $error = $check[0];
         $er = $check[1];
         //End Check
         if (!($error)) { //If there is no Error
             // Check if reservation was already made
-            if ($model->checkIfAlreadyMade($_POST_)) {
-                echo '<div class="alert alert-warning">We already have your reservation!</div>';
+            if ($model->checkIfAlreadyMade($_POST)) {
+                echo '<div class="alert p2p_bp_alert-warning">We already have your reservation!</div>';
             } else {
                 $payment_info = '';
                 if (get_option('p2p_payment_type') == 'braintree') {
@@ -717,7 +720,7 @@ class p2p_bp_ControlUser {
                     $insert = $model->insertReservation($info, $payment_info);
                     if ($insert) {
 ?>
-                        <div class="alert alert-success">We got your reservation!</div>
+                        <div class="alert p2p_bp_alert-success">We got your reservation!</div>
 <?php
                         //Send Mail
                         $sendMail = $this->sendMail($info);
@@ -730,14 +733,14 @@ class p2p_bp_ControlUser {
                 }
             }
         } else { //If there is Error, show them
-            if ($er['first_name']) echo '<div class="alert alert-danger">You must fill your <strong>First Name</strong>!</div>';
-            if ($er['last_name']) echo '<div class="alert alert-danger">You must fill your <strong>Last Name</strong>!</div>';
-            if ($er['email']) echo '<div class="alert alert-danger">You must fill a valid <strong>E-mail</strong>!</div>';
-            if ($er['npassenger']) echo '<div class="alert alert-danger">The field <strong>Passengers</strong> must be numeric!</div>';
-            if ($er['nluggage']) echo '<div class="alert alert-danger">The field <strong>Luggage</strong> must be numeric!</div>';
-            if ($er['servicetype']) echo '<div class="alert alert-danger">You must select a valid <strong>Service</strong>!</div>';
-            if ($er['p_date']) echo '<div class="alert alert-danger">You must fill a valid <strong>Pick-Up Date</strong>!</div>';
-            if ($er['r_p_date']) echo '<div class="alert alert-danger">You must fill a valid <strong>Round-Trip Pick-up Date</strong>!</div>';
+            if ($er['first_name']) echo '<div class="alert p2p_bp_alert-danger">You must fill your <strong>First Name</strong>!</div>';
+            if ($er['last_name']) echo '<div class="alert p2p_bp_alert-danger">You must fill your <strong>Last Name</strong>!</div>';
+            if ($er['email']) echo '<div class="alert p2p_bp_alert-danger">You must fill a valid <strong>E-mail</strong>!</div>';
+            if ($er['npassenger']) echo '<div class="alert p2p_bp_alert-danger">The field <strong>Passengers</strong> must be numeric!</div>';
+            if ($er['nluggage']) echo '<div class="alert p2p_bp_alert-danger">The field <strong>Luggage</strong> must be numeric!</div>';
+            if ($er['servicetype']) echo '<div class="alert p2p_bp_alert-danger">You must select a valid <strong>Service</strong>!</div>';
+            if ($er['p_date']) echo '<div class="alert p2p_bp_alert-danger">You must fill a valid <strong>Pick-Up Date</strong>!</div>';
+            if ($er['r_p_date']) echo '<div class="alert p2p_bp_alert-danger">You must fill a valid <strong>Round-Trip Pick-up Date</strong>!</div>';
         }
         
         return $er;
@@ -753,7 +756,7 @@ class p2p_bp_ControlUser {
             $output .= get_option('p2p_custom_css').PHP_EOL;
             if (get_option('p2p_color') == 1) {
                 //Change Label
-                $output .= '.input-group-addon {'.PHP_EOL;
+                $output .= '.p2p_bp_input-group-addon {'.PHP_EOL;
                 $output .= '    color: '.get_option('p2p_label_color').';'.PHP_EOL;
                 $output .= '    background: '.get_option('p2p_label_background').';'.PHP_EOL;
                 if (get_option('p2p_label_border') == 1) 
@@ -762,7 +765,7 @@ class p2p_bp_ControlUser {
                     $output .= '    border: 0px;';
                 $output .= '}'.PHP_EOL;
                 //Change Input
-                $output .= '.input-group .form-control {'.PHP_EOL;
+                $output .= '.p2p_bp_input-group .p2p_bp_form-control {'.PHP_EOL;
                 $output .= '    color: '.get_option('p2p_input_color').';'.PHP_EOL;
                 $output .= '    background: '.get_option('p2p_input_background').';'.PHP_EOL;
                 if (get_option('p2p_input_border') == 1) 
@@ -771,7 +774,7 @@ class p2p_bp_ControlUser {
                     $output .= '    border: 0px;';
                 $output .= '}'.PHP_EOL;
                 //Change Button
-                $output .= '.btn-default {'.PHP_EOL;
+                $output .= '.p2p_bp_btn-default {'.PHP_EOL;
                 $output .= '    color: '.get_option('p2p_button_color').';'.PHP_EOL;
                 $output .= '    background: '.get_option('p2p_button_background').';'.PHP_EOL;
                 if (get_option('p2p_button_border') == 1) 

@@ -6,7 +6,7 @@
     
     if (!$insert) {
 ?>
-        <div id="divAdd" class="alert alert-success w100p left">Service included! You need to reload this page to see the car included! Wait for the automatic reload or <a href="#" onClick="window.location.reload();">click here</a>!</div>
+        <div id="divAdd" class="alert p2p_bp_alert-success w100p left">Service included! You need to reload this page to see the car included! Wait for the automatic reload or <a href="#" onClick="window.location.reload();">click here</a>!</div>
         <script>
             setTimeout(function(){
                 location.reload(true);
@@ -14,7 +14,7 @@
         </script>
 <?php
     } else {
-        echo '<div id="divAddWrong" class="alert alert-danger w100p left">'.$insert.'</div>';
+        echo '<div id="divAddWrong" class="alert p2p_bp_alert-danger w100p left">'.$insert.'</div>';
     }
 ?>
 <script>

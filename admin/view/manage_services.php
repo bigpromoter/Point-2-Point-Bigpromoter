@@ -8,11 +8,11 @@ $results = $model->getResults($model->service['table'], 'ORDER BY '.$model->serv
             $uptaded = (isset($_GET['settings-updated']))?$_GET['settings-updated']:NULL;
             $control->checkUpdate($uptaded);
         ?>
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                    <h3 class="panel-title">Manage Service</h3>
+        <div class="p2p_bp_panel p2p_bp_panel-primary pull-left w100p">
+            <div class="p2p_bp_panel-heading">
+                    <h3 class="p2p_bp_panel-title">Manage Service</h3>
             </div>
-            <div class="panel-body">
+            <div class="p2p_bp_panel-body">
                 <div class="serviceTable serviceTop">
                     <div class="colIdS">Id</div>
                     <div class="colActionS">Action</div>
@@ -52,7 +52,7 @@ $results = $model->getResults($model->service['table'], 'ORDER BY '.$model->serv
 			}
 ?>
                 <div id="showAjaxAdd" style="width:100%; background-color: #FFF;"></div>    
-                <div class="serviceTable serviceBottom">
+                <div class="serviceTable serviceBottom ">
                     <div class="colIdS">#</div>
                     <div class="colActionS"><div id="p2p_service_add" class="button" style="width:27px; padding: 0;"><img src="<?php echo plugins_url(); ?>/p2p_bigpromoter/system/images/icon_add.png" alt="Add New Car"/></div></div>
                     <div class="colServiceS">
@@ -68,11 +68,11 @@ $results = $model->getResults($model->service['table'], 'ORDER BY '.$model->serv
                 });
             </script>
             <form method="post" action="options.php">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                            <h3 class="panel-title">Service Options</h3>
+                <div class="p2p_bp_panel p2p_bp_panel-primary   pull-left w100p">
+                    <div class="p2p_bp_panel-heading">
+                            <h3 class="p2p_bp_panel-title">Service Options</h3>
                     </div>
-                    <div class="panel-body">
+                    <div class="p2p_bp_panel-body">
                         <div class="form-table">
                             <?php		
                                 settings_fields( 'p2p_bigpromoter_service' );

@@ -48,7 +48,7 @@ function bp_generate_map(lat, lon, zoom) {
 }
 
 function loadingDiv(div) {
-    jQuery(div).html('<div class="alert alert-info w100p left"><strong><img src="/wp-content/plugins/p2p_bigpromoter/system/style/images/ajax-loader.gif" /> Loading...</strong></div>');
+    jQuery(div).html('<div class="alert p2p_bp_alert-info w100p left"><strong><img src="/wp-content/plugins/p2p_bigpromoter/system/style/images/ajax-loader.gif" /> Loading...</strong></div>');
 }
 
 //FLEET

@@ -8,23 +8,23 @@
     $control->checkUpdate($uptaded);
 ?>
 <form method="post" action="options.php">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-                <h3 class="panel-title">Color Settings</h3>
+    <div class="p2p_bp_panel p2p_bp_panel-primary">
+        <div class="p2p_bp_panel-heading">
+                <h3 class="p2p_bp_panel-title">Color Settings</h3>
         </div>
-        <div class="panel-body">
+        <div class="p2p_bp_panel-body">
             <?php settings_fields( 'p2p_bigpromoter_color' ); ?>
             <?php do_settings_sections( 'p2p_bigpromoter_color' ); ?>
             <table class="form-table">      
                 <tr valign="top">
                     <th scope="row">Use Custom Colors:</th>
                     <td colspan="3">
-                        <div class="btn-group" data-toggle="buttons">
+                        <div class="p2p_bp_btn-group" data-toggle="buttons">
                             <?php $colorActive = $control->borderColor(get_option('p2p_color'),'color'); ?>
-                            <label id="color-yes" class="btn btn-primary <?php echo (isset($colorActive['active_yes_color']))?$colorActive['active_yes_color']:''; ?>">
+                            <label id="color-yes" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($colorActive['active_yes_color']))?$colorActive['active_yes_color']:''; ?>">
                                 <input type="radio" name="p2p_color" id="color_yes_input" value='1' <?php echo (isset($colorActive['checked_yes_color']))?$colorActive['checked_yes_color']:''; ?>> Yes
                             </label>
-                            <label id="color-no" class="btn btn-primary <?php echo (isset($colorActive['active_no_color']))?$colorActive['active_no_color']:''; ?>">
+                            <label id="color-no" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($colorActive['active_no_color']))?$colorActive['active_no_color']:''; ?>">
                                 <input type="radio" name="p2p_color"  id="color_no_input" value='0' <?php echo (isset($colorActive['checked_no_color']))?$colorActive['checked_no_color']:''; ?>> No
                             </label>
                         </div>
@@ -40,7 +40,7 @@
                 </tr>
             </table>
             <div id="color_active" style="display: <?php echo (isset($colorActive['display_color']))?$colorActive['display_color']:''; ?>">
-                <div class="alert alert-info" role="alert">Label</div>
+                <div class="alert p2p_bp_alert-info" role="alert">Label</div>
                 <table class="form-table">      
                     <tr valign="top">
                         <th scope="row">Font:</th>
@@ -53,12 +53,12 @@
                     <tr valign="top">
                         <th scope="row">Border:</th>
                         <td colspan="3">
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="p2p_bp_btn-group" data-toggle="buttons">
                                 <?php $labelBorder = $control->borderColor(get_option('p2p_label_border'),'label'); ?>
-                                <label id="label-yes" class="btn btn-primary <?php echo (isset($labelBorder['active_yes_label']))?$labelBorder['active_yes_label']:''; ?>">
+                                <label id="label-yes" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($labelBorder['active_yes_label']))?$labelBorder['active_yes_label']:''; ?>">
                                     <input type="radio" name="p2p_label_border" id="label_yes_input" value='1' <?php echo (isset($labelBorder['checked_yes_label']))?$labelBorder['checked_yes_label']:''; ?>> Yes
                                 </label>
-                                <label id="label-no" class="btn btn-primary <?php echo (isset($labelBorder['active_no_label']))?$labelBorder['active_no_label']:''; ?>">
+                                <label id="label-no" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($labelBorder['active_no_label']))?$labelBorder['active_no_label']:''; ?>">
                                     <input type="radio" name="p2p_label_border"  id="label_no_input" value='0' <?php echo (isset($labelBorder['checked_no_label']))?$labelBorder['checked_no_label']:''; ?>> No
                                 </label>
                             </div>
@@ -74,7 +74,7 @@
                         </td>
                     </tr>
                 </table>
-                <div class="alert alert-info" role="alert">Input</div>
+                <div class="alert p2p_bp_alert-info" role="alert">Input</div>
                 <table class="form-table">      
                     <tr valign="top">
                         <th scope="row">Font:</th>
@@ -87,12 +87,12 @@
                     <tr valign="top">
                         <th scope="row">Border:</th>
                         <td colspan="3">
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="p2p_bp_btn-group" data-toggle="buttons">
                                 <?php $inputBorder = $control->borderColor(get_option('p2p_input_border'),'input'); ?>
-                                <label id="input-yes" class="btn btn-primary <?php echo (isset($inputBorder['active_yes_input']))?$inputBorder['active_yes_input']:''; ?>">
+                                <label id="input-yes" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($inputBorder['active_yes_input']))?$inputBorder['active_yes_input']:''; ?>">
                                     <input type="radio" name="p2p_input_border" id="input_yes_input" value='1' <?php echo (isset($inputBorder['checked_yes_input']))?$inputBorder['checked_yes_input']:''; ?>> Yes
                                 </label>
-                                <label id="input-no" class="btn btn-primary <?php echo (isset($inputBorder['active_no_input']))?$inputBorder['active_no_input']:''; ?>">
+                                <label id="input-no" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($inputBorder['active_no_input']))?$inputBorder['active_no_input']:''; ?>">
                                     <input type="radio" name="p2p_input_border"  id="input_no_input" value='0' <?php echo (isset($inputBorder['checked_no_input']))?$inputBorder['checked_no_input']:''; ?>> No
                                 </label>
                             </div>
@@ -108,7 +108,7 @@
                         </td>
                     </tr>
                 </table>
-                <div class="alert alert-info" role="alert">Button</div>
+                <div class="alert p2p_bp_alert-info" role="alert">Button</div>
                 <table class="form-table">      
                     <tr valign="top">
                         <th scope="row">Font:</th>
@@ -121,12 +121,12 @@
                     <tr valign="top">
                         <th scope="row">Border:</th>
                         <td colspan="3">
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="p2p_bp_btn-group" data-toggle="buttons">
                                 <?php $buttonBorder = $control->borderColor(get_option('p2p_button_border'),'button'); ?>
-                                <label id="button-yes" class="btn btn-primary <?php echo (isset($buttonBorder['active_yes_button']))?$buttonBorder['active_yes_button']:''; ?>">
+                                <label id="button-yes" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($buttonBorder['active_yes_button']))?$buttonBorder['active_yes_button']:''; ?>">
                                     <input type="radio" name="p2p_button_border" id="button_yes_input" value='1' <?php echo (isset($buttonBorder['checked_yes_button']))?$buttonBorder['checked_yes_button']:''; ?>> Yes
                                 </label>
-                                <label id="button-no" class="btn btn-primary <?php echo (isset($buttonBorder['active_no_button']))?$buttonBorder['active_no_button']:''; ?>">
+                                <label id="button-no" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (isset($buttonBorder['active_no_button']))?$buttonBorder['active_no_button']:''; ?>">
                                     <input type="radio" name="p2p_button_border"  id="button_no_input" value='0' <?php echo (isset($buttonBorder['checked_no_button']))?$buttonBorder['checked_no_button']:''; ?>> No
                                 </label>
                             </div>
@@ -145,13 +145,13 @@
             </div>
         </div>
     </div>
-        <div class="panel panel-primary">
-        <div class="panel-heading">
-                <h3 class="panel-title">Custom CSS</h3>
+        <div class="p2p_bp_panel p2p_bp_panel-primary w100p pull-left">
+        <div class="p2p_bp_panel-heading">
+                <h3 class="p2p_bp_panel-title">Custom CSS</h3>
         </div>
-        <div class="panel-body">
-            <div class="col-sm-9"><textarea id="p2p_custom_css" name="p2p_custom_css" class="w100p" rows="10"><?php echo get_option('p2p_custom_css'); ?></textarea></div>
-            <div class="col-sm-3">Paste your CSS code, do not include any tags or HTML in this field. Any custom CSS entered here will override your custom CSS. In some cases, the <i>!important</i> tag may be needed.</div>
+        <div class="p2p_bp_panel-body">
+            <div class="p2p_bp_col-sm-8"><textarea id="p2p_custom_css" name="p2p_custom_css" class="w100p" rows="10"><?php echo get_option('p2p_custom_css'); ?></textarea></div>
+            <div class="p2p_bp_col-sm-3">Paste your CSS code, do not include any tags or HTML in this field. Any custom CSS entered here will override your custom CSS. In some cases, the <i>!important</i> tag may be needed.</div>
         </div>
     </div>
     <?php submit_button(); ?>

@@ -5,9 +5,9 @@
     $edit = $control->editCar();
     
     if (!$edit) {
-        echo '<div id="divChange" class="alert alert-success w100p left">Info Changed!</div>';
+        echo '<div id="divChange" class="alert p2p_bp_alert-success w100p left">Info Changed!</div>';
     } else {
-        echo '<div id="divChange" class="alert alert-danger w100p left">'.$edit.'</div>';
+        echo '<div id="divChange" class="alert p2p_bp_alert-danger w100p left">'.$edit.'</div>';
     }
 ?>
 <script>

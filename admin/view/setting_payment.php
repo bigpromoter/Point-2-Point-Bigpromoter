@@ -6,23 +6,23 @@
 <form method="post" action="options.php">
 <?php settings_fields( 'p2p_bigpromoter_payment' );?>
 <?php do_settings_sections( 'p2p_bigpromoter_payment' );?>
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                    <h3 class="panel-title">Payment Settings</h3>
+        <div class="p2p_bp_panel p2p_bp_panel-primary">
+            <div class="p2p_bp_panel-heading">
+                    <h3 class="p2p_bp_panel-title">Payment Settings</h3>
             </div>
-            <div class="panel-body">    
+            <div class="p2p_bp_panel-body">    
                 <?php
                     //Check with payment is activated
                     $payment = $control->paymentType(get_option('p2p_payment_type'));
                 ?>
-                <div class="btn-group" data-toggle="buttons">
-                    <label id="no" class="btn btn-primary <?php echo $payment['active_no']; ?>">
+                <div class="p2p_bp_btn-group" data-toggle="buttons">
+                    <label id="no" class="p2p_bp_btn p2p_bp_btn-primary <?php echo $payment['active_no']; ?>">
                         <input type="radio" name="p2p_payment_type" id="no" value='no' <?php echo $payment['checked_no']; ?>> No Payment
                     </label>
-                    <label id="paypal" class="btn btn-primary <?php echo $payment['active_paypal']; ?>">
+                    <label id="paypal" class="p2p_bp_btn p2p_bp_btn-primary <?php echo $payment['active_paypal']; ?>">
                         <input type="radio" name="p2p_payment_type"  id="paypal" value='paypal' <?php echo $payment['checked_paypal']; ?>> PayPal
                     </label>
-                    <label id="braintree" class="btn btn-primary <?php echo $payment['active_braintree']; ?>">
+                    <label id="braintree" class="p2p_bp_btn p2p_bp_btn-primary <?php echo $payment['active_braintree']; ?>">
                         <input type="radio" name="p2p_payment_type" id="braintree" value='braintree' <?php echo $payment['checked_braintree']; ?>> BrainTree
                     </label>
                 </div>

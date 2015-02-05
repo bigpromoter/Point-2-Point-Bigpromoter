@@ -9,11 +9,11 @@
     $control->checkUpdate($uptaded);
 ?>
 <form method="post" action="options.php">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-                <h3 class="panel-title">Map Settings</h3>
+    <div class="p2p_bp_panel p2p_bp_panel-primary">
+        <div class="p2p_bp_panel-heading">
+                <h3 class="p2p_bp_panel-title">Map Settings</h3>
         </div>
-        <div class="panel-body">
+        <div class="p2p_bp_panel-body">
             <?php settings_fields( 'p2p_bigpromoter_options' ); ?>
             <?php do_settings_sections( 'p2p_bigpromoter_options' ); ?>
             <table class="form-table">
@@ -22,7 +22,7 @@
                     <td colspan="3"><input type="text" name="google_api" value="<?php echo get_option('google_api'); ?>" class="w100p"/></td>
                 </tr>
             </table>
-            <div class="alert alert-info" role="alert">Coordinates</div>
+            <div class="alert p2p_bp_alert-info" role="alert">Coordinates</div>
             <table class="form-table">      
                 <tr valign="top">
                 <th scope="row">Longitude:</th>
@@ -45,7 +45,7 @@
                 <td colspan="4"><?php echo $map_info['script']; ?></td>
                 </tr>
             </table>
-            <div class="alert alert-info" role="alert">Size</div>
+            <div class="alert p2p_bp_alert-info" role="alert">Size</div>
             <table class="form-table">
                 <tr valign="top">
                 <th scope="row">Width:</th>

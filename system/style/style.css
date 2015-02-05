@@ -15,11 +15,13 @@
  *
  */
 .w100   {width: 100px!important;}
+.w95    {width: 95px!important;}
 .w90    {width: 90px!important;}
 .w80    {width: 80px!important;}
 .w70    {width: 70px!important;}
 .w60    {width: 60px!important;}
 .w50    {width: 50px!important;}
+.w45    {width: 45px!important;}
 .w40    {width: 40px!important;}
 .w30    {width: 30px!important;}
 .w20    {width: 20px!important;}
@@ -113,24 +115,7 @@ input[type="submit"] {color: #000; }
 
 
 
-/*
- *
- * Show Price
- *
- */
-.carBox {
-    padding: 6px 12px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1;
-    color: #555;
-    text-align: center;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
 
-.carBoxW {min-height: 165px;}
 
 .bookNowArrow {
     color: #999;
@@ -151,6 +136,7 @@ input[type="submit"] {color: #000; }
 .carBottom {
     background-color: #4d9ee4;
     color: #FFF;
+    margin-bottom: 20px;
 }
 .colId {
     width: 5%!important;
@@ -217,6 +203,7 @@ input[type="submit"] {color: #000; }
 .serviceBottom {
     background-color: #4d9ee4;
     color: #FFF;
+    margin-bottom: 20px;
 }
  .serviceTable {
     float: left;
@@ -265,7 +252,7 @@ input[type="submit"] {color: #000; }
 *   Classes Admin Tabs
 *
 */
-.nav-tab {
+.p2p_bp_nav-tab {
     color: #fff;
     background-color: #428bca;
     border-color: #428bca;
@@ -275,27 +262,27 @@ input[type="submit"] {color: #000; }
     border-top-right-radius: 3px;
 }
 
-.nav-tab:hover {
+.p2p_bp_nav-tab:hover {
     color: #428bca;
     background: #fff!important;
     text-decoration: none;
 }
 
-.nav-tab-active {
+.p2p_bp_nav-tab-active {
     background: #0074a2!important;
 }
 
-.nav-tab-active:hover {
+.p2p_bp_nav-tab-active:hover {
     color: #0074a2;
     background: #fff!important;
     border-bottom: 1px solid transparent;
 }
 
-h2.nav-tab-wrapper, h3.nav-tab-wrapper {
+h2.p2p_bp_nav-tab-wrapper, h3.p2p_bp_nav-tab-wrapper {
     border-bottom: 1px solid #428bca;
 }
 
-.wp-color-result:after {line-height: 20px;}
+/*.wp-color-result:after {line-height: 22px;}*/
 
 /*
 *
@@ -303,6 +290,7 @@ h2.nav-tab-wrapper, h3.nav-tab-wrapper {
 *
 */
 .marginBottom {margin-bottom: 5px;}
+.marginBottom20 {margin-bottom: 20px;}
 .marginTop {margin-top: 5px;}
 .marginLeft    {margin-left: 5px;}
 .buttonDelete {padding: 13px 18px 0 0;}
@@ -328,18 +316,63 @@ h2.nav-tab-wrapper, h3.nav-tab-wrapper {
 
 /*
 *
+*   Classes User Map
+*
+*/
+
+
+
+/*
+ *
+ * Classes Show Price
+ *
+ */
+.carBox {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.carBoxW {
+    /* min-height: 165px; */
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.carBoxW img {
+    padding-top: 20px;
+}
+
+.boxTitle {
+    font-size: 20px;
+    line-height: 30px;
+}
+
+/*
+*
 *   Classes User Reservation
 *
 */
+
 #p2p_reservation {
     max-width: 940px;
     margin: auto;
 }
 
-#p_time_h, #p_time_m, #r_p_time_m, #r_p_time_h {width: 10%;}
+#p_time_h, #p_time_m, #r_p_time_m, #r_p_time_h {
+    width: 60px;
+    margin-bottom: 10px;
+}
 .time {width:100%}
 .adjust-date-picker {
     font-size: 18px;
-    margin-top: -24px;
+    margin-top: -26px;
+    margin-right: 5px;
     z-index: 2;
 }

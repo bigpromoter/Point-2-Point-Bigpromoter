@@ -27,7 +27,7 @@ function bp_styles() {
     //Register Style Sheet
     wp_register_style('bp_basic_style', plugins_url("system/style/style.css",__FILE__));
     wp_register_style('bp_font_awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
-    wp_register_style('bp_bootstrap_css', plugins_url("system/style/bootstrap.css",__FILE__));
+    wp_register_style('bp_bootstrap_css', plugins_url("system/style/custom-bootstrap.css",__FILE__));
     wp_register_style('bp_custom_style', plugins_url("system/style/custom-style.css",__FILE__));
     wp_register_style('bp_responsive', plugins_url("system/style/responsive.css",__FILE__));
     wp_register_style('bp_jquery_ui', plugins_url("system/style/jquery-ui.min.css",__FILE__));

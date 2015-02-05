@@ -4,23 +4,23 @@
     $control->checkUpdate($uptaded);
 ?>
     <form method="post" action="options.php">
-        <div class="panel panel-primary">
-             <div class="panel-heading">
-                     <h3 class="panel-title">Calendar Settings</h3>
+        <div class="p2p_bp_panel p2p_bp_panel-primary">
+             <div class="p2p_bp_panel-heading">
+                     <h3 class="p2p_bp_panel-title">Calendar Settings</h3>
              </div>
-             <div class="panel-body">
+             <div class="p2p_bp_panel-body">
                 <?php settings_fields( 'p2p_bigpromoter_calendar' );?>
                 <?php do_settings_sections( 'p2p_bigpromoter_calendar' );?>
                 <table class="form-table">      
                     <tr valign="top">
                         <th scope="row">Use Google Calendar:</th>
                         <td colspan="3">
-                            <div class="btn-group" data-toggle="buttons">
+                            <div class="p2p_bp_btn-group" data-toggle="buttons">
                                 <?php $calendarActive = $control->borderColor(get_option('p2p_calendar_enabled'),'calendar'); ?>
-                                <label id="calendar-yes" class="btn btn-primary <?php echo $calendarActive['active_yes_calendar']; ?>">
+                                <label id="calendar-yes" class="p2p_bp_btn p2p_bp_btn-primary <?php echo $calendarActive['active_yes_calendar']; ?>">
                                     <input type="radio" name="p2p_calendar_enabled" id="calendar_yes" value='1' <?php echo (isset($calendarActive['checked_yes_calendar']))?$calendarActive['checked_yes_calendar']:''; ?>> Yes
                                 </label>
-                                <label id="calendar-no" class="btn btn-primary <?php echo $calendarActive['active_no_calendar']; ?>">
+                                <label id="calendar-no" class="p2p_bp_btn p2p_bp_btn-primary <?php echo $calendarActive['active_no_calendar']; ?>">
                                     <input type="radio" name="p2p_calendar_enabled"  id="calendar_no" value='0' <?php echo (isset($calendarActive['checked_no_calendar']))?$calendarActive['checked_no_calendar']:'';; ?>> No
                                 </label>
                             </div>
@@ -37,7 +37,7 @@
                 </table>
                 
                 <div id="calendar_active" style="display: <?php echo $calendarActive['display_calendar']; ?>">
-                    <div class="alert alert-info" role="alert">Google Calendar</div>
+                    <div class="alert p2p_bp_alert-info" role="alert">Google Calendar</div>
                     <table class="form-table">
                         <tr valign="top">
                             <th scope="row">Key file name</th>
@@ -68,7 +68,7 @@
                         ?>
                         <tr valign="top">
                             <th scope="row">Test Data:</th>
-                            <td colspan="3"><div id="calendarTest" class="w100p btn btn-std bgGray">Test Settings</div></td>
+                            <td colspan="3"><div id="calendarTest" class="w100p p2p_bp_btn p2p_bp_btn-std bgGray">Test Settings</div></td>
                         </tr>
                         <?php
                         }
@@ -81,9 +81,9 @@
                         });
                     </script>
                     <div id="divCalendarTest" style="display:none; min-height: 52px;">
-                        <div id="apiStatus" class="alert alert-info">Please wait <strong><img src="<?php echo plugins_url(); ?>/p2p_bigpromoter/system/style/images/ajax-loader.gif" /> Loading...</strong></div>
+                        <div id="apiStatus" class="alert p2p_bp_alert-info">Please wait <strong><img src="<?php echo plugins_url(); ?>/p2p_bigpromoter/system/style/images/ajax-loader.gif" /> Loading...</strong></div>
                     </div>                     
-                    <div class="alert alert-info" role="alert">Calendar Info</div>
+                    <div class="alert p2p_bp_alert-info" role="alert">Calendar Info</div>
                     <table class="form-table">
                         <tr valign="top">
                             <th scope="row" class="w20p calendarTable">Title</th>

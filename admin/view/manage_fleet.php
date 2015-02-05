@@ -8,11 +8,11 @@ $results = $model->getResults($model->fleet['table'], 'ORDER BY '.$model->fleet[
 ?>
 	<div class="wrap">
 		<h2>Point to Point - Big Promoter</h2>	
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                    <h3 class="panel-title">Manage Fleet</h3>
+        <div class="p2p_bp_panel p2p_bp_panel-primary   pull-left w100p ">
+            <div class="p2p_bp_panel-heading">
+                    <h3 class="p2p_bp_panel-title">Manage Fleet</h3>
             </div>
-            <div class="panel-body">
+            <div class="p2p_bp_panel-body">
                 <div id="fleetInfo"></div>
                 <script>
                     jQuery.ajax({

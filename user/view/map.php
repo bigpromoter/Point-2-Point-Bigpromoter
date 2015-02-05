@@ -57,20 +57,20 @@
     <div class="space5"></div>
     <div style="max-width:%width%;" class="left">
         <div class="w100p left">
-            <div class="input-group margin-bottom-sm w100p">
-                <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
-                <input class="form-control pos1" type="text"  name="p2p_bigpromoter_start" id="p2p_bigpromoter_start" placeholder="Start Point" value=""  onFocus="geolocateStart();">
+            <div class="p2p_bp_input-group margin-bottom-sm w100p">
+                <span class="p2p_bp_input-group-addon p2p_bp_glyphicon p2p_bp_glyphicon-map-marker"></span>
+                <input class="p2p_bp_form-control pos1" type="text"  name="p2p_bigpromoter_start" id="p2p_bigpromoter_start" placeholder="Start Point" value=""  onFocus="geolocateStart();">
             </div>
             <div class="space5"></div>
-            <div class="input-group margin-bottom-sm w100p">
-                <span class="input-group-addon glyphicon glyphicon-flag"></span>
-                <input class="form-control pos1" type="text" name="p2p_bigpromoter_end" id="p2p_bigpromoter_end" placeholder="Destiny" value=""   onFocus="geolocateEnd();">
+            <div class="p2p_bp_input-group margin-bottom-sm w100p">
+                <span class="p2p_bp_input-group-addon p2p_bp_glyphicon p2p_bp_glyphicon-flag"></span>
+                <input class="p2p_bp_form-control pos1" type="text" name="p2p_bigpromoter_end" id="p2p_bigpromoter_end" placeholder="Destiny" value=""   onFocus="geolocateEnd();">
             </div>
         </div>
         <div class="space5"></div>
         <div class="right">
-            <div class="btn-group">
-                <button type="submit" name="submit" id="submit" class="btn btn-default">GET A QUOTE <span class="glyphicon glyphicon-circle-arrow-right"></span></button>
+            <div class="p2p_bp_btn-group">
+                <button type="submit" name="submit" id="submit" class="p2p_bp_btn p2p_bp_btn-default">GET A QUOTE <span class="p2p_bp_glyphicon p2p_bp_glyphicon-circle-arrow-right"></span></button>
             </div>
         </div>
     </div>
