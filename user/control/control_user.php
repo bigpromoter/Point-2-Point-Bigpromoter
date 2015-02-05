@@ -87,6 +87,15 @@ class p2p_bp_ControlUser {
 		// Return array of Info
 		return compact( 'distance', 'distance_m', 'duration', 'duration_s', 'end_address', 'end_address_lat', 'end_address_lon', 'start_address', 'start_address_lat', 'start_address_lon' );
 	}
+    
+    function getMapInfo ($map_info, $field, $name_type = 'long_name') {
+        foreach ($map_info as $map) {
+            if (isset($map['types']) && ($map['types'][0] == $field)) {
+                return $map[$name_type];
+            }
+        }
+        return null;
+    }
 
     // Geocode an address: return array of latitude & longitude
     function gmapGeocode( $address ) {
@@ -103,18 +112,21 @@ class p2p_bp_ControlUser {
             // Get info
             $lat 		    = $json['results'][0]['geometry']['location']['lat']; //latitude
             $long 		    = $json['results'][0]['geometry']['location']['lng']; //longitude
-            $number 		= $json['results'][0]['address_components'][0]['long_name']; //Street Number
-            $street 		= $json['results'][0]['address_components'][1]['long_name']; //Street Name
-            $neighborhood 	= $json['results'][0]['address_components'][2]['long_name']; //Neighborhood Name
-            $city 		    = $json['results'][0]['address_components'][3]['long_name']; //City Name
-            $county 		= $json['results'][0]['address_components'][4]['long_name']; //County Name
-            $state 		    = $json['results'][0]['address_components'][5]['long_name']; //State Name
-            $state_short 	= $json['results'][0]['address_components'][5]['short_name']; //State Name Short
-            $country 		= $json['results'][0]['address_components'][6]['long_name']; //Country Name
-            $country_short 	= $json['results'][0]['address_components'][6]['short_name']; //Country Name Short
-            $zip 		    = $json['results'][0]['address_components'][7]['long_name']; //Zip Code
+            
+            $address_components = $json['results'][0]['address_components'];
+            $number         = $this->getMapInfo($address_components,'street_number');
+            $street         = $this->getMapInfo($address_components,'route');
+            if (!$street) $street = $this->getMapInfo($address_components,'establishment');
+            $city           = $this->getMapInfo($address_components,'locality');
+            $neighborhood   = $this->getMapInfo($address_components,'neighborhood');
+            $county         = $this->getMapInfo($address_components,'administrative_area_level_2');
+            $state          = $this->getMapInfo($address_components,'administrative_area_level_1');
+            $state_short    = $this->getMapInfo($address_components,'administrative_area_level_1','short_name');
+            $country        = $this->getMapInfo($address_components,'country');
+            $country_short  = $this->getMapInfo($address_components,'country','short_name');
+            $zip            = $this->getMapInfo($address_components,'postal_code');
             $complete		= $json['results'][0]['formatted_address']; //Complete Address
-
+            
             // Return array of Info
             return compact( 'lat', 'long', 'number', 'street', 'neighborhood', 'city', 'county', 'state', 'state_short', 'country', 'country_short', 'zip','complete' );
     }
