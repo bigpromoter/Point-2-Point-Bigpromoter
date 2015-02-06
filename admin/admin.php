@@ -171,7 +171,7 @@ class p2p_bp_Admin {
 		
 		//Create Tables
 		include_once (dirname(__FILE__)."/model/model_admin.php");
-		$model = new ModelAdmin();	
+		$model = new p2p_bp_ModelAdmin();	
 		$model->activateCreateMainTable();
 		$model->activateCreateCarsTable();
 		$model->activateCreateServicesTable();
