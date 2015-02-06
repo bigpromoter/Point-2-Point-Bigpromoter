@@ -75,7 +75,6 @@
         </div>
     </div>
     <div id="p2p_show_price" name="p2p_show_price" style="max-width:%width%;" class="left"></div>
-    </div>
 	<script  type="text/javascript">
 		jQuery("#submit").click(function() {
             openFleetPrice('p2p_bigpromoter_start', 'p2p_bigpromoter_end', 'bigpromoter_map', '%plugin_address%', '#p2p_show_price');
