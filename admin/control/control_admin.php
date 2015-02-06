@@ -332,7 +332,7 @@ CODE;
         $output .= '<button type="button" class="p2p_bp_btn p2p_bp_btn-default dropdown-toggle" data-toggle="dropdown">'.PHP_EOL;
         $output .= '    <span id="'.$change.'" class="'.$color[1].' colorbox">'.$this->colorSpace.'</span> <span class="caret"></span>'.PHP_EOL;
         $output .= '</button>'.PHP_EOL;
-        $output .= '<ul class="dropdown-menu dropdown-color" role="menu" style="padding:10px;">'.PHP_EOL;
+        $output .= '<ul class="p2p_bp_dropdown-menu dropdown-color" role="menu" style="padding:10px;">'.PHP_EOL;
         for ($i = 1; $i <= 11; $i++) {
             $colorfor = $this->getColor($i);
             $output .= '    <li style="display: inline-block;"><button type="button" name="'.$colorfor[1].'" class="'.$trigger.' '.$colorfor[1].' p2p_bp_btn p2p_bp_btn-default colorbox" id="'.$i.'"></button></li>'.PHP_EOL;
@@ -357,7 +357,7 @@ CODE;
         $output .= '<button type="button" class="p2p_bp_btn p2p_bp_btn-default dropdown-toggle" data-toggle="dropdown">'.PHP_EOL;
         $output .= '    <span id="'.$change.'">'.$value.'</span> <span class="caret"></span>'.PHP_EOL;
         $output .= '</button>'.PHP_EOL;
-        $output .= '<ul class="dropdown-menu" role="menu" style="padding:10px;">'.PHP_EOL;
+        $output .= '<ul class="p2p_bp_dropdown-menu" role="menu" style="padding:10px;">'.PHP_EOL;
         for ($i = 1; $i <= 20; $i++) {
             (strlen($i) < 2)?$zero='0':$zero='';
             $output .= '    <li style="display: inline-block;"><button type="button" class="'.$trigger.' p2p_bp_btn p2p_bp_btn-default" id="'.$i.'">'.$zero.$i.'</button></li>'.PHP_EOL;
