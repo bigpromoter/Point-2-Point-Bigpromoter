@@ -160,7 +160,12 @@ $results = $model->getResults($model->reservation['table'],$comp);
                     <div class="p2p_bp_panel-heading"><h3 class="p2p_bp_panel-title">Payment Information</h3></div>        
                     <div class="p2p_bp_panel-body">
                         <div class="p2p_bp_col-md-4 p2p_bp_col-xs-12 h30 text-left left">Transaction Id: <strong><?php echo $result->p2p_bp_payment_id; ?></strong></div>
-                        <div class="p2p_bp_col-md-4 p2p_bp_col-xs-12 h30 text-left left">Value: <strong><?php echo get_option('select_currency'); ?> <?php echo $result->p2p_bp_payment_value; ?></strong></div>
+                        <div class="p2p_bp_col-md-4 p2p_bp_col-xs-12 h30 text-left left">Value: <strong><?php echo get_option('select_currency'); ?> <?php echo $result->p2p_bp_payment_total; ?></strong>
+                        <small></small><?php echo ($result->p2p_bp_payment_gratuity > 0)?'(trip: '.$result->p2p_bp_payment_trip.' + gratuity: '.$result->p2p_bp_payment_gratuity.')':'';?></small>
+                        
+                        
+                        
+                        </div>
                         <div class="p2p_bp_col-md-4 p2p_bp_col-xs-12 h30 text-left left">Company: <strong><?php echo $result->p2p_bp_payment_company; ?></strong></div>
                     </div>
                 </div>

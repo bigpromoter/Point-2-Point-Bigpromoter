@@ -5,8 +5,8 @@ $results = $model->getResults($model->service['table'], 'ORDER BY '.$model->serv
 	<div class="wrap">
 		<h2>Point to Point - Big Promoter</h2>
         <?php
-            $uptaded = (isset($_GET['settings-updated']))?$_GET['settings-updated']:NULL;
-            $control->checkUpdate($uptaded);
+            $updated = (isset($_GET['settings-updated']))?$_GET['settings-updated']:NULL;
+            $control->checkUpdate($updated);
         ?>
         <div class="p2p_bp_panel p2p_bp_panel-primary pull-left w100p">
             <div class="p2p_bp_panel-heading">
@@ -61,27 +61,28 @@ $results = $model->getResults($model->service['table'], 'ORDER BY '.$model->serv
                 </div>
             </div>
         </div>
-            <script>
-            //Manage Add Car	
-                jQuery("#p2p_service_add").click(function () {
-                    ajaxAddService("<?php echo plugins_url(); ?>/p2p_bigpromoter/admin/view/ajax/service_add.php","#showAjaxAdd");
-                });
-            </script>
-            <form method="post" action="options.php">
-                <div class="p2p_bp_panel p2p_bp_panel-primary   pull-left w100p">
-                    <div class="p2p_bp_panel-heading">
-                            <h3 class="p2p_bp_panel-title">Service Options</h3>
-                    </div>
-                    <div class="p2p_bp_panel-body">
-                        <div class="form-table">
-                            <?php		
-                                settings_fields( 'p2p_bigpromoter_service' );
-                                do_settings_sections( 'p2p_bigpromoter_service' );
-                                (get_option('service_others'))?$checked='checked':$checked='';
-                            ?>
-                            <div scope="row"><input type="checkbox" name="service_others" <?php echo $checked; ?>> Add Other on the list?</div>
-                        </div>
+        <script>
+        //Manage Add Car	
+            jQuery("#p2p_service_add").click(function () {
+                ajaxAddService("<?php echo plugins_url(); ?>/p2p_bigpromoter/admin/view/ajax/service_add.php","#showAjaxAdd");
+            });
+        </script>
+        <form method="post" action="options.php">
+            <div class="p2p_bp_panel p2p_bp_panel-primary   pull-left w100p">
+                <div class="p2p_bp_panel-heading">
+                        <h3 class="p2p_bp_panel-title">Service Options</h3>
+                </div>
+                <div class="p2p_bp_panel-body">
+                    <div class="form-table">
+                        <?php		
+                            settings_fields( 'p2p_bigpromoter_service' );
+                            do_settings_sections( 'p2p_bigpromoter_service' );
+                            (get_option('service_others'))?$checked='checked':$checked='';
+                        ?>
+                        <div scope="row"><input type="checkbox" name="service_others" <?php echo $checked; ?>> Add Other on the list?</div>
                     </div>
                 </div>
-                <?php submit_button(); ?>
-            </form>
+            </div>
+            <?php submit_button(); ?>
+        </form>
+    </div>

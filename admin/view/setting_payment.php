@@ -30,16 +30,38 @@
                     jQuery('#no').click(function() {
                         jQuery('#divBrainTree').css('display','none');
                         jQuery('#divPayPal').css('display','none');
+                        jQuery('#divNo').css('display','block');
                     });
                     jQuery('#paypal').click(function() {
                         jQuery('#divBrainTree').css('display','none');
                         jQuery('#divPayPal').css('display','block');
+                        jQuery('#divNo').css('display','none');
                     });
                     jQuery('#braintree').click(function() {
                         jQuery('#divBrainTree').css('display','block');
                         jQuery('#divPayPal').css('display','none');
+                        jQuery('#divNo').css('display','none');
                     });
                 </script>
+                <div id="divNo" style="display: <?php echo $payment['display_no']; ?>;">
+                    <h3>No Payment Gateway</h3>
+                        <table class="form-table">
+                        <?php $checked_sandbox = (get_option('p2p_nopayment_creditcard'))?'checked':''; ?>        
+                            <tr valign="top">
+                                <td><input type="checkbox" name="p2p_nopayment_creditcard" <?php echo $checked_sandbox; ?>> (Sandbox) Receive Credit Card Info?</td>
+                            </tr>
+                            <tr valign="top">
+                                <td>
+                                    <div class="alert p2p_bp_alert-danger">
+                                        <strong>Use at your own risk.</strong><BR><BR>
+                                        Use this option in production mode is <strong>highly discouraged</strong>, as this represents a <strong>major issue of security</strong> for your clients.<BR><BR>
+                                        The card data won't be validated by the plugin!<BR><BR>
+                                        Ps. The card data will not be saved in the database. They will be sent to the registered email in the Mail tab.<BR>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
                 <div id="divBrainTree" style="display: <?php echo $payment['display_braintree']; ?>;">
                     <h3>BrainTree</h3>
                     <table class="form-table">

@@ -34,7 +34,11 @@ class p2p_bp_Admin {
 				        'select_distance',
 				        'distance',
 				        'select_currency',
-				        'placeholder');
+				        'placeholder',
+                        'insert_gratuity',
+                        'p2p_company_name',
+                        'p2p_company_phone',
+                        'p2p_company_owner');
 		$section_map = array('p2p_bigpromoter_main',
 				      'Main Page',
 				      'p2p_bigpromoter_main_section_text',
@@ -112,7 +116,8 @@ class p2p_bp_Admin {
 										'p2p_braintree_active',
                                         'p2p_paypal_client_ID',
                                         'p2p_paypal_secret',
-										'p2p_paypal_enviroment'
+										'p2p_paypal_enviroment',
+                                        'p2p_nopayment_creditcard'
 		);
 		$section_payment = array('p2p_bigpromoter_payment',
 								'Payment Settings',
@@ -126,9 +131,14 @@ class p2p_bp_Admin {
 				       'p2p_smtpsecure',
 				       'p2p_host',
 				       'p2p_port',
+                       'p2p_email_debug',
+                       'p2p_email_admin',
 				       'email_receive_1',
 				       'email_receive_2',
-				       'email_receive_3');
+				       'email_receive_3',
+				       'email_receive_name_1',
+				       'email_receive_name_2',
+				       'email_receive_name_3');        
 		$section_mail = array('p2p_bigpromoter_email',
 				      'E-mail Settings',
 				      'p2p_bigpromoter_email_section_text',
@@ -140,6 +150,14 @@ class p2p_bp_Admin {
 		$section_service = array('p2p_bigpromoter_service',
 				      'Service Settings',
 				      'p2p_bigpromoter_service_section_text',
+				      'p2p_bigpromoter');
+		$this->registerSettings($settings_service,$section_service);	
+    		
+		//register FLEET Settings
+		$settings_service = array('increase_ride');
+		$section_service = array('p2p_bigpromoter_fleet',
+				      'Fleet Settings',
+				      'p2p_bigpromoter_fleet_section_text',
 				      'p2p_bigpromoter');
 		$this->registerSettings($settings_service,$section_service);	
     

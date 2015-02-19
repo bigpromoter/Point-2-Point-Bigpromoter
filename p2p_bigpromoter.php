@@ -1,14 +1,14 @@
 <?php //Info
 /**
  * @package P2P BigPromoter
- * @version Alpha 1.0
+ * @version Alpha 1.0.2
  */
 /*
 Plugin Name: P2P BigPromoter
 Plugin URI: http://wordpress.org/plugins/P2P_Big_Promoter/
 Description: Plugin to calculate fare for transportation company.
 Author: Big Promoter
-Version: Alpha 1.0
+Version: Alpha 1.0.2
 Author URI: http://bigpromoter.com/
 License: GPL2
 */
@@ -26,19 +26,19 @@ if (!defined('ABSPATH')) {
 function bp_styles() {
     //Register Style Sheet
     wp_register_style('bp_basic_style', plugins_url("system/style/style.css",__FILE__));
-    wp_register_style('bp_font_awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
     wp_register_style('bp_bootstrap_css', plugins_url("system/style/custom-bootstrap.css",__FILE__));
     wp_register_style('bp_custom_style', plugins_url("system/style/custom-style.css",__FILE__));
     wp_register_style('bp_responsive', plugins_url("system/style/responsive.css",__FILE__));
+    wp_register_style('bp_font_awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
     wp_register_style('bp_jquery_ui', plugins_url("system/style/jquery-ui.min.css",__FILE__));
     
     //Enqueue Registered Style Sheet
     wp_enqueue_style('bp_basic_style');
-    wp_enqueue_style('bp_font_awesome');
     wp_enqueue_style('bp_bootstrap_css');
     wp_enqueue_style('bp_custom_style');
     wp_enqueue_style('bp_responsive');
     wp_enqueue_style('bp_jquery_ui');
+    wp_enqueue_style('bp_font_awesome');
 
     if (is_admin()) {
         wp_enqueue_style('wp-color-picker');

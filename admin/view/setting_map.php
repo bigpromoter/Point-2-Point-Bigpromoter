@@ -25,12 +25,11 @@
             <div class="alert p2p_bp_alert-info" role="alert">Coordinates</div>
             <table class="form-table">      
                 <tr valign="top">
+                <th scope="row">Latitude:</th>
+                <td><?php echo $map_info['lat']; ?><input type="hidden" name="start_map_lat" value="<?php echo $map_info['lat']; ?>" /></td>
                 <th scope="row">Longitude:</th>
                 <td><?php echo $map_info['long']; ?><input type="hidden" name="start_map_lon" value="<?php echo $map_info['long']; ?>" /></td>
-                <th scope="row">Latidude:</th>
-                <td><?php echo $map_info['lat']; ?><input type="hidden" name="start_map_lat" value="<?php echo $map_info['lat']; ?>" /></td>
-                </tr>
-                
+                </tr>                
                 <tr valign="top">
                 <th scope="row">Address:</th>
                 <td colspa="3"><input type="text" name="start_map_address" value="<?php echo get_option('start_map_address'); ?>"  class="w100p"/></td>

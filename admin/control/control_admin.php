@@ -288,18 +288,21 @@ CODE;
             $result['active_paypal'] = 'active';
             $result['display_paypal'] = 'block';
             $result['display_braintree'] = 'none';
+            $result['display_no'] = 'none';
         }
         else if ($type == 'braintree') {
             $result['checked_braintree'] = 'checked';
             $result['active_braintree'] = 'active';
             $result['display_paypal'] = 'none';
             $result['display_braintree'] = 'block';
+            $result['display_no'] = 'none';
         }
         else {
             $result['checked_no'] = 'checked';
             $result['active_no'] = 'active';
             $result['display_paypal'] = 'none';
             $result['display_braintree'] = 'none';
+            $result['display_no'] = 'block';
         }
         return $result;
     }

@@ -154,15 +154,13 @@ class p2p_bp_ControlUser {
             if ($car[$i]->p2p_bp_cars_enabled == 1) {
                 if (is_numeric($less_than) && is_numeric($more_than)) {
                     $price = ($distance_travel/$$system <= $distance_price)?($distance_travel/$$system) * $less_than:($distance_travel/$$system) * $more_than;
-                    if ($price >= $car[$i]->p2p_bp_cars_min) {
-                        $cars_show[$index]['price'] = round($price,2);
-                        $cars_show[$index]['id'] = $car[$i]->p2p_bp_cars_id;
-                        $cars_show[$index]['bodytype'] = $car[$i]->p2p_bp_cars_name;
-                        $cars_show[$index]['passenger'] = $car[$i]->p2p_bp_cars_passenger;
-                        $cars_show[$index]['luggage'] = $car[$i]->p2p_bp_cars_luggage;
-                        $cars_show[$index]['pic'] = $car[$i]->p2p_bp_cars_pic;
-                        $index++;
-                    }
+                    $cars_show[$index]['price'] = (($price >= $car[$i]->p2p_bp_cars_min)?round($price,2):$car[$i]->p2p_bp_cars_min)+get_option('increase_ride');
+                    $cars_show[$index]['id'] = $car[$i]->p2p_bp_cars_id;
+                    $cars_show[$index]['bodytype'] = $car[$i]->p2p_bp_cars_name;
+                    $cars_show[$index]['passenger'] = $car[$i]->p2p_bp_cars_passenger;
+                    $cars_show[$index]['luggage'] = $car[$i]->p2p_bp_cars_luggage;
+                    $cars_show[$index]['pic'] = $car[$i]->p2p_bp_cars_pic;
+                    $index++;
                 }
             }
         }	
@@ -189,7 +187,8 @@ class p2p_bp_ControlUser {
         $kms = self::DIST_KM; $miles = self::DIST_MILE;
     
         $price = ($distance_travel/$$system <= $distance_price)?($distance_travel/$$system) * $less_than:($distance_travel/$$system) * $more_than;
-    
+        $price = (($price >= $car->p2p_bp_cars_min)?round($price,2):$car->p2p_bp_cars_min)+(get_option('increase_ride'));
+        
         return number_format($price, 2, '.', '');
     }
 
@@ -315,10 +314,10 @@ class p2p_bp_ControlUser {
         
         if ($services != 0) {
             $output .= '<span class="left">Type of Service: </span>';
-            $output .= '<div class="p2p_bp_input-group margin-bottom-sm w100p">';
+            $output .= '<div class="p2p_bp_input-group margin-bottom-sm w45p">';
             $output .= '<span class="p2p_bp_input-group-addon fa fa-list pos1l '.$class_error.'"></span>';
-            $output .= '<span class="left">';
-            $output .= '<select class="p2p_bp_form-control pos1 '.$class_error.' left" id="servicetype" name="servicetype">';
+            //$output .= '<span class="left">';
+            $output .= '<select class="p2p_bp_form-control pos1  '.$class_error.' left" id="servicetype" name="servicetype">';
             $output .= '<option value="0" selected="selected">----- Select a Service -----</option>';
             foreach ($services as $service) {
                 ($value == $service->p2p_bp_service_name)?$selected='selected':$selected='';
@@ -329,7 +328,7 @@ class p2p_bp_ControlUser {
                 $output .= '<option value="Other">Other</option>';                        
             }
             $output .= '</select>';
-            $output .= '</span>';
+            //$output .= '</span>';
             $output .= '</div> ';
         } else {
             $output .= 'There is no Service Option';
@@ -402,15 +401,22 @@ class p2p_bp_ControlUser {
         
         return $check;
     }
-    function sendMailMessage($info) {
+    function sendMailMessage($info, $to = 'admin') {
         
         $output = '';
         $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_header.html');
-        $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template.html');       
-        $fields = array('first_name','last_name','phone','email','npassenger','nluggage','vehicletype','servicetype','p_address','p_apt','p_city','p_state','p_zip','p_date','p_time_h','p_time_m','p_instructions','d_address','d_apt','d_city','d_state','d_zip');        
-        foreach ($fields as $field) {
-            if (isset($info[$field])) $output = str_replace("%{$field}%", $info[$field], $output);
-        }
+        $output .= ($to == 'admin')?file_get_contents(dirname(__FILE__).'/../view/mail/mail_template.html'):file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_client.html');
+        
+        $output = (get_option('p2p_payment_type') == 'no' && get_option('p2p_nopayment_creditcard') && $to == 'admin')?str_replace("%card_info%", 'Card Information: '.$info['card_info'], $output):str_replace("%card_info%", "", $output);
+        
+        $info['company_name'] = get_option('p2p_company_name');
+        $info['company_phone'] = get_option('p2p_company_phone');
+        $info['company_owner'] = get_option('p2p_company_owner');
+        
+        $info['p_time_h'] = (strlen($info['p_time_h']) < 2)?'0'.$info['p_time_h']:$info['p_time_h'];
+        $info['p_time_m'] = (strlen($info['p_time_m']) < 2)?'0'.$info['p_time_m']:$info['p_time_m'];
+        $info['r_p_time_h'] = (strlen($info['r_p_time_h']) < 2)?'0'.$info['r_p_time_h']:$info['r_p_time_h'];
+        $info['r_p_time_m'] = (strlen($info['r_p_time_m']) < 2)?'0'.$info['r_p_time_m']:$info['r_p_time_m'];
         
         if ($info['r'] == 1) {
             $fields = array('r_p_date','r_p_time_h','r_p_time_m','r_p_instructions');
@@ -419,41 +425,50 @@ class p2p_bp_ControlUser {
                 if (isset($info[$field])) $output = str_replace("%{$field}%", $info[$field], $output);
             }
         }
+        
         $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_footer.html');
+        
+        $fields = array('first_name','last_name','phone','email','npassenger','nluggage','vehicletype','servicetype','p_address','p_apt','p_city','p_state','p_zip','p_date','p_time_h','p_time_m','p_instructions','d_address','d_apt','d_city','d_state','d_zip','trip','final_price','gratuity','company_name','company_phone','company_owner');        
+        foreach ($fields as $field) {
+            if (isset($info[$field])) $output = str_replace("%{$field}%", $info[$field], $output);
+        }
         
         return $output;
     }
     
-    function sendMail ($info) {
-        $subject = "You got a new Reservation";
-        $message = $this->sendMailMessage($info);
+    function sendMail ($info, $to = 'admin') {
+        $subject = ($to == 'admin')?"You got a new Reservation":'"About your reservation';
+        $message = $this->sendMailMessage($info, $to);
         
         // SMTP email sent
         require_once ABSPATH . WPINC . '/class-phpmailer.php';
         require_once ABSPATH . WPINC . '/class-smtp.php';
         $phpmailer = new PHPMailer();
 
-        $phpmailer->SMTPDebug 	= 0; //2 for debug
+        $phpmailer->SMTPDebug 	= (get_option('p2p_email_debug'))?2:0; //0 for release; 2 for debug
 
         $phpmailer->Username  	= get_option('p2p_email');
         $phpmailer->Password  	= get_option('p2p_pass');
-        $phpmailer->AddAddress(get_option('p2p_email'), 'Admin');
         
-        if (get_option('p2p_email') != get_option('admin_email')) $phpmailer->AddAddress(get_option('admin_email'), 'Admin');
-        if ($this->validationEmail(get_option('email_receive_1'))) $phpmailer->AddAddress(get_option('email_receive_1'), 'Receiver 1');
-        if ($this->validationEmail(get_option('email_receive_2'))) $phpmailer->AddAddress(get_option('email_receive_2'), 'Receiver 2');
-        if ($this->validationEmail(get_option('email_receive_3'))) $phpmailer->AddAddress(get_option('email_receive_3'), 'Receiver 3');
+        if ($to == 'admin') {
+            $phpmailer->AddAddress(get_option('p2p_email'), get_option('p2p_company_name'));
+            if ((get_option('p2p_email') != get_option('admin_email')) && (get_option('p2p_email_admin'))) $phpmailer->AddAddress(get_option('admin_email'), 'Admin');
+            if (get_option('email_receive_1')) $phpmailer->AddAddress(get_option('email_receive_1'), get_option('email_receive_name_1'));
+            if (get_option('email_receive_2')) $phpmailer->AddAddress(get_option('email_receive_2'), get_option('email_receive_name_2'));
+            if (get_option('email_receive_3')) $phpmailer->AddAddress(get_option('email_receive_3'), get_option('email_receive_name_3'));
+        } else {$phpmailer->AddAddress($info['email'], $info['first_name'].' '.$info['last_name']);}
         
         $phpmailer->IsSMTP(); // telling the class to use SMTP
 
-        if (get_option('p2p_smtpsecure') == 'ssl') $phpmailer->SMTPAuth = true;
+        if (strtolower(get_option('p2p_smtpsecure')) != 'no') $phpmailer->SMTPAuth = true;
         $phpmailer->SMTPSecure	= get_option('p2p_smtpsecure');
         $phpmailer->Host        = get_option('p2p_host'); // SMTP server
         $phpmailer->Port	    = get_option('p2p_port');
         
         $phpmailer->Subject     = $subject;
         $phpmailer->Body        = $message;	//HTML Body
-        $phpmailer->SetFrom($info['email'],$info['first_name'].' '.$info['last_name']);
+        if ($to == 'admin') $phpmailer->SetFrom($info['email'],$info['first_name'].' '.$info['last_name']);
+        else $phpmailer->SetFrom(get_option('p2p_email'),get_option('p2p_company_name'));
         $phpmailer->MsgHTML($message);
         $phpmailer->Priotity	= 1;
         $phpmailer->AltBody     = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
@@ -494,7 +509,6 @@ class p2p_bp_ControlUser {
         Braintree_Configuration::publicKey(get_option('p2p_braintree_publicKey'));
         Braintree_Configuration::privateKey(get_option('p2p_braintree_privateKey'));
         
-        $value = ($info['r'])?$price*2:$price;
         $desc = ($info['r'])?' (Round Trip)':'';
          
         $paymentInfo = array('amount' => $price,
@@ -524,7 +538,7 @@ class p2p_bp_ControlUser {
             $output[0] = true;
             $output[1] .= "<div class='alert p2p_bp_alert-success'>";
             $output[1] .= "We got your Payment on BrainTree! [Transaction code: ". $result->transaction->id."]";
-            $output[1] .= "Amount Paid: ".get_option('select_currency')."{$value}".$desc;
+            $output[1] .= "Amount Paid: ".get_option('select_currency')."{$price}".$desc;
             $output[1] .= "</div>";
             $output[2] = $value;
             $output[3] = $result->transaction->id;
@@ -587,10 +601,9 @@ class p2p_bp_ControlUser {
         // such as shipping, tax.
         
         //If Round Trip charge double
-        ($info['r'])?$value=$price*2:$value=$price;
         $amount = new Amount();
         $amount->setCurrency("USD")
-            ->setTotal($value);
+            ->setTotal($price);
         
         // ### Transaction
         // A transaction defines the contract of a
@@ -623,9 +636,9 @@ class p2p_bp_ControlUser {
             $output[0] = true;
             $output[1] .= "<div class='alert p2p_bp_alert-success'>";
             $output[1] .= "We got your Payment on PayPal! [Transaction code: ". $result->id."]<BR>";
-            $output[1] .= "Amount Paid: ".get_option('select_currency')."{$value}".$desc;
+            $output[1] .= "Amount Paid: ".get_option('select_currency')."{$price}".$desc;
             $output[1] .= "</div>";
-            $output[2] = $value;
+            $output[2] = $price;
             $output[3] = $result->id;
         } catch (PayPal\Exception\PPConnectionException $ex) {
             $error = explode('"',$ex->getData());
@@ -656,7 +669,7 @@ class p2p_bp_ControlUser {
             ($value == $card)?$selected='selected':$selected='';
             $output .= '<option value="'.$card.'" '.$selected.'>'.ucfirst($card).'</option>';            
         }
-                $output .= '</select>';
+        $output .= '</select>';
         $output .= '</span>';
         $output .= '</div> ';
         
@@ -682,6 +695,25 @@ class p2p_bp_ControlUser {
         $check = $this->checkErros($info, $fields);
         $error = $check[0];
         $er = $check[1];
+        
+        $final_price = (isset($_POST['r']) && ($_POST['r'] == 1))?$price*2:$price;
+        $er['gratuity'] = false;
+        $info['trip'] = $final_price;
+        $info['gratuity'] = 0;
+        if (isset($_POST['gratuity']) && (get_option('insert_gratuity'))) {
+            if (is_numeric($_POST['gratuity'])) {
+                if ($_POST['gratuity'] < 0) {$error++; $er['gratuity'] = true;}
+                $final_price = round(($final_price * (1 + ($_POST['gratuity']/100))),2);
+            } else {
+                if (isset($_POST['gratuityOther_input']) && is_numeric($_POST['gratuityOther_input'])) {
+                    if ($_POST['gratuityOther_input'] < 0) {$error++; $er['gratuity'] = true;}
+                    $final_price = $final_price + $_POST['gratuityOther_input'];
+                }
+            }
+        }
+        $info['gratuity'] = $final_price - $info['trip'];
+        $info['final_price'] = $final_price;
+        
         //End Check
         if (!($error)) { //If there is no Error
             // Check if reservation was already made
@@ -689,24 +721,29 @@ class p2p_bp_ControlUser {
                 echo '<div class="alert p2p_bp_alert-warning">We already have your reservation!</div>';
             } else {
                 $payment_info = '';
+                $info['send_cardinfo'] = (get_option('p2p_payment_type') == 'no' && get_option('p2p_nopayment_creditcard'))?true:false;
                 if (get_option('p2p_payment_type') == 'braintree') {
-                    $payment = $this->paymentBrainTree($price,$info);
+                    $payment = $this->paymentBrainTree($final_price,$info);
                     echo $payment[1]; //Print Payment return
                     $payment_info['paid'] = $payment[2];
                     $payment_info['id'] = $payment[3];
                     $payment_info['company'] = $payment[4];
                 } else if (get_option('p2p_payment_type') == 'paypal') {
-                    $payment = $this->paymentPayPal($price,$info);
+                    $payment = $this->paymentPayPal($final_price,$info);
                     echo $payment[1]; //Print Payment return
                     $payment_info['paid'] = $payment[2];
                     $payment_info['id'] = $payment[3];
                     $payment_info['company'] = $payment[4];
                 } else {
                     $payment[0] = true;
-                    $payment_info['paid'] = '0';
+                    $payment_info['paid'] = $final_price;
                     $payment_info['id'] = 'No Payment';
                     $payment_info['company'] = 'No Payment';
+                    if ($info['send_cardinfo']) {
+                        $info['card_info'] = "(".$info['cardtype'].") ".$info['card_num']." cvv: ".$info['card_cvv']." expire: ".$info['card_month']."/".$info['card_year'];
+                    }
                 }
+                
                 if ($payment[0]) { //If Payment is OK
                     if (get_option('p2p_calendar_enabled')) {
                         $insertCalendar = new GoogleCalendar();
@@ -724,6 +761,7 @@ class p2p_bp_ControlUser {
 <?php
                         //Send Mail
                         $sendMail = $this->sendMail($info);
+                        $sendMail_Client = $this->sendMail($info,'client');
                         if(!$sendMail['sent']) { //Check if e-mail was sent
                             if ($sendMail['error'] != 0) {
                                 echo "Mailer Error: " . $sendMail['error'];
@@ -741,6 +779,7 @@ class p2p_bp_ControlUser {
             if ($er['servicetype']) echo '<div class="alert p2p_bp_alert-danger">You must select a valid <strong>Service</strong>!</div>';
             if ($er['p_date']) echo '<div class="alert p2p_bp_alert-danger">You must fill a valid <strong>Pick-Up Date</strong>!</div>';
             if ($er['r_p_date']) echo '<div class="alert p2p_bp_alert-danger">You must fill a valid <strong>Round-Trip Pick-up Date</strong>!</div>';
+            if ($er['gratuity']) echo '<div class="alert p2p_bp_alert-danger"><strong>Gratuity</strong> value cannot be less than 0</div>';
         }
         
         return $er;

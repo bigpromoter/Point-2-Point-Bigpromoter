@@ -195,3 +195,23 @@ $results = $model->getResults($model->fleet['table'], 'ORDER BY '.$model->fleet[
         </div>
     </div>
 </div>
+<form method="post" action="options.php">
+    <div class="p2p_bp_panel p2p_bp_panel-primary   pull-left w100p">
+        <div class="p2p_bp_panel-heading">
+                <h3 class="p2p_bp_panel-title">Fleet Options</h3>
+        </div>
+        <div class="p2p_bp_panel-body">
+            <?php		
+                settings_fields( 'p2p_bigpromoter_fleet' );
+                do_settings_sections( 'p2p_bigpromoter_fleet' );
+            ?>
+        	<table class="form-table">
+                <tr valign="top">
+                    <th scope="row">Increase per ride:</th>
+                    <td colspan="3"><?php echo get_option('select_currency'); ?> <input type="text" name="increase_ride" value="<?php echo get_option('increase_ride'); ?>"  class="w50p"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <?php submit_button(); ?>
+</form>

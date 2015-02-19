@@ -22,7 +22,18 @@
                 </tr>
                 <tr>
                         <td class="w20p">SMTP Secure</td>
-                        <td class="w80p"><input type="text" name="p2p_smtpsecure" id="p2p_smtpsecure" value="<?php echo get_option('p2p_smtpsecure'); ?>" class="w100""/></td>
+                        <td class="w80p">
+                            <div class="p2p_bp_btn-group" data-toggle="buttons">
+                                <label id="no" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (get_option('p2p_smtpsecure') == 'no')?'active':''; ?>">
+                                    <input type="radio" name="p2p_smtpsecure" id="no" value='no' <?php echo (get_option('p2p_smtpsecure') == 'no')?'checked':''; ?>> No Secure
+                                </label>
+                                <label id="paypal" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (get_option('p2p_smtpsecure') == 'ssl')?'active':''; ?>">
+                                    <input type="radio" name="p2p_smtpsecure"  id="ssl" value='ssl' <?php echo (get_option('p2p_smtpsecure') == 'ssl')?'checked':''; ?>> SSL
+                                </label>
+                                <label id="braintree" class="p2p_bp_btn p2p_bp_btn-primary <?php echo (get_option('p2p_smtpsecure') == 'tls')?'active':''; ?>">
+                                    <input type="radio" name="p2p_smtpsecure" id="tls" value='tls' <?php echo (get_option('p2p_smtpsecure') == 'tls')?'checked':''; ?>> TLS
+                                </label>
+                            </div>
                 </tr>
                 <tr>
                         <td class="w20p">Host</td>
@@ -31,6 +42,14 @@
                 <tr>
                         <td class="w20p">Port</td>
                         <td class="w80p"><input type="text" name="p2p_port" id="p2p_port" value="<?php echo get_option('p2p_port'); ?>"  class="w100"/></td>
+                </tr>
+                <?php (get_option('p2p_email_admin'))?$checked='checked':$checked=''; ?>
+                <tr valign="top">
+                    <td scope="row" colspan="2"><input type="checkbox" name="p2p_email_admin" <?php echo $checked; ?>> Send email to WP admin?</td>
+                </tr>
+                <?php (get_option('p2p_email_debug'))?$checked='checked':$checked=''; ?>
+                <tr valign="top">
+                    <td scope="row" colspan="2"><input type="checkbox" name="p2p_email_debug" <?php echo $checked; ?>> Debug errors?</td>
                 </tr>
             </table>
         </div>
@@ -44,16 +63,22 @@
                 <tr valign="top">
                         <td scope="row">E-mail 1</td>
                         <td colspa="3"><input type="text" name="email_receive_1" value="<?php echo get_option('email_receive_1'); ?>" class="w100p" /></td>
+                        <td scope="row">Name 1</td>
+                        <td colspa="3"><input type="text" name="email_receive_name_1" value="<?php echo get_option('email_receive_name_1'); ?>" class="w100p" /></td>
                 </tr>
         
                 <tr valign="top">
                         <td scope="row">E-mail 2</td>
                         <td colspa="3"><input type="text" name="email_receive_2" value="<?php echo get_option('email_receive_2'); ?>" class="w100p" /></td>
+                        <td scope="row">Name 2</td>
+                        <td colspa="3"><input type="text" name="email_receive_name_2" value="<?php echo get_option('email_receive_name_2'); ?>" class="w100p" /></td>
                 </tr>
         
                 <tr valign="top">
                         <td scope="row">E-mail 3</td>
                         <td colspa="3"><input type="text" name="email_receive_3" value="<?php echo get_option('email_receive_3'); ?>" class="w100p" /></td>
+                        <td scope="row">Name 3</td>
+                        <td colspa="3"><input type="text" name="email_receive_name_3" value="<?php echo get_option('email_receive_name_3'); ?>" class="w100p" /></td>
                 </tr>
                 </table> 		
             </div>

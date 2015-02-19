@@ -89,7 +89,9 @@ class p2p_bp_ModelUser {
                                             $table_prefix.'r_p_instructions' => $info['r_p_instructions'],
                                             $table_prefix.'ip' => $_SERVER['REMOTE_ADDR'],
                                             $table_prefix.'payment_id' => $payment_info['id'],
-                                            $table_prefix.'payment_value' => $payment_info['paid'],
+                                            $table_prefix.'payment_total' => $payment_info['paid'],
+                                            $table_prefix.'payment_trip' => $info['trip'],
+                                            $table_prefix.'payment_gratuity' => $info['gratuity'],                                            
                                             $table_prefix.'payment_company' => $payment_info['company']
                                 ));
         return $q;

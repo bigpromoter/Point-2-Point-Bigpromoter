@@ -187,7 +187,7 @@ class p2p_bp_ModelAdmin {
 		
 		$table_name = $wpdb->prefix . "p2p_bp";
 	
-		$sql_main = "CREATE TABLE {$table_name} (p2p_bp_id INT NOT NULL AUTO_INCREMENT,
+		$sql_main = "CREATE TABLE IF NOT EXISTS {$table_name} (p2p_bp_id INT NOT NULL AUTO_INCREMENT,
 										p2p_bp_first_name VARCHAR(30) NOT NULL,
 										p2p_bp_last_name VARCHAR(30) NOT NULL,
 										p2p_bp_phone VARCHAR(20) NOT NULL,
@@ -215,7 +215,9 @@ class p2p_bp_ModelAdmin {
 										p2p_bp_r_p_instructions TEXT NOT NULL,
 										p2p_bp_ip VARCHAR(45) NOT NULL,
                                         p2p_bp_payment_id VARCHAR(60) NOT NULL,
-                                        p2p_bp_payment_value FLOAT NOT NULL,
+                                        p2p_bp_payment_total FLOAT NOT NULL,
+                                        p2p_bp_payment_trip FLOAT NOT NULL,
+                                        p2p_bp_payment_gratuity FLOAT NOT NULL,
                                         p2p_bp_payment_company VARCHAR(60) NOT NULL,
                                         p2p_bp_done BOOL NOT NULL,
                                         p2p_bp_done_r BOOL NOT NULL,
@@ -230,7 +232,7 @@ class p2p_bp_ModelAdmin {
 		
 		$table_name = $wpdb->prefix . "p2p_bp";
         
-		$sql_cars = "CREATE TABLE {$table_name}_cars (p2p_bp_cars_id INT NOT NULL AUTO_INCREMENT,
+		$sql_cars = "CREATE TABLE IF NOT EXISTS {$table_name}_cars (p2p_bp_cars_id INT NOT NULL AUTO_INCREMENT,
 														p2p_bp_cars_name VARCHAR(60) NOT NULL,
 														p2p_bp_cars_passenger INT NOT NULL,
 														p2p_bp_cars_luggage INT NOT NULL,
@@ -251,7 +253,7 @@ class p2p_bp_ModelAdmin {
 		
 		$table_name = $wpdb->prefix . "p2p_bp";
        
-		$sql_service = "CREATE TABLE {$table_name}_service (p2p_bp_service_id INT NOT NULL AUTO_INCREMENT,
+		$sql_service = "CREATE TABLE IF NOT EXISTS {$table_name}_service (p2p_bp_service_id INT NOT NULL AUTO_INCREMENT,
 															p2p_bp_service_name VARCHAR(60) NOT NULL,
 															PRIMARY KEY(p2p_bp_service_id));";
 		dbDelta( $sql_service );    
