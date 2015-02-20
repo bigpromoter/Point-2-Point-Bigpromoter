@@ -26,6 +26,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= Alpha 1.0.4 =
+* Date: 20/04/2015
+* Adjusted problems with Custom CSS
+* Adjusted CSS on Google Maps
+
 = Alpha 1.0.3 =
 * Date: 19/04/2015
 * Adjusted problems with Ajax 404

@@ -320,7 +320,7 @@ h2.p2p_bp_nav-tab-wrapper, h3.p2p_bp_nav-tab-wrapper {
 *
 */
 
-
+#showMap img {width: auto!important; max-width: none!important;}
 
 /*
  *

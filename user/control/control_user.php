@@ -790,46 +790,38 @@ class p2p_bp_ControlUser {
 
     function color () {
         $output = '';
+        $output .= '<style type="text/css">'.PHP_EOL;
+        $output .= get_option('p2p_custom_css').PHP_EOL;
         if (get_option('p2p_color') == 1) {
-            $output .= '<style type="text/css">'.PHP_EOL;
-            $output .= get_option('p2p_custom_css').PHP_EOL;
-            if (get_option('p2p_color') == 1) {
-                //Change Label
-                $output .= '.p2p_bp_input-group-addon {'.PHP_EOL;
-                $output .= '    color: '.get_option('p2p_label_color').';'.PHP_EOL;
-                $output .= '    background: '.get_option('p2p_label_background').';'.PHP_EOL;
-                if (get_option('p2p_label_border') == 1) 
-                    $output .= '    border: 1px solid '.get_option('p2p_label_border_color').';'.PHP_EOL;
-                else
-                    $output .= '    border: 0px;';
-                $output .= '}'.PHP_EOL;
-                //Change Input
-                $output .= '.p2p_bp_input-group .p2p_bp_form-control {'.PHP_EOL;
-                $output .= '    color: '.get_option('p2p_input_color').';'.PHP_EOL;
-                $output .= '    background: '.get_option('p2p_input_background').';'.PHP_EOL;
-                if (get_option('p2p_input_border') == 1) 
-                    $output .= '    border: 1px solid '.get_option('p2p_input_border_color').';'.PHP_EOL;
-                else
-                    $output .= '    border: 0px;';
-                $output .= '}'.PHP_EOL;
-                //Change Button
-                $output .= '.p2p_bp_btn-default {'.PHP_EOL;
-                $output .= '    color: '.get_option('p2p_button_color').';'.PHP_EOL;
-                $output .= '    background: '.get_option('p2p_button_background').';'.PHP_EOL;
-                if (get_option('p2p_button_border') == 1) 
-                    $output .= '    border: '.get_option('p2p_button_border_color').';'.PHP_EOL;
-                else
-                    $output .= '    border: 0px;';
-                $output .= '}'.PHP_EOL;
-            }    
+            //Change Label
+            $output .= '.p2p_bp_input-group-addon {'.PHP_EOL;
+            $output .= '    color: '.get_option('p2p_label_color').';'.PHP_EOL;
+            $output .= '    background: '.get_option('p2p_label_background').';'.PHP_EOL;
+            if (get_option('p2p_label_border') == 1) 
+                $output .= '    border: 1px solid '.get_option('p2p_label_border_color').';'.PHP_EOL;
+            else
+                $output .= '    border: 0px;';
+            $output .= '}'.PHP_EOL;
+            //Change Input
+            $output .= '.p2p_bp_input-group .p2p_bp_form-control {'.PHP_EOL;
+            $output .= '    color: '.get_option('p2p_input_color').';'.PHP_EOL;
+            $output .= '    background: '.get_option('p2p_input_background').';'.PHP_EOL;
+            if (get_option('p2p_input_border') == 1) 
+                $output .= '    border: 1px solid '.get_option('p2p_input_border_color').';'.PHP_EOL;
+            else
+                $output .= '    border: 0px;';
+            $output .= '}'.PHP_EOL;
+            //Change Button
+            $output .= '.p2p_bp_btn-default {'.PHP_EOL;
+            $output .= '    color: '.get_option('p2p_button_color').';'.PHP_EOL;
+            $output .= '    background: '.get_option('p2p_button_background').';'.PHP_EOL;
+            if (get_option('p2p_button_border') == 1) 
+                $output .= '    border: '.get_option('p2p_button_border_color').';'.PHP_EOL;
+            else
+                $output .= '    border: 0px;';
+            $output .= '}'.PHP_EOL;
+        } 
         $output .= '</style>'.PHP_EOL;
-        $custom_css = get_option('p2p_custom_css');
-        } else if (!empty($custom_css)) {
-            $output .= '<style type="text/css">'.PHP_EOL;
-            $output .= get_option('p2p_custom_css').PHP_EOL;
-            $output .= '</style>'.PHP_EOL;
-        }
-        
         return $output;
     }
 }
