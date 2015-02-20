@@ -1,7 +1,8 @@
 <?php
     //Include Core files from WP
+    include_once ("../../../../../../wp-blog-header.php"); //Include WP Header
     include_once ('../../include.php');
-    require_once( '../../../../../../wp-blog-header.php' );
+    header("HTTP/1.1 200 OK");
     
     $del = ((isset($_POST['del'])) && ($_POST['del'] == 1))?true:false;
     if ($del === true) {
@@ -16,7 +17,7 @@
         }
     } else {
 ?>
-			<div class="alert p2p_bp_alert-danger w100p left">Confirm delete service <?php echo $_POST['service']; ?>? <div id="deleteYes" class="p2p_bp_btn p2p_bp_btn-std bgRed">Delete</div> <div id="deleteNo" class="p2p_bp_btn p2p_bp_btn-std bgGray right">P2p_bp_close</div></div>
+			<div class="alert p2p_bp_alert-danger w100p left">Confirm delete service <?php echo $_POST['service']; ?>? <div id="deleteYes" class="p2p_bp_btn p2p_bp_btn-std bgRed">Delete</div> <div id="deleteNo" class="p2p_bp_btn p2p_bp_btn-std bgGray right">Close</div></div>
             <script>
 				jQuery("#deleteYes").click(function () {
                     loadingDiv("#showAjax<?php echo $_POST['id']; ?>");

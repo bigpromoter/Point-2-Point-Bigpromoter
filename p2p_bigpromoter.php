@@ -1,14 +1,14 @@
 <?php //Info
 /**
  * @package P2P BigPromoter
- * @version Alpha 1.0.2
+ * @version Alpha 1.0.3
  */
 /*
 Plugin Name: P2P BigPromoter
 Plugin URI: http://wordpress.org/plugins/P2P_Big_Promoter/
 Description: Plugin to calculate fare for transportation company.
 Author: Big Promoter
-Version: Alpha 1.0.2
+Version: Alpha 1.0.3
 Author URI: http://bigpromoter.com/
 License: GPL2
 */

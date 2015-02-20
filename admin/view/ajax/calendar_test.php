@@ -3,7 +3,8 @@
     include_once ("../../../../../../wp-blog-header.php"); //Include WP Header
     include_once ('../../include.php');
     include_once ('../../../system/calendar/calendar.php');
-
+    header("HTTP/1.1 200 OK");
+    
     $insertCalendar = new GoogleCalendar();
     $resultCalendar = $insertCalendar->insert_event('', '', '', 1);
     if ( !current_time('timestamp') ) $tdif = 0;

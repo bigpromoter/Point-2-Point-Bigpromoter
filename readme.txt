@@ -26,6 +26,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= Alpha 1.0.3 =
+* Date: 19/04/2015
+* Adjusted problems with Ajax 404
+* Solved minor issues with service and fleet delete
+
 = Alpha 1.0.2 =
 * Date: 18/04/2015
 * Included email send to client

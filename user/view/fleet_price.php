@@ -1,9 +1,9 @@
 <?php
     session_start();
-
     require_once( '../../../../../wp-blog-header.php' );
     include_once (dirname(__FILE__)."/../include.php");
-
+    header("HTTP/1.1 200 OK");
+    
     echo $control->color(); //Insert Custom Color
     
     $distance = $control->gmapDistance( $_POST['add_start'], $_POST['add_end'], get_option('select_distance'));

@@ -1,6 +1,8 @@
 <?php
     //Include Core files from WP
+    include_once ("../../../../../../wp-blog-header.php"); //Include WP Header
     include_once ('../../include.php');
+    header("HTTP/1.1 200 OK");
 
     $edit = $control->editCar();
     
