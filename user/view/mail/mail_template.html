@@ -1,23 +1,85 @@
-<h1>You got a new reservation.</h1>
-<HR><h2>Client Information</h2>
-Name: %first_name% %last_name%<BR>
-Phone: %phone%<BR>
-E-mail: %email%<BR>
-Passenger: %npassenger% / Luggage: %nluggage%<BR>
-Vehicle: %vehicletype%<BR>
-Service: %servicetype%<BR>
-<BR><h2>Price Information</h2>
-Trip value: %trip%<BR>
-Gratuity: %gratuity%<BR>
-Total: %final_price%<BR>
-%card_info%<BR>
-<HR><BR><h2>Pick-up Information</h2>
-Address: %p_address% (Apt: #%p_apt%)<BR>
-City: %p_city% / %p_state% [Zip Code: %p_zip%]<BR>
-When: %p_date% at %p_time_h%:%p_time_m%<BR>
-Special Instructions:<BR>
-%p_instructions%<BR>
-<BR><h2>Drop Off Information</h2>
-Address: %d_address% (Apt: #%d_apt%)<BR>
-City: %d_city% / %d_state% [Zip Code: %d_zip%]<BR>
-<BR>
+<div style="width:100%; max-width:900px;font-family: arial, verdana, sans-serif;line-height: 30px;">You got a new reservation. Follow below more information:</div>
+<table style="width:100%; max-width:900px;font-family: arial, verdana, sans-serif;line-height: 30px;">
+    <tr style="background-color: %color_bg%; color: %color_txt%; vertical-align: middle; height: 50px;">
+        <td colspan="6"><span style="font-size: 20px;margin-left: 10px;">Client Information</span></td>
+    </tr>
+    <tr>
+        <td colspan="2">Name</td>
+        <td colspan="4">%first_name% %last_name%</td>    
+    </tr>
+    <tr>
+        <td colspan="2">Phone</td>
+        <td colspan="4">%phone%</td>    
+    </tr>
+    <tr>
+        <td colspan="2">E-mail</td>
+        <td colspan="4">%email%</td>    
+    </tr>
+    <tr>
+        <td colspan="3">Passenger: %npassenger%</td>
+        <td colspan="3">Luggage: %nluggage%</td>  
+    </tr>
+    <tr>
+        <td colspan="2">Vehicle</td>
+        <td colspan="4">%vehicletype%</td>    
+    </tr>
+    <tr>
+        <td colspan="2">Service</td>
+        <td colspan="4">%servicetype%</td>    
+    </tr>
+    <tr style="background-color: %color_bg%; color: %color_txt%; vertical-align: middle; height: 50px;">
+        <td colspan="6"><span style="font-size: 20px;margin-left: 10px;">Price Information</span></td>
+    </tr>
+    <tr>
+        <td colspan="2">Trip Value</td>
+        <td colspan="4">%trip%</td>    
+    </tr>
+    <tr>
+        <td colspan="2">Gratuity</td>
+        <td colspan="4">%gratuity%</td>    
+    </tr>
+    <tr>
+        <td colspan="2">Extra Requirement</td>
+        <td colspan="4">%extra%</td>    
+    </tr>
+    <tr>
+        <td colspan="2">Total</td>
+        <td colspan="4">%final_price%</td>    
+    </tr>
+    <tr>
+        <td colspan="6">%card_info%</td> 
+    </tr>
+    <tr style="background-color: %color_bg%; color: %color_txt%; vertical-align: middle; height: 50px;">
+        <td colspan="6"><span style="font-size: 20px;margin-left: 10px;">Travel Information</span></td>
+    </tr>
+    <tr style="background-color: #999; color: white; vertical-align: middle; height: 30px;">
+        <td colspan="6"><span style="font-size: 16px;margin-left: 10px;">Pick-up Information</span></td>
+    </tr>
+    <tr>
+        <td colspan="2">Address</td>
+        <td colspan="4">%p_address% (Apt: #%p_apt%)</td>    
+    </tr>
+    <tr>
+        <td colspan="2">City</td>
+        <td colspan="4">%p_city% / %p_state% [Zip Code: %p_zip%]</td> 
+    </tr>
+    <tr>
+        <td colspan="2">When</td>
+        <td colspan="4">%p_date% at %p_time%</td>    
+    </tr>
+    <tr>
+        <td colspan="2">Special Instructions</td>
+        <td colspan="4">%p_instructions%</td>    
+    </tr>
+    
+    <tr style="background-color: #999; color: white; vertical-align: middle; height: 30px;">
+        <td colspan="6"><span  style="font-size: 16px;margin-left: 10px;">Drop Off Information</span></td>
+    </tr>
+    <tr>
+        <td colspan="2">Address</td>
+        <td colspan="4">%d_address% (Apt: #%d_apt%)</td>    
+    </tr>
+    <tr>
+        <td colspan="2">City</td>
+        <td colspan="4">%d_city% / %d_state% [Zip Code: %d_zip%]</td>    
+    </tr>

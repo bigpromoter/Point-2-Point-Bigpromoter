@@ -145,7 +145,7 @@
             </div>
         </div>
     </div>
-        <div class="p2p_bp_panel p2p_bp_panel-primary w100p pull-left">
+    <div class="p2p_bp_panel p2p_bp_panel-primary w100p pull-left">
         <div class="p2p_bp_panel-heading">
                 <h3 class="p2p_bp_panel-title">Custom CSS</h3>
         </div>

@@ -22,7 +22,6 @@
                         <?php echo $control->selectArray('select_distance', array('kms','miles'), get_option('select_distance'), 'w100'); ?>			
                         </td>
                     </tr>
-                
                     <tr valign="top">
                         <th scope="row">Breakdown Distance:</th>
                         <td colspan="3"><input type="text" name="distance" id="distance" value="<?php echo get_option('distance'); ?>"  class='w100'/> </td>
@@ -47,22 +46,19 @@
         </div>
         <div class="p2p_bp_panel p2p_bp_panel-primary">
             <div class="p2p_bp_panel-heading">
-                    <h3 class="p2p_bp_panel-title">Company Info</h3>
+                    <h3 class="p2p_bp_panel-title">Extra Request</h3>
             </div>
             <div class="p2p_bp_panel-body">
                 <table class="form-table">
                     <tr valign="top">
-                        <th scope="row">Name:</th>
-                        <td colspan="3"><input type="text" name="p2p_company_name" value="<?php echo get_option('p2p_company_name'); ?>"  class="w100p"/></td>
+                        <?php $checked = (get_option('extra_requirement')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="extra_requirement" value="1" <?php echo $checked; ?>/> Enable Extra Requirement</td>
                     </tr>
                     <tr valign="top">
-                        <th scope="row">Phone:</th>
-                        <td colspan="3"><input type="text" name="p2p_company_phone" value="<?php echo get_option('p2p_company_phone'); ?>"  class="w100p"/></td>
-                    </tr>
-                
-                    <tr valign="top">
-                        <th scope="row">Responsible:</th>
-                        <td colspan="3"><input type="text" name="p2p_company_owner" value="<?php echo get_option('p2p_company_owner'); ?>"  class="w100p"/></td>
+                        <?php $checked = (get_option('extra_car_seat')?'checked':''); ?>
+                        <td colspan="2"><input type="checkbox" name="extra_car_seat" value="1" <?php echo $checked; ?>/> Car Seat</td>
+                        <td style="text-align: right;">Price:</td>
+                        <td><?php echo get_option('select_currency'); ?><input type="text" name="extra_car_seat_value" value="<?php echo get_option('extra_car_seat_value'); ?>"></td>
                     </tr>
                 </table>
             </div>

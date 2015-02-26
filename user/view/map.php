@@ -59,12 +59,12 @@
         <div class="w100p left">
             <div class="p2p_bp_input-group margin-bottom-sm w100p">
                 <span class="p2p_bp_input-group-addon p2p_bp_glyphicon p2p_bp_glyphicon-map-marker"></span>
-                <input class="p2p_bp_form-control pos1" type="text"  name="p2p_bigpromoter_start" id="p2p_bigpromoter_start" placeholder="Start Point" value=""  onFocus="geolocateStart();">
+                <input class="p2p_bp_form-control pos1" type="text"  name="p2p_bigpromoter_start" id="p2p_bigpromoter_start" placeholder="Pick-up Location" value=""  onFocus="geolocateStart();">
             </div>
             <div class="space5"></div>
             <div class="p2p_bp_input-group margin-bottom-sm w100p">
                 <span class="p2p_bp_input-group-addon p2p_bp_glyphicon p2p_bp_glyphicon-flag"></span>
-                <input class="p2p_bp_form-control pos1" type="text" name="p2p_bigpromoter_end" id="p2p_bigpromoter_end" placeholder="Destiny" value=""   onFocus="geolocateEnd();">
+                <input class="p2p_bp_form-control pos1" type="text" name="p2p_bigpromoter_end" id="p2p_bigpromoter_end" placeholder="Drop-off Location" value=""   onFocus="geolocateEnd();">
             </div>
         </div>
         <div class="space5"></div>

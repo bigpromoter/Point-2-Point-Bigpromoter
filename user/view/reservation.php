@@ -54,7 +54,12 @@
                     echo "<div class='space'></div>";
 ?>                    
                     <div class="w100p left">Vehicle</div>
-                    <div class="w50p left"><img class="thumbCar" src="<?php echo $chooseCar->p2p_bp_cars_pic; ?>"/></div>
+                    <div class="w50p left">
+                        <?php
+                            $url_image = (strpos(get_option('reservation_page'),'https://') !== false)?str_replace('http://','https://',$chooseCar->p2p_bp_cars_pic):$chooseCar->p2p_bp_cars_pic;
+                        ?>
+                        <img class="thumbCar" src="<?php echo $url_image; ?>"/>
+                    </div>
                     <div class="w50p right">
                         <span id="tx_vehicletype" class="boxTitle"><?php echo $chooseCar->p2p_bp_cars_name; ?></span><input type="hidden" name="vehicletype" value="<?php echo $chooseCar->p2p_bp_cars_name; ?>" /><BR>
                         <span id="tx_vehicletype_pass">Max Passengers: <?php echo $chooseCar->p2p_bp_cars_passenger; ?></span><BR>
@@ -79,7 +84,9 @@
                         echo $control->startDiv().$control->createText('City','show_p_city',$start['city'].'/'.$start['state_short']).$control->endDiv();
                         echo $control->startDiv().$control->createText('Zip Code','p_zip',$start['zip']).$control->endDiv();
                         echo $control->startDiv().$control->createInput('Date','p_date',(isset($_POST['p_date'])?$_POST['p_date']:null),'calendar',$er['p_date'],'has-feedback').$control->endDiv();
-                        echo $control->startDiv().$control->createLabel('Time',$control->createDropDown ('p_time_h', 0, 23, true).'<span class="left">:</span>'.$control->createDropDown ('p_time_m', 0, 59, true),'time').$control->endDiv();
+                        $s_am = $s_pm = '';
+                        (isset($_POST['p_time_ampm']) && strtoupper($_POST['p_time_ampm'] != 'AM'))?$s_pm='selected':$s_am='selected';
+                        echo $control->startDiv().$control->createLabel('Time',$control->createDropDown ('p_time_h', 1, 12, true).'<span class="left">:</span>'.$control->createDropDown ('p_time_m', 0, 59, true).'<select name="p_time_ampm" id="p_time_ampm"><option value="AM" '.$s_am.'>AM</option><option value="PM" '.$s_pm.'>PM</option></select>','time').$control->endDiv();
                         echo $control->endDiv();
                         echo $control->startDiv(50,'right');
                     ?>
@@ -98,6 +105,23 @@
                     <input type="hidden" name="d_city" value="<?php echo $end['city']; ?>" />
                     <input type="hidden" name="d_state" value="<?php echo $end['state_short']; ?>" />
                 </div>
+                <?php if (get_option('extra_requirement')) { ?>
+                    <div class="w100p">
+                        <div class="row">
+                            <div class="p2p_bp_col-sm-12"><strong>Special Request:</strong></div>
+                            <?php if (get_option('extra_car_seat')) { ?>
+                                <?php $checked = (isset($_POST['car_seat'])?'checked':''); ?>
+                                <?php $extra_car_seat_value = (is_numeric(get_option('extra_car_seat_value'))?get_option('extra_car_seat_value'):0); ?>
+                                <div class="p2p_bp_col-sm-12"><input type="checkbox" name="car_seat" id="car_seat" value="<?php echo $extra_car_seat_value; ?>" <?php echo $checked; ?>> Car Seat (<?php echo get_option('select_currency').number_format($extra_car_seat_value, 2, '.', ''); ?>)<br></div>
+                            <?php } ?>
+                        </div>
+                        <script>
+                            jQuery('input[name="car_seat"]').change(function () {
+                                calc_price();
+                            });
+                        </script>
+                    </div>
+                <?php } ?>
                 <div class="space"></div>
                 <?php
                     $checked1 = $checked2 = null;
@@ -107,39 +131,17 @@
                 <script>
                 
                     jQuery('input[name="r"]').click(function () {
-                        var round_trip = jQuery('input[name="r"]:checked', '#checkout').val();
-                        var value = jQuery('input[name="gratuity"]:checked', '#checkout').val();
-                        var price = <?php echo $price; ?>;
-                        
-                        if (round_trip == 0) {
-                            jQuery("#roundTrip").css("display", "none");
-                        } else {    
-                            jQuery("#roundTrip").css("display", "block");
-                            price = price * 2;
-                        }
-                        
-                        if (isNaN(value)) {
-                            var gratuity = parseFloat(jQuery('#gratuityOther_input').val());
-                            var price_gratuity = (isNaN(gratuity))?price:Math.round((parseFloat(price) + parseFloat(gratuity)) * 100) / 100;
-                        } else {
-                            var price_gratuity = Math.round((parseFloat(price) * (1 + (parseInt(value) / 100))) * 100) / 100;
-                        }
-                        
-                        jQuery("#span_g10").html(Math.round(price * 0.1 * 100)/100);
-                        jQuery("#span_g15").html(Math.round(price * 0.15 * 100)/100);
-                        jQuery("#span_g18").html(Math.round(price * 0.18 * 100)/100);
-                        jQuery("#span_g20").html(Math.round(price * 0.2 * 100)/100);
-                        
-                        
-                        jQuery('#final_price').html('<?php echo get_option('select_currency'); ?>' + price_gratuity);
+                        calc_price();
                     });
                     
                     jQuery("#p_apt").change(function () {
                         jQuery("#tx_r_d_apt").html(jQuery("#p_apt").val());
                     });  
+        
                     jQuery("#d_apt").change(function () {
                         jQuery("#tx_r_p_apt").html(jQuery("#d_apt").val());
                     });
+        
                     jQuery(function() {
                         jQuery("#p_date").datepicker({
                             defaultDate: "+1d",
@@ -177,7 +179,9 @@
                         echo $control->startDiv().$control->createText('City','r_p_city',$end['city'].'/'.$end['state_short']).$control->endDiv();
                         echo $control->startDiv().$control->createText('Zip Code','r_p_zip',$end['zip']).$control->endDiv();
                         echo $control->startDiv().$control->createInput('Date','r_p_date',(isset($_POST['r_p_date'])?$_POST['r_p_date']:null),'calendar',$er['r_p_date'],'has-feedback').$control->endDiv();
-                        echo $control->startDiv().$control->createLabel('Time',$control->createDropDown ('r_p_time_h', 0, 23, true).'<span class="left">:</span>'.$control->createDropDown ('r_p_time_m', 0, 59, true),'time').$control->endDiv();
+                        $s_r_am = $s_r_pm = '';
+                        (isset($_POST['r_p_time_ampm']) && strtoupper($_POST['r_p_time_ampm'] != 'AM'))?$s_r_pm='selected':$s_r_am='selected';
+                        echo $control->startDiv().$control->createLabel('Time',$control->createDropDown ('r_p_time_h', 1, 12, true).'<span class="left">:</span>'.$control->createDropDown ('r_p_time_m', 0, 59, true).'<select name="r_p_time_ampm" id="r_p_time_ampm"><option value="AM" '.$s_r_am.'>AM</option><option value="PM" '.$s_r_pm.'>PM</option></select>','time').$control->endDiv();
                         echo $control->endDiv();
                         echo $control->startDiv(50,'right');
                     ?>
@@ -191,7 +195,23 @@
                         echo $control->endDiv();
                         echo $control->startDiv().$control->createInput('Special Instructions','r_p_instructions','','info-sign').$control->endDiv();
                     ?>
+                    </div>                    
+                <?php if (get_option('extra_requirement')) { ?>                    
+                    <div class="w100p">
+                        <div class="row">
+                            <div class="p2p_bp_col-sm-12"><strong>Special Request:</strong></div>
+                            <?php if (get_option('extra_car_seat')) { ?>
+                                <?php $checked = (isset($_POST['r_car_seat'])?'checked':''); ?>
+                                <div class="p2p_bp_col-sm-12"><input type="checkbox" name="r_car_seat" value="<?php echo $extra_car_seat_value; ?>" <?php echo $checked; ?>> Car Seat (<?php echo get_option('select_currency').number_format($extra_car_seat_value, 2, '.', ''); ?>)<br></div>
+                            <?php } ?>
+                        </div>
+                        <script>
+                            jQuery('input[name="r_car_seat"]').change(function () {
+                                calc_price();
+                            });
+                        </script>
                     </div>
+                <?php } ?>
                 </div>
 <?php if (get_option('insert_gratuity')) { 
                     $gratuity10 = (isset($_POST['gratuity']) && ($_POST['gratuity'] == 10))?'checked':'';
@@ -222,41 +242,36 @@
                 </div>
                 <script>
                     jQuery('input[name="gratuity"]').click(function () {
-                        var value = jQuery('input[name="gratuity"]:checked', '#checkout').val();
-                        var price = <?php echo $price; ?>;
-                        round_trip = jQuery('input[name="r"]:checked', '#checkout').val();
-                        price = (round_trip == 0)?price:price*2;
-                        if (isNaN(value)) {
-                            var gratuity = parseFloat(jQuery('#gratuityOther_input').val());
-                            var price_gratuity = (isNaN(gratuity))?price:Math.round((parseFloat(price) + parseFloat(gratuity)) * 100) / 100;;
-                        } else {
-                            var price_gratuity = Math.round((parseFloat(price) * (1 + (parseInt(value) / 100))) * 100) / 100;
-                        }
-                        jQuery('#final_price').html('<?php echo get_option('select_currency'); ?>' + price_gratuity);
+                        calc_price();
                     });
                     
                     jQuery('#gratuityOther_input').change(function () {
-                        var value = jQuery('input[name="gratuity"]:checked', '#checkout').val();
-                        var price = <?php echo $price; ?>;
-                        var gratuity = jQuery('#gratuityOther_input').val();
-                        if (isNaN(value)) {
-                            if (isNaN(gratuity)) {
-                                jQuery('#final_price').html('<?php echo get_option('select_currency') ?> ' + price);
-                            } else {
-                                round_trip = jQuery('input[name="r"]:checked', '#checkout').val();
-                                price = (round_trip == 0)?price:price*2;
-                                var price_gratuity = Math.round((parseFloat(price) + parseFloat(gratuity)) * 100) / 100;
-                                jQuery('#final_price').html('<?php echo get_option('select_currency') ?> ' + price_gratuity);
-                                
-                                if (gratuity > 0) {
-                                    jQuery('#gratuityOther').prop('checked',true);
-                                }
-                            }
-                        }
+                        calc_price();
                     });
-                    
                 </script>
-<?php } ?>                
+<?php } ?>
+<?php
+    $final_price = (isset($_POST['r']) && ($_POST['r'] == 1))?$price*2:$price;
+    if (isset($_POST['gratuity']) && (get_option('insert_gratuity'))) {
+        if (is_numeric($_POST['gratuity'])) {
+            $final_price = round(($final_price * (1 + ($_POST['gratuity']/100))),2);
+        } else {
+            if (is_numeric($_POST['gratuityOther_input'])) {
+                $final_price = $final_price + $_POST['gratuityOther_input'];
+            }
+        }
+    }
+    
+    $final_price += (isset($_POST['car_seat']))?$extra_car_seat_value:0;
+    $final_price += (isset($_POST['r_car_seat']))?$extra_car_seat_value:0;
+    
+    
+?>
+                <div class="clear"></div>		
+                <div class="w100p p2p-final-price">
+                    <p class="bg-info pull-left alert p2p_bp_alert-info w100p">Estimated Price: <span id="final_price"><?php echo get_option('select_currency').$final_price; ?></span></p>
+                </div>
+                 <div class="clear"></div>	
 <?php
         if (get_option('p2p_payment_type') == 'braintree') {
 ?>
@@ -287,7 +302,7 @@
                         echo $control->endDiv();
                     ?>
                     </div>
-                </div>p2p_nopayment_creditcard
+                </div>
 <?php
         } else if (get_option('p2p_payment_type') == 'no' && get_option('p2p_nopayment_creditcard')) {
 ?>
@@ -297,7 +312,8 @@
                         echo $control->startDiv();
                         echo $control->selectCartType(isset($_POST['cardtype'])?$_POST['cardtype']:null);
                         echo $control->startDiv().$control->createInput('Credit Card','card_num','','credit-card',0).$control->endDiv();
-                        echo $control->startDiv().$control->createInput('CVV','card_cvv','','credit-card',0).$control->endDiv();                        
+                        echo $control->startDiv(50,'left').$control->createInput('CVV','card_cvv','','credit-card',0).$control->endDiv();
+                        echo $control->startDiv(50,'right').$control->createInput('Zip Code','zip_code','','envelope',0).$control->endDiv();
                         echo $control->startDiv(50,'left').$control->createInput('Month','card_month','','calendar',0).$control->endDiv();
                         echo $control->startDiv(50,'right').$control->createInput('Year','card_year','','calendar',0).$control->endDiv();
                     
@@ -308,23 +324,11 @@
 <?php
         } 
 ?>
-<?php
-    $final_price = (isset($_POST['r']) && ($_POST['r'] == 1))?$price*2:$price;
-    if (isset($_POST['gratuity']) && (get_option('insert_gratuity'))) {
-        if (is_numeric($_POST['gratuity'])) {
-            $final_price = round(($final_price * (1 + ($_POST['gratuity']/100))),2);
-        } else {
-            if (isset($_POST['gratuityOther_input']) && is_numeric($_POST['gratuityOther_input'])) {
-                $final_price = $final_price + $_POST['gratuityOther_input'];
-            }
-        }
-    }
-?>
                 <div class="clear"></div>		
                 <div class="w100p">
                     <input type="submit" value="submit" class="p2p_bp_btn p2p_bp_btn-primary pull-left"/>
-                    <p class="bg-info pull-left" style="margin-left: 100px; padding: 11px 20px; margin-bottom: 15px; width: 300px; text-align: center; border-radius: 5px;">Estimated Price: <span id="final_price"><?php echo get_option('select_currency').$final_price; ?></span></p>
                 </div>
+                 <div class="clear"></div>	
             </form>
             
 <?php
@@ -332,3 +336,36 @@
     }
 ?>
     </div>
+    <script>
+    function calc_price() {
+        var round_trip = jQuery('input[name="r"]:checked', '#checkout').val();
+        var value = jQuery('input[name="gratuity"]:checked', '#checkout').val();
+        var price = <?php echo $price; ?>;
+        
+        var car_seat = parseFloat(jQuery('input[name="car_seat"]:checked').val());
+        car_seat = isNaN(car_seat)?0:car_seat;
+        var r_car_seat = parseFloat(jQuery('input[name="r_car_seat"]:checked').val());
+        r_car_seat = isNaN(r_car_seat)?0:r_car_seat;
+        
+        if (round_trip == 0) {
+            jQuery("#roundTrip").css("display", "none");
+        } else {
+            jQuery("#roundTrip").css("display", "block");
+            price = (price * 2);
+        }
+        
+        if (isNaN(value)) {
+            var gratuity = parseFloat(jQuery('#gratuityOther_input').val());
+            var price_gratuity = (isNaN(gratuity))?price + car_seat:(Math.round((parseFloat(price) + parseFloat(gratuity)) * 100) / 100) + car_seat + r_car_seat;
+        } else {
+            var price_gratuity = (Math.round((parseFloat(price) * (1 + (parseInt(value) / 100))) * 100) / 100) + car_seat + r_car_seat;
+        }
+        
+        jQuery("#span_g10").html(Math.round(price * 0.1 * 100)/100);
+        jQuery("#span_g15").html(Math.round(price * 0.15 * 100)/100);
+        jQuery("#span_g18").html(Math.round(price * 0.18 * 100)/100);
+        jQuery("#span_g20").html(Math.round(price * 0.2 * 100)/100);
+        
+        jQuery('#final_price').html('<?php echo get_option('select_currency'); ?>' + (Math.round(price_gratuity * 100)/100));
+    }
+    </script>

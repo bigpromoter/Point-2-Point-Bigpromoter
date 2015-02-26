@@ -401,6 +401,7 @@ class p2p_bp_ControlUser {
         
         return $check;
     }
+    
     function sendMailMessage($info, $to = 'admin') {
         
         $output = '';
@@ -408,18 +409,16 @@ class p2p_bp_ControlUser {
         $output .= ($to == 'admin')?file_get_contents(dirname(__FILE__).'/../view/mail/mail_template.html'):file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_client.html');
         
         $output = (get_option('p2p_payment_type') == 'no' && get_option('p2p_nopayment_creditcard') && $to == 'admin')?str_replace("%card_info%", 'Card Information: '.$info['card_info'], $output):str_replace("%card_info%", "", $output);
+
+        $info['signature'] = get_option('p2p_email_signature');
+        $info['color_bg'] = (strlen(get_option('p2p_email_color_bg')))?get_option('p2p_email_color_bg'):"#000";
+        $info['color_txt'] = (strlen(get_option('p2p_email_color_txt')))?get_option('p2p_email_color_txt'):"#FFF";
         
-        $info['company_name'] = get_option('p2p_company_name');
-        $info['company_phone'] = get_option('p2p_company_phone');
-        $info['company_owner'] = get_option('p2p_company_owner');
-        
-        $info['p_time_h'] = (strlen($info['p_time_h']) < 2)?'0'.$info['p_time_h']:$info['p_time_h'];
-        $info['p_time_m'] = (strlen($info['p_time_m']) < 2)?'0'.$info['p_time_m']:$info['p_time_m'];
-        $info['r_p_time_h'] = (strlen($info['r_p_time_h']) < 2)?'0'.$info['r_p_time_h']:$info['r_p_time_h'];
-        $info['r_p_time_m'] = (strlen($info['r_p_time_m']) < 2)?'0'.$info['r_p_time_m']:$info['r_p_time_m'];
-        
+        $info['p_time'] = date('g:i A',strtotime($info['p_time_h'].':'.$info['p_time_m'].':00'));
+        $info['r_p_time'] = date('g:i A',strtotime($info['r_p_time_h'].':'.$info['r_p_time_m'].':00'));
+
         if ($info['r'] == 1) {
-            $fields = array('r_p_date','r_p_time_h','r_p_time_m','r_p_instructions');
+            $fields = array('r_p_date','r_p_time','r_p_instructions', 'signature','color_bg','color_txt','r_extra');
             $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_round_trip.html');
             foreach ($fields as $field) {
                 if (isset($info[$field])) $output = str_replace("%{$field}%", $info[$field], $output);
@@ -428,7 +427,11 @@ class p2p_bp_ControlUser {
         
         $output .= file_get_contents(dirname(__FILE__).'/../view/mail/mail_template_footer.html');
         
-        $fields = array('first_name','last_name','phone','email','npassenger','nluggage','vehicletype','servicetype','p_address','p_apt','p_city','p_state','p_zip','p_date','p_time_h','p_time_m','p_instructions','d_address','d_apt','d_city','d_state','d_zip','trip','final_price','gratuity','company_name','company_phone','company_owner');        
+        $info['trip'] = get_option('select_currency').number_format((float)$info['trip'], 2, '.', '');
+        $info['final_price'] = get_option('select_currency').number_format((float)$info['final_price'], 2, '.', '');
+        $info['gratuity'] = get_option('select_currency').number_format((float)$info['gratuity'], 2, '.', '');
+        
+        $fields = array('first_name','last_name','phone','email','npassenger','nluggage','vehicletype','servicetype','p_address','p_apt','p_city','p_state','p_zip','p_date','p_time','p_instructions','d_address','d_apt','d_city','d_state','d_zip','trip','final_price','gratuity','signature','color_bg','color_txt',  'extra');        
         foreach ($fields as $field) {
             if (isset($info[$field])) $output = str_replace("%{$field}%", $info[$field], $output);
         }
@@ -451,7 +454,7 @@ class p2p_bp_ControlUser {
         $phpmailer->Password  	= get_option('p2p_pass');
         
         if ($to == 'admin') {
-            $phpmailer->AddAddress(get_option('p2p_email'), get_option('p2p_company_name'));
+            $phpmailer->AddAddress(get_option('p2p_email'), get_option('p2p_email_name'));
             if ((get_option('p2p_email') != get_option('admin_email')) && (get_option('p2p_email_admin'))) $phpmailer->AddAddress(get_option('admin_email'), 'Admin');
             if (get_option('email_receive_1')) $phpmailer->AddAddress(get_option('email_receive_1'), get_option('email_receive_name_1'));
             if (get_option('email_receive_2')) $phpmailer->AddAddress(get_option('email_receive_2'), get_option('email_receive_name_2'));
@@ -468,7 +471,7 @@ class p2p_bp_ControlUser {
         $phpmailer->Subject     = $subject;
         $phpmailer->Body        = $message;	//HTML Body
         if ($to == 'admin') $phpmailer->SetFrom($info['email'],$info['first_name'].' '.$info['last_name']);
-        else $phpmailer->SetFrom(get_option('p2p_email'),get_option('p2p_company_name'));
+        else $phpmailer->SetFrom(get_option('p2p_email'),get_option('p2p_email_name'));
         $phpmailer->MsgHTML($message);
         $phpmailer->Priotity	= 1;
         $phpmailer->AltBody     = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
@@ -696,28 +699,69 @@ class p2p_bp_ControlUser {
         $error = $check[0];
         $er = $check[1];
         
-        $final_price = (isset($_POST['r']) && ($_POST['r'] == 1))?$price*2:$price;
+        $final_price = (isset($info['r']) && ($info['r'] == 1))?$price*2:$price;
         $er['gratuity'] = false;
         $info['trip'] = $final_price;
-        $info['gratuity'] = 0;
-        if (isset($_POST['gratuity']) && (get_option('insert_gratuity'))) {
-            if (is_numeric($_POST['gratuity'])) {
-                if ($_POST['gratuity'] < 0) {$error++; $er['gratuity'] = true;}
-                $final_price = round(($final_price * (1 + ($_POST['gratuity']/100))),2);
+        //$info['gratuity'] = 0;
+        if (isset($info['gratuity']) && (get_option('insert_gratuity'))) {
+            if (is_numeric($info['gratuity'])) {
+                if ($info['gratuity'] < 0) {$error++; $er['gratuity'] = true;}
+                $final_price = round(($final_price * (1 + ((float)$info['gratuity']/100))),2);
             } else {
-                if (isset($_POST['gratuityOther_input']) && is_numeric($_POST['gratuityOther_input'])) {
-                    if ($_POST['gratuityOther_input'] < 0) {$error++; $er['gratuity'] = true;}
-                    $final_price = $final_price + $_POST['gratuityOther_input'];
+                if (isset($info['gratuityOther_input']) && is_numeric($info['gratuityOther_input'])) {
+                    if ($info['gratuityOther_input'] < 0) {$error++; $er['gratuity'] = true;}
+                    $final_price = $final_price + (float)$info['gratuityOther_input'];
                 }
             }
         }
         $info['gratuity'] = $final_price - $info['trip'];
+        
+        
+        //Adjust AMPM time
+        if (isset($info['p_time_ampm'])) {
+            $ampm = $info['p_time_ampm'];
+            if ($info['p_time_h'] == 12) $info['p_time_h'] = (strtoupper($ampm) == 'AM')?0:12;
+            else $info['p_time_h'] = (strtoupper($ampm) == 'AM')?$info['p_time_h']:$info['p_time_h']+12;
+            
+            if ($info['r']) {
+                $r_ampm = $info['r_p_time_ampm'];
+                if ($info['r_p_time_h'] == 12) $info['r_p_time_h'] = (strtoupper($r_ampm) == 'AM')?0:12;
+                else $info['r_p_time_h'] = (strtoupper($r_ampm) == 'AM')?$info['r_p_time_h']:$info['r_p_time_h']+12;    
+            }
+        }
+        
+        //Create Extra Requirement
+        
+        $info['extra'] = '';
+        if (isset($info['car_seat'])) {
+            $info['extra'] = 'Car Seat ('.get_option('select_currency').$info['car_seat'];
+            $final_price = $final_price + (float)$info['car_seat'];
+            $info['p_instructions'] .= ' [Extra: Car Seat ('.get_option('select_currency').$info['car_seat'].')]';
+        }
+        
+        $info['r_extra'] = '';
+        if ($info['r'] && isset($info['r_car_seat'])) {
+            $info['r_extra'] = 'Car Seat ('.get_option('select_currency').$info['r_car_seat'].') ';
+            if (isset($info['car_seat'])) $info['extra'] .= ' (+'.get_option('select_currency').$info['r_car_seat'].' for round trip request)';
+            $final_price = $final_price + (float)$info['r_car_seat'];
+            $info['r_p_instructions'] .= ' [Extra: Car Seat ('.get_option('select_currency').$info['r_car_seat'].')]';
+        }
+        
+        if (isset($info['car_seat'])) $info['extra'] .= ') ';
+    
         $info['final_price'] = $final_price;
+        
+        
+        /*
+        echo '<pre>';
+        var_dump($info);
+        echo '</pre>';
+        */
         
         //End Check
         if (!($error)) { //If there is no Error
             // Check if reservation was already made
-            if ($model->checkIfAlreadyMade($_POST)) {
+            if ($model->checkIfAlreadyMade($info)) {
                 echo '<div class="alert p2p_bp_alert-warning">We already have your reservation!</div>';
             } else {
                 $payment_info = '';
@@ -740,7 +784,7 @@ class p2p_bp_ControlUser {
                     $payment_info['id'] = 'No Payment';
                     $payment_info['company'] = 'No Payment';
                     if ($info['send_cardinfo']) {
-                        $info['card_info'] = "(".$info['cardtype'].") ".$info['card_num']." cvv: ".$info['card_cvv']." expire: ".$info['card_month']."/".$info['card_year'];
+                        $info['card_info'] = "<BR>Type: ".$info['cardtype']."<BR>Credit Card: ".$info['card_num']."<BR>CVV: ".$info['card_cvv']."<BR>Expire: ".$info['card_month']."/".$info['card_year']."<BR>Zip Code: ".$info['zip_code'];
                     }
                 }
                 

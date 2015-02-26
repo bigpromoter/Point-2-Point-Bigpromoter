@@ -161,11 +161,18 @@ $results = $model->getResults($model->reservation['table'],$comp);
                     <div class="p2p_bp_panel-body">
                         <div class="p2p_bp_col-md-4 p2p_bp_col-xs-12 h30 text-left left">Transaction Id: <strong><?php echo $result->p2p_bp_payment_id; ?></strong></div>
                         <div class="p2p_bp_col-md-4 p2p_bp_col-xs-12 h30 text-left left">Value: <strong><?php echo get_option('select_currency'); ?> <?php echo $result->p2p_bp_payment_total; ?></strong>
-                        <small></small><?php echo ($result->p2p_bp_payment_gratuity > 0)?'(trip: '.$result->p2p_bp_payment_trip.' + gratuity: '.$result->p2p_bp_payment_gratuity.')':'';?></small>
-                        
-                        
-                        
-                        </div>
+                            <?php
+                                $gratuity = ((float)$result->p2p_bp_payment_gratuity > 0)?$result->p2p_bp_payment_gratuity:false;
+                                $extra = ((float)$result->p2p_bp_payment_total - (float)$result->p2p_bp_payment_trip - (float)$result->p2p_bp_payment_gratuity);
+                                $extra = ((float)$extra > 0)?$extra:false;
+                                
+                                $value = '(Trip: '.$result->p2p_bp_payment_trip;
+                                $value .= ($extra !== false)?' + Extra: '.$extra:'';
+                                $value .= ($gratuity !== false)?' + Gratuity: '.$gratuity:'';
+                                $value .= ')';
+                            ?>
+                            <small><?php echo $value;?></small>
+                        </div>                        
                         <div class="p2p_bp_col-md-4 p2p_bp_col-xs-12 h30 text-left left">Company: <strong><?php echo $result->p2p_bp_payment_company; ?></strong></div>
                     </div>
                 </div>

@@ -36,9 +36,11 @@ class p2p_bp_Admin {
 				        'select_currency',
 				        'placeholder',
                         'insert_gratuity',
-                        'p2p_company_name',
-                        'p2p_company_phone',
-                        'p2p_company_owner');
+                        'extra_requirement',
+                        'extra_car_seat',
+                        'extra_car_seat_value'
+                        
+                        );
 		$section_map = array('p2p_bigpromoter_main',
 				      'Main Page',
 				      'p2p_bigpromoter_main_section_text',
@@ -127,12 +129,16 @@ class p2p_bp_Admin {
 
 		//register MAIL Settings
 		$settings_mail = array('p2p_email',
+                        'p2p_email_name',
 				       'p2p_pass',
 				       'p2p_smtpsecure',
 				       'p2p_host',
 				       'p2p_port',
                        'p2p_email_debug',
                        'p2p_email_admin',
+                       'p2p_email_signature',
+                       'p2p_email_color_bg',
+                       'p2p_email_color_txt',
 				       'email_receive_1',
 				       'email_receive_2',
 				       'email_receive_3',
