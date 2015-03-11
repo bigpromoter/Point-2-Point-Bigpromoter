@@ -38,8 +38,15 @@ class p2p_bp_Admin {
                         'insert_gratuity',
                         'extra_requirement',
                         'extra_car_seat',
-                        'extra_car_seat_value'
-                        
+                        'extra_car_seat_value',
+                        'p2p_conflict_jquery_ui_datepicker',
+                        'p2p_conflict_jquery_ui_button',
+                        'p2p_conflict_bootstrap_js',
+                        'p2p_conflict_bootstrap_css',
+                        'p2p_conflict_wp_color_picker',
+                        'p2p_conflict_load_jquery_google',
+                        'p2p_conflict_font_awesome',
+                        'p2p_conflict_jquery_ui'
                         );
 		$section_map = array('p2p_bigpromoter_main',
 				      'Main Page',

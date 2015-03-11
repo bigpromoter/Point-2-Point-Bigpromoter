@@ -26,6 +26,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Changelog ==
 
+= Alpha 1.0.9 =
+* Data: 03/11/2015
+* Included Conflict Panel
+
+
 = Alpha 1.0.8 =
 * Data: 02/25/2015
 * Adjusted Special Requirement on Manage Reservation and Email Template

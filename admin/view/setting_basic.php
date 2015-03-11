@@ -63,6 +63,49 @@
                 </table>
             </div>
         </div>
+        <div class="p2p_bp_panel p2p_bp_panel-primary">
+            <div class="p2p_bp_panel-heading">
+                    <h3 class="p2p_bp_panel-title">Conflict Panel</h3>
+            </div>
+            <div class="p2p_bp_panel-body">
+                <table class="form-table">
+                    <tr valign="top">
+                        <td colspan="4">If you are having compatibility problems, try disabling the following functions loaded in this plugin. (Ps. This can result in unexpected behavior.)</td>
+                    </tr>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_jquery_ui_datepicker')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_jquery_ui_datepicker" value="1" <?php echo $checked; ?>/> Disable jQuery-ui-datepicker</td>
+                    </tr>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_jquery_ui_button')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_jquery_ui_button" value="1" <?php echo $checked; ?>/> Disable jQuery-ui-button</td>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_bootstrap_js')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_bootstrap_js" value="1" <?php echo $checked; ?>/> Disable Bootstrap.js (JavaScript)</td>
+                    </tr>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_bootstrap_css')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_bootstrap_css" value="1" <?php echo $checked; ?>/> Disable Bootstrap.css (StyleSheet)</td>
+                    </tr>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_font_awesome')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_font_awesome" value="1" <?php echo $checked; ?>/> Disable FontAwesome</td>
+                    </tr>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_jquery_ui')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_jquery_ui" value="1" <?php echo $checked; ?>/> Disable jQuery-ui.css (StyleSheet)</td>
+                    </tr>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_wp_color_picker')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_wp_color_picker" value="1" <?php echo $checked; ?>/> Disable Wp-color-picker (only admin)</td>
+                    </tr>
+                    <tr valign="top">
+                        <?php $checked = (get_option('p2p_conflict_load_jquery_google')?'checked':''); ?>
+                        <td colspan="4"><input type="checkbox" name="p2p_conflict_load_jquery_google" value="1" <?php echo $checked; ?>/> Force to load jQuery from Google Hosted Library (v.2.1.3)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     <?php submit_button(); ?>
     </form>		
 </div>
