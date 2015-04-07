@@ -3,7 +3,7 @@ Contributors: fabricio ferraz, mauro baptista
 Tags: limo, limousine, taxi, transport, point to point, p2p
 Requires at least: 4.0
 Tested up to: 4.1
-Stable tag: Alpha 1.0.7
+Stable tag: Alpha 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +25,22 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 2. Second SS
 
 == Changelog ==
+
+= Alpha 1.1.0 =
+* Data: 04/07/2015
+* Complete Relayout
+* Fully translatable
+* Created BigPromoter - Switch plugin
+* Remove tables Fleets and Services
+* Reduced numbers of options (Was more than 70, now are 8)
+* Improved Fleet and Services management
+* Adjusted Control, Model and View (more intuitive)
+* No more Bootstrap (avoiding conflicts)
+* Front-end layout more similar to user theme
+* Adjusted integration with Google Calendar
+* Updated PayPal SDK
+* Option to get email template from cURL (for servers that doesn’t accept file_get_content function)
+* Included Import/Export Settings/Fleet/Services
 
 = Alpha 1.0.9 =
 * Data: 03/11/2015

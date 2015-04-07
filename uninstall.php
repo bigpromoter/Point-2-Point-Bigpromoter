@@ -9,10 +9,4 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
     
     //Remove table p2p_bp
     $wpdb->query( "DROP TABLE {$table_name}");
-
-    //Remove table p2p_bp_cars
-    $wpdb->query( "DROP TABLE {$table_name}_cars");
-
-    //Remove table p2p_bp_services
-    $wpdb->query( "DROP TABLE {$table_name}_services");
 ?>

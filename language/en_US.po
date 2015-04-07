@@ -1,0 +1,1073 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Point to Point - Big Promoter\n"
+"POT-Creation-Date: 2015-04-07 07:06-0800\n"
+"PO-Revision-Date: 2015-04-07 07:26-0800\n"
+"Last-Translator: \n"
+"Language-Team: Big Promoter <info@bigpromoter.com>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.1\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../core/control/control_admin.php:19
+msgid "Settings"
+msgstr ""
+
+#: ../core/control/control_admin.php:20
+#: ../core/view/admin/manage_fleet.php:22
+msgid "Manage Fleet"
+msgstr ""
+
+#: ../core/control/control_admin.php:21
+#: ../core/view/admin/manage_services.php:11
+msgid "Manage Services"
+msgstr ""
+
+#: ../core/control/control_admin.php:22
+msgid "Manage Reservation"
+msgstr ""
+
+#: ../core/control/control_admin.php:23
+#: ../core/view/admin/export_import.php:7
+msgid "Export/Import"
+msgstr ""
+
+#: ../core/control/control_admin.php:119
+msgid ""
+"Client Information:\n"
+"Name: %first_name% %last_name%\n"
+"Phone: %phone%\n"
+"E-mail: %email%\n"
+"Passenger: %npassenger%\n"
+"Luggage: %nluggage%\n"
+"Vehicle: %vehicletype%\n"
+"Service: %servicetype%\n"
+"\n"
+"Amount Paid: %amount_paid%\n"
+"Transaction Id: %transaction_id%"
+msgstr ""
+
+#: ../core/control/control_admin.php:129
+msgid ""
+"When: %p_date% at %p_time_h%:%p_time_m%\n"
+"Instructions: %p_instructions%\n"
+"\n"
+"Pick Up Information:\n"
+"Address: %p_address% #%p_apt%\n"
+"City: %p_city%\n"
+"Zip Code: %p_zip%\n"
+"\n"
+"Drop Off Information:\n"
+"Address: %d_address% #%d_apt%\n"
+"City: %d_city%\n"
+"Zip Code: %d_zip%"
+msgstr ""
+
+#: ../core/control/control_ajax.php:15 ../core/control/control_ajax.php:45
+msgid "Permissions check failed!"
+msgstr ""
+
+#: ../core/control/control_ajax.php:28
+msgid ""
+"If you didn't get any error, it's time to check your Google Calendar. You "
+"should see a new event rigth now!"
+msgstr ""
+
+#: ../core/control/control_ajax.php:29 ../core/control/control_ajax.php:36
+msgid "Test made on"
+msgstr ""
+
+#: ../core/control/control_ajax.php:35
+msgid "Something went wrong! Check the settings above, save and try again!"
+msgstr ""
+
+#: ../core/control/control_ajax.php:51
+msgid "You must select at least on option!"
+msgstr ""
+
+#: ../core/control/control_ajax.php:53
+msgid "Paste the code below on your other P2P Plugin!"
+msgstr ""
+
+#: ../core/control/control_ajax.php:77
+msgid "Settings Imported."
+msgstr ""
+
+#: ../core/control/control_ajax.php:83
+#, php-format
+msgid "Fleet Imported. %s cars imported."
+msgstr ""
+
+#: ../core/control/control_ajax.php:87
+#, php-format
+msgid "Services Imported. %s services imported."
+msgstr ""
+
+#: ../core/control/control_ajax.php:91
+msgid "This code is corrupted! Try Export your settigns again."
+msgstr ""
+
+#: ../core/control/control_fleet.php:62
+msgid "Type of Service"
+msgstr ""
+
+#: ../core/control/control_fleet.php:65
+msgid "Select a Service"
+msgstr ""
+
+#: ../core/control/control_fleet.php:72
+msgid "Other"
+msgstr ""
+
+#: ../core/control/control_fleet.php:77
+msgid "There is no Service Option"
+msgstr ""
+
+#: ../core/control/control_form.php:144 ../core/control/control_form.php:145
+#: ../core/control/control_form.php:146 ../core/control/control_form.php:147
+#: ../core/control/control_form.php:148 ../core/control/control_form.php:149
+#: ../core/control/control_form.php:150 ../core/control/control_form.php:151
+msgid "Client"
+msgstr ""
+
+#: ../core/control/control_form.php:144
+#: ../core/control/control_reservation.php:205
+#: ../core/view/user/reservation.php:41
+msgid "First Name"
+msgstr ""
+
+#: ../core/control/control_form.php:145
+#: ../core/control/control_reservation.php:206
+#: ../core/view/user/reservation.php:42
+msgid "Last Name"
+msgstr ""
+
+#: ../core/control/control_form.php:146
+msgid "Phone"
+msgstr ""
+
+#: ../core/control/control_form.php:147
+#: ../core/control/control_reservation.php:207
+#: ../core/view/admin/setting.php:446 ../core/view/admin/setting.php:514
+#: ../core/view/admin/setting.php:520 ../core/view/admin/setting.php:526
+msgid "E-mail"
+msgstr ""
+
+#: ../core/control/control_form.php:148
+msgid "N Passenger"
+msgstr ""
+
+#: ../core/control/control_form.php:149
+msgid "N Luggage"
+msgstr ""
+
+#: ../core/control/control_form.php:150
+msgid "Vehicle"
+msgstr ""
+
+#: ../core/control/control_form.php:151
+#: ../core/control/control_reservation.php:210
+#: ../core/view/admin/export_import.php:33
+#: ../core/view/admin/manage_services.php:21 ../p2p_bigpromoter.php:80
+msgid "Service"
+msgstr ""
+
+#: ../core/control/control_form.php:152 ../core/control/control_form.php:153
+#: ../core/control/control_form.php:154 ../core/control/control_form.php:155
+#: ../core/control/control_form.php:156 ../core/control/control_form.php:157
+#: ../core/control/control_form.php:158
+msgid "Pick Up Info"
+msgstr ""
+
+#: ../core/control/control_form.php:152 ../core/control/control_form.php:159
+#: ../core/view/admin/setting.php:170 ../core/view/user/reservation.php:80
+#: ../core/view/user/reservation.php:96 ../core/view/user/reservation.php:142
+#: ../core/view/user/reservation.php:156
+msgid "Address"
+msgstr ""
+
+#: ../core/control/control_form.php:153 ../core/control/control_form.php:160
+#: ../core/view/user/reservation.php:81 ../core/view/user/reservation.php:97
+#: ../core/view/user/reservation.php:143
+#: ../core/view/user/reservation.php:157
+msgid "Apt/Suite"
+msgstr ""
+
+#: ../core/control/control_form.php:154 ../core/control/control_form.php:161
+msgid "City/State"
+msgstr ""
+
+#: ../core/control/control_form.php:155 ../core/control/control_form.php:162
+#: ../core/control/control_reservation.php:174
+#: ../core/view/user/reservation.php:83 ../core/view/user/reservation.php:99
+#: ../core/view/user/reservation.php:145
+#: ../core/view/user/reservation.php:159
+#: ../core/view/user/reservation.php:254
+msgid "Zip Code"
+msgstr ""
+
+#: ../core/control/control_form.php:156 ../core/view/user/reservation.php:84
+#: ../core/view/user/reservation.php:146
+msgid "Date"
+msgstr ""
+
+#: ../core/control/control_form.php:157
+msgid "Time"
+msgstr ""
+
+#: ../core/control/control_form.php:158
+msgid "Instructions"
+msgstr ""
+
+#: ../core/control/control_form.php:159 ../core/control/control_form.php:160
+#: ../core/control/control_form.php:161 ../core/control/control_form.php:162
+msgid "Drop Off Info"
+msgstr ""
+
+#: ../core/control/control_form.php:163 ../core/control/control_form.php:164
+msgid "Payment"
+msgstr ""
+
+#: ../core/control/control_form.php:163
+#: ../core/control/control_payment.php:72
+#: ../core/control/control_payment.php:170
+msgid "Amount Paid"
+msgstr ""
+
+#: ../core/control/control_form.php:164
+msgid "Payment: Transaction Id"
+msgstr ""
+
+#: ../core/control/control_form.php:171
+msgid "Insert"
+msgstr ""
+
+#: ../core/control/control_payment.php:71
+#: ../core/control/control_payment.php:169
+msgid "We got your Payment on "
+msgstr ""
+
+#: ../core/control/control_payment.php:71
+#: ../core/control/control_payment.php:169
+msgid "Transaction code"
+msgstr ""
+
+#: ../core/control/control_payment.php:78
+msgid "Error processing transaction"
+msgstr ""
+
+#: ../core/control/control_payment.php:79
+msgid "message"
+msgstr ""
+
+#: ../core/control/control_payment.php:80
+msgid "code"
+msgstr ""
+
+#: ../core/control/control_payment.php:81
+msgid "text"
+msgstr ""
+
+#: ../core/control/control_payment.php:85
+#: ../core/control/control_payment.php:178
+msgid "Validation errors on your Payment"
+msgstr ""
+
+#: ../core/control/control_payment.php:90
+#: ../core/control/control_payment.php:181
+msgid "Your reservation FAILED! Please Contact Us!"
+msgstr ""
+
+#: ../core/control/control_payment.php:179
+msgid "Message"
+msgstr ""
+
+#: ../core/control/control_payment.php:193
+msgid "Choose your Card"
+msgstr ""
+
+#: ../core/control/control_reservation.php:133
+#: ../core/control/control_reservation.php:141
+msgid "Extra"
+msgstr ""
+
+#: ../core/control/control_reservation.php:133
+#: ../core/control/control_reservation.php:141
+#: ../core/view/admin/setting.php:105
+msgid "Car Seat"
+msgstr ""
+
+#: ../core/control/control_reservation.php:139
+msgid "for round trip request"
+msgstr ""
+
+#: ../core/control/control_reservation.php:152
+msgid "We already have your reservation"
+msgstr ""
+
+#: ../core/control/control_reservation.php:171
+#: ../core/control/control_reservation.php:172
+#: ../core/view/admin/setting.php:362
+msgid "No Payment"
+msgstr ""
+
+#: ../core/control/control_reservation.php:174
+msgid "Type"
+msgstr ""
+
+#: ../core/control/control_reservation.php:174
+#: ../core/view/user/reservation.php:252
+msgid "Credit Card"
+msgstr ""
+
+#: ../core/control/control_reservation.php:174
+#: ../core/view/user/reservation.php:253
+msgid "CVV"
+msgstr ""
+
+#: ../core/control/control_reservation.php:174
+msgid "Expire"
+msgstr ""
+
+#: ../core/control/control_reservation.php:191
+msgid "We got your reservation"
+msgstr ""
+
+#: ../core/control/control_reservation.php:198
+msgid "Mailer Error"
+msgstr ""
+
+#: ../core/control/control_reservation.php:205
+#: ../core/control/control_reservation.php:206
+msgid "You must fill your"
+msgstr ""
+
+#: ../core/control/control_reservation.php:207
+#: ../core/control/control_reservation.php:210
+#: ../core/control/control_reservation.php:211
+#: ../core/control/control_reservation.php:212
+msgid "You must fill a valid"
+msgstr ""
+
+#: ../core/control/control_reservation.php:208
+#: ../core/control/control_reservation.php:209
+msgid "The field"
+msgstr ""
+
+#: ../core/control/control_reservation.php:208
+#: ../core/view/user/reservation.php:62
+msgid "Passengers"
+msgstr ""
+
+#: ../core/control/control_reservation.php:208
+#: ../core/control/control_reservation.php:209
+msgid "must be numeric"
+msgstr ""
+
+#: ../core/control/control_reservation.php:209
+#: ../core/view/admin/manage_fleet.php:85
+#: ../core/view/admin/manage_fleet.php:161
+#: ../core/view/user/reservation.php:63 ../p2p_bigpromoter.php:86
+msgid "Luggage"
+msgstr ""
+
+#: ../core/control/control_reservation.php:211
+#: ../core/control/control_reservation.php:212
+msgid "Pick-up Date"
+msgstr ""
+
+#: ../core/control/control_reservation.php:212
+msgid "Round-Trip"
+msgstr ""
+
+#: ../core/control/control_reservation.php:213
+#: ../core/view/user/reservation.php:193
+msgid "Gratuity"
+msgstr ""
+
+#: ../core/control/control_reservation.php:213
+msgid "value cannot be less than 0"
+msgstr ""
+
+#: ../core/control/control_util.php:78
+msgid "Card Information"
+msgstr ""
+
+#: ../core/control/control_util.php:110
+msgid "You got a new Reservation"
+msgstr ""
+
+#: ../core/control/control_util.php:110
+msgid "About your reservation"
+msgstr ""
+
+#: ../core/control/control_util.php:146
+msgid "To view the message, please use an HTML compatible email viewer!"
+msgstr ""
+
+#: ../core/control/control_util.php:162
+msgid "Settings saved"
+msgstr ""
+
+#: ../core/control/control_util.php:163
+msgid "Settings NOT saved"
+msgstr ""
+
+#: ../core/view/admin/export_import.php:17
+msgid "Export"
+msgstr ""
+
+#: ../core/view/admin/export_import.php:20
+msgid "Import"
+msgstr ""
+
+#: ../core/view/admin/export_import.php:25
+msgid "Options"
+msgstr ""
+
+#: ../core/view/admin/export_import.php:29
+msgid "Fleet"
+msgstr ""
+
+#: ../core/view/admin/export_import.php:37
+msgid "Create Export Code"
+msgstr ""
+
+#: ../core/view/admin/export_import.php:47
+msgid "Paste your code below!"
+msgstr ""
+
+#: ../core/view/admin/export_import.php:56
+msgid "Import Code"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:24
+#: ../core/view/admin/manage_fleet.php:209
+#: ../core/view/admin/manage_services.php:13
+#: ../core/view/admin/manage_services.php:68
+#: ../core/view/admin/setting.php:44 ../core/view/admin/setting.php:572
+msgid "Save Changes"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:32
+#: ../core/view/admin/manage_services.php:20
+msgid "Action"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:33
+#: ../core/view/admin/manage_fleet.php:54 ../p2p_bigpromoter.php:81
+msgid "Body"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:36
+#: ../core/view/admin/manage_fleet.php:68
+#: ../core/view/admin/manage_fleet.php:146 ../p2p_bigpromoter.php:84
+msgid "Minimum"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:37
+msgid "Pass."
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:38
+msgid "Lugg."
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:39
+#: ../core/view/admin/manage_fleet.php:169 ../p2p_bigpromoter.php:87
+msgid "Color"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:40
+msgid "Image"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:75
+#: ../core/view/admin/manage_fleet.php:153 ../p2p_bigpromoter.php:85
+msgid "Passenger"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:114
+#: ../core/view/admin/manage_fleet.php:188 ../p2p_bigpromoter.php:88
+msgid "Upload Image"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:193
+msgid "Fleet Options"
+msgstr ""
+
+#: ../core/view/admin/manage_fleet.php:199
+msgid "Increase per ride:"
+msgstr ""
+
+#: ../core/view/admin/manage_services.php:51
+msgid "Service Options"
+msgstr ""
+
+#: ../core/view/admin/manage_services.php:57
+msgid "Add Other on the list?"
+msgstr ""
+
+#: ../core/view/admin/setting.php:13
+msgid "basic"
+msgstr ""
+
+#: ../core/view/admin/setting.php:14
+msgid "extra"
+msgstr ""
+
+#: ../core/view/admin/setting.php:15
+msgid "map"
+msgstr ""
+
+#: ../core/view/admin/setting.php:16
+msgid "calendar"
+msgstr ""
+
+#: ../core/view/admin/setting.php:17
+msgid "payment"
+msgstr ""
+
+#: ../core/view/admin/setting.php:18
+msgid "email"
+msgstr ""
+
+#: ../core/view/admin/setting.php:19
+msgid "custom style"
+msgstr ""
+
+#: ../core/view/admin/setting.php:20
+msgid "conflict"
+msgstr ""
+
+#: ../core/view/admin/setting.php:21
+msgid "api"
+msgstr ""
+
+#: ../core/view/admin/setting.php:22
+msgid "advanced"
+msgstr ""
+
+#: ../core/view/admin/setting.php:70
+msgid "Reservation Page"
+msgstr ""
+
+#: ../core/view/admin/setting.php:74
+msgid "Select Distance"
+msgstr ""
+
+#: ../core/view/admin/setting.php:78
+msgid "Breakdown Distance"
+msgstr ""
+
+#: ../core/view/admin/setting.php:82
+msgid "Currency"
+msgstr ""
+
+#: ../core/view/admin/setting.php:86
+msgid "Insert field to user fill gratuity on Reservation?"
+msgstr ""
+
+#: ../core/view/admin/setting.php:90
+msgid "Use Placeholder on Input field!"
+msgstr ""
+
+#: ../core/view/admin/setting.php:101
+msgid "Enable Extra Requirement"
+msgstr ""
+
+#: ../core/view/admin/setting.php:107
+msgid "Price"
+msgstr ""
+
+#: ../core/view/admin/setting.php:118
+msgid ""
+"If you are having compatibility problems, try disabling the following "
+"functions loaded in this plugin. (Ps. This can result in unexpected "
+"behavior.)"
+msgstr ""
+
+#: ../core/view/admin/setting.php:121
+msgid "Disable jQuery-ui-datepicker"
+msgstr ""
+
+#: ../core/view/admin/setting.php:125
+msgid "Disable jQuery-ui-button"
+msgstr ""
+
+#: ../core/view/admin/setting.php:129
+msgid "Disable FontAwesome"
+msgstr ""
+
+#: ../core/view/admin/setting.php:133
+msgid "Disable jQuery-ui.css (StyleSheet)"
+msgstr ""
+
+#: ../core/view/admin/setting.php:137
+msgid "Disable Wp-color-picker (only admin)"
+msgstr ""
+
+#: ../core/view/admin/setting.php:141
+msgid "Force to load jQuery from Google Hosted Library (v.2.1.3)"
+msgstr ""
+
+#: ../core/view/admin/setting.php:157
+msgid "Google Maps API"
+msgstr ""
+
+#: ../core/view/admin/setting.php:161
+msgid "Coordinates"
+msgstr ""
+
+#: ../core/view/admin/setting.php:164
+msgid "Latitude"
+msgstr ""
+
+#: ../core/view/admin/setting.php:166
+msgid "Longitude"
+msgstr ""
+
+#: ../core/view/admin/setting.php:175
+msgid "Zoom"
+msgstr ""
+
+#: ../core/view/admin/setting.php:182
+msgid "Size"
+msgstr ""
+
+#: ../core/view/admin/setting.php:185
+msgid "Width"
+msgstr ""
+
+#: ../core/view/admin/setting.php:187
+msgid "Height"
+msgstr ""
+
+#: ../core/view/admin/setting.php:198
+msgid "Use Custom Colors"
+msgstr ""
+
+#: ../core/view/admin/setting.php:208
+msgid "Label"
+msgstr ""
+
+#: ../core/view/admin/setting.php:211 ../core/view/admin/setting.php:232
+#: ../core/view/admin/setting.php:254 ../core/view/admin/setting.php:503
+msgid "Font"
+msgstr ""
+
+#: ../core/view/admin/setting.php:215 ../core/view/admin/setting.php:236
+#: ../core/view/admin/setting.php:258 ../core/view/admin/setting.php:501
+msgid "Background"
+msgstr ""
+
+#: ../core/view/admin/setting.php:219 ../core/view/admin/setting.php:240
+#: ../core/view/admin/setting.php:262
+msgid "Border"
+msgstr ""
+
+#: ../core/view/admin/setting.php:229
+msgid "Input"
+msgstr ""
+
+#: ../core/view/admin/setting.php:251
+msgid "Button"
+msgstr ""
+
+#: ../core/view/admin/setting.php:277
+msgid ""
+"Paste your CSS code, do not include any tags or HTML in this field. Any "
+"custom CSS entered here will override your custom CSS. In some cases, the "
+"<i>!important</i> tag may be needed."
+msgstr ""
+
+#: ../core/view/admin/setting.php:286
+msgid "Use Google Calendar"
+msgstr ""
+
+#: ../core/view/admin/setting.php:295
+msgid "Google Calendar"
+msgstr ""
+
+#: ../core/view/admin/setting.php:298
+msgid "Key file name"
+msgstr ""
+
+#: ../core/view/admin/setting.php:302
+msgid "Service account email address"
+msgstr ""
+
+#: ../core/view/admin/setting.php:306
+msgid "Calendar Id"
+msgstr ""
+
+#: ../core/view/admin/setting.php:310
+msgid "Time Zone"
+msgstr ""
+
+#: ../core/view/admin/setting.php:311
+msgid "GMT Offset"
+msgstr ""
+
+#: ../core/view/admin/setting.php:311
+msgid "This plugin use the WordPress Time-zone"
+msgstr ""
+
+#: ../core/view/admin/setting.php:311
+msgid "Click here do change"
+msgstr ""
+
+#: ../core/view/admin/setting.php:320
+msgid "Test Data"
+msgstr ""
+
+#: ../core/view/admin/setting.php:321
+msgid "Test Settings"
+msgstr ""
+
+#: ../core/view/admin/setting.php:328
+msgid "Please wait"
+msgstr ""
+
+#: ../core/view/admin/setting.php:328 ../core/view/admin/setting.php:538
+msgid "Loading..."
+msgstr ""
+
+#: ../core/view/admin/setting.php:330
+msgid "Calendar Info"
+msgstr ""
+
+#: ../core/view/admin/setting.php:333
+msgid "Title"
+msgstr ""
+
+#: ../core/view/admin/setting.php:338 ../core/view/admin/setting.php:343
+msgid "Description"
+msgstr ""
+
+#: ../core/view/admin/setting.php:338
+msgid "Client Info"
+msgstr ""
+
+#: ../core/view/admin/setting.php:343
+msgid "Location Info"
+msgstr ""
+
+#: ../core/view/admin/setting.php:365 ../core/view/admin/setting.php:385
+msgid "PayPal"
+msgstr ""
+
+#: ../core/view/admin/setting.php:368 ../core/view/admin/setting.php:407
+msgid "BrainTree"
+msgstr ""
+
+#: ../core/view/admin/setting.php:371
+msgid "No Payment Gateway"
+msgstr ""
+
+#: ../core/view/admin/setting.php:374
+msgid "Receive Credit Card Info?"
+msgstr ""
+
+#: ../core/view/admin/setting.php:374 ../p2p_bigpromoter.php:96
+msgid "Sandbox"
+msgstr ""
+
+#: ../core/view/admin/setting.php:379
+msgid ""
+"Use at your own risk.<BR><BR>Use this option in production mode is highly "
+"discouraged, as this represents a major issue of security for your clients."
+"<BR><BR>The card data won't be validated by the plugin!<BR><BR>Ps. The card "
+"data will not be saved in the database. They will be sent to the registered "
+"email in the Mail tab.<BR>"
+msgstr ""
+
+#: ../core/view/admin/setting.php:392 ../core/view/admin/setting.php:414
+msgid "Enviroment"
+msgstr ""
+
+#: ../core/view/admin/setting.php:397
+msgid "Client ID"
+msgstr ""
+
+#: ../core/view/admin/setting.php:401
+msgid "Secret"
+msgstr ""
+
+#: ../core/view/admin/setting.php:418
+msgid "Merchant ID"
+msgstr ""
+
+#: ../core/view/admin/setting.php:422
+msgid "Public Key"
+msgstr ""
+
+#: ../core/view/admin/setting.php:426
+msgid "Private Key"
+msgstr ""
+
+#: ../core/view/admin/setting.php:430
+msgid "Configuration Code"
+msgstr ""
+
+#: ../core/view/admin/setting.php:442 ../core/view/admin/setting.php:516
+#: ../core/view/admin/setting.php:522 ../core/view/admin/setting.php:528
+msgid "Name"
+msgstr ""
+
+#: ../core/view/admin/setting.php:450
+msgid "Password"
+msgstr ""
+
+#: ../core/view/admin/setting.php:454
+msgid "SMTP Secure"
+msgstr ""
+
+#: ../core/view/admin/setting.php:458
+msgid "No Secure"
+msgstr ""
+
+#: ../core/view/admin/setting.php:460
+msgid "SSL"
+msgstr ""
+
+#: ../core/view/admin/setting.php:462
+msgid "TLS"
+msgstr ""
+
+#: ../core/view/admin/setting.php:467
+msgid "Host"
+msgstr ""
+
+#: ../core/view/admin/setting.php:471
+msgid "Port"
+msgstr ""
+
+#: ../core/view/admin/setting.php:475
+msgid "Send email to WP admin?"
+msgstr ""
+
+#: ../core/view/admin/setting.php:479
+msgid "Debug errors?"
+msgstr ""
+
+#: ../core/view/admin/setting.php:483
+msgid "User cUrl to get template?"
+msgstr ""
+
+#: ../core/view/admin/setting.php:484
+msgid ""
+"Try a differente setting if you are getting the message \"E-mail body is "
+"empty\"."
+msgstr ""
+
+#: ../core/view/admin/setting.php:489
+msgid "E-mail Info"
+msgstr ""
+
+#: ../core/view/admin/setting.php:493
+msgid "Signature"
+msgstr ""
+
+#: ../core/view/admin/setting.php:495
+msgid "It's allowed to insert HTML tags."
+msgstr ""
+
+#: ../core/view/admin/setting.php:495
+msgid "To open a new line, insert &lt;BR&gt; at end of the line."
+msgstr ""
+
+#: ../core/view/admin/setting.php:498
+msgid "E-mail Title Colors"
+msgstr ""
+
+#: ../core/view/admin/setting.php:510
+msgid "E-mail Receiver"
+msgstr ""
+
+#: ../core/view/admin/setting.php:538
+msgid "Status"
+msgstr ""
+
+#: ../core/view/admin/setting.php:539
+msgid "Click to Check API status"
+msgstr ""
+
+#: ../core/view/admin/setting.php:543
+msgid "Token"
+msgstr ""
+
+#: ../core/view/admin/setting.php:547
+msgid "Site"
+msgstr ""
+
+#: ../core/view/admin/setting.php:558
+msgid "Delete table when deactivate plugin?"
+msgstr ""
+
+#: ../core/view/admin/setting.php:562
+msgid "Delete settings when deactivate plugin?"
+msgstr ""
+
+#: ../core/view/user/map.php:60
+msgid "Pick-up Location"
+msgstr ""
+
+#: ../core/view/user/map.php:61
+msgid "Drop-off Location"
+msgstr ""
+
+#: ../core/view/user/reservation.php:43
+msgid "Phone Number"
+msgstr ""
+
+#: ../core/view/user/reservation.php:44
+msgid "E-mail Adress"
+msgstr ""
+
+#: ../core/view/user/reservation.php:45
+msgid "Number of Passenger"
+msgstr ""
+
+#: ../core/view/user/reservation.php:46
+msgid "Number of Luggage"
+msgstr ""
+
+#: ../core/view/user/reservation.php:62 ../core/view/user/reservation.php:63
+msgid "Max"
+msgstr ""
+
+#: ../core/view/user/reservation.php:77
+msgid "Pick-up Information"
+msgstr ""
+
+#: ../core/view/user/reservation.php:82 ../core/view/user/reservation.php:98
+#: ../core/view/user/reservation.php:144
+#: ../core/view/user/reservation.php:158
+msgid "City"
+msgstr ""
+
+#: ../core/view/user/reservation.php:93 ../core/view/user/reservation.php:153
+msgid "Drop-off Information"
+msgstr ""
+
+#: ../core/view/user/reservation.php:101
+#: ../core/view/user/reservation.php:161
+msgid "Special Instructions"
+msgstr ""
+
+#: ../core/view/user/reservation.php:110
+#: ../core/view/user/reservation.php:168
+msgid "Special Request"
+msgstr ""
+
+#: ../core/view/user/reservation.php:128
+msgid "Round Trip"
+msgstr ""
+
+#: ../core/view/user/reservation.php:206
+msgid "No Gratuity"
+msgstr ""
+
+#: ../core/view/user/reservation.php:211
+msgid "Yout Gratuity"
+msgstr ""
+
+#: ../core/view/user/reservation.php:240
+msgid "Estimated Price"
+msgstr ""
+
+#: ../core/view/user/reservation.php:246
+msgid "Credit Card Information"
+msgstr ""
+
+#: ../core/view/user/reservation.php:255
+msgid "Month"
+msgstr ""
+
+#: ../core/view/user/reservation.php:256
+msgid "Year"
+msgstr ""
+
+#: ../core/view/user/reservation.php:267
+msgid "Send Reservation"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:76
+msgid "must have more than"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:77
+msgid "characters"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:78
+msgid "must be a number"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:79
+msgid "Choose Image"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:82
+msgid "Less Than"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:83
+msgid "More Than"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:89
+msgid "Confirm"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:90
+msgid "Close"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:91
+msgid "Car deleted"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:92
+msgid "Enabled"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:93
+msgid "Disabled"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:94
+msgid "Yes"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:95
+msgid "No"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:97
+msgid "Live"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:98
+msgid "Production"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:99
+msgid "Please, confirm the deletion of the"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:100
+msgid "Car"
+msgstr ""
+
+#: ../p2p_bigpromoter.php:101
+msgid "deleted"
+msgstr ""
